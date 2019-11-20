@@ -1,3 +1,4 @@
+import java.util.Enumeration;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -6,14 +7,18 @@ public class SearchView extends JFrame{
 	private String[] types = {"Apartment", "Attached House", "Detached House", "Townhouse"};
 	private String[] nums = {"1", "2", "3", "4", "5"};
 	private String[] quadrant = {"SW", "NW", "SE", "NE"};
+	private JComboBox typeBox = new JComboBox(types);
+	private JButton submit = new JButton("Submit");
+	private JComboBox bedBox = new JComboBox(nums);
+	private JComboBox bathBox = new JComboBox(nums);
+	private JComboBox cityBox = new JComboBox(quadrant);
+	private JRadioButton yesBtn = new JRadioButton("yes");
+	private JRadioButton noBtn = new JRadioButton("no");
+	private ButtonGroup group = new ButtonGroup();
 	
 	public SearchView() {
 		setTitle("Search");
 		getContentPane().setLayout(null);
-		
-		JComboBox comboBox = new JComboBox(types);
-		comboBox.setBounds(157, 16, 196, 26);
-		getContentPane().add(comboBox);
 		
 		JLabel lblNewLabel = new JLabel("Type");
 		lblNewLabel.setBounds(41, 19, 69, 20);
@@ -35,23 +40,58 @@ public class SearchView extends JFrame{
 		lblNewLabel_4.setBounds(41, 163, 107, 20);
 		getContentPane().add(lblNewLabel_4);
 		
-		JComboBox comboBox_1 = new JComboBox(nums);
-		comboBox_1.setBounds(157, 52, 36, 26);
-		getContentPane().add(comboBox_1);
+		typeBox.setBounds(157, 16, 196, 26);
+		getContentPane().add(typeBox);
 		
-		JComboBox comboBox_2 = new JComboBox(nums);
-		comboBox_2.setBounds(157, 88, 36, 26);
-		getContentPane().add(comboBox_2);
+		bedBox.setBounds(157, 52, 36, 26);
+		getContentPane().add(bedBox);
 		
-		JComboBox comboBox_3 = new JComboBox(quadrant);
-		comboBox_3.setBounds(157, 160, 56, 26);
-		getContentPane().add(comboBox_3);
+		bathBox.setBounds(157, 88, 36, 26);
+		getContentPane().add(bathBox);
 		
+		cityBox.setBounds(157, 160, 56, 26);
+		getContentPane().add(cityBox);
 		
-		ButtonGroup buttonGroup = new ButtonGroup();
-		buttonGroup.setBounds(156, 127, 163, 29);
-		buttonGroup.add(new JRadioButton('Label1', false));
-		buttonGroup.add(new JRadioButton('Label2', true));
-
+		yesBtn.setBounds(152, 123, 61, 29);
+		getContentPane().add(yesBtn);
+		
+		noBtn.setBounds(217, 123, 61, 29);
+		getContentPane().add(noBtn);
+		
+		group.add(yesBtn);
+		group.add(noBtn);
+		
+		submit.setBounds(142, 199, 115, 29);
+		getContentPane().add(submit);
+		
 	}
+	
+	public void addSubmitListener(ActionListener al)  {
+    	submit.addActionListener(al);
+	}
+	
+	public String getTypes() {
+		return (String) typeBox.getSelectedItem();
+	}
+	
+	public String getBed() {
+		return (String) bedBox.getSelectedItem();
+	}
+	
+	public String getBath() {
+		return (String) bathBox.getSelectedItem();
+	}
+	
+	public String getCity() {
+		return (String) cityBox.getSelectedItem();
+	}
+	
+	public boolean getSelectedButtonText() {
+        if (group.getSelection().getActionCommand() == "Yes") {
+        	return true;
+        } else if (group.getSelection().getActionCommand() == "No") {
+        	return false;
+        }
+    }
+	
 }
