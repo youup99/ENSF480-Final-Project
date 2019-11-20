@@ -1,7 +1,11 @@
 package Server.Server;
 import Server.Database.Database;
 import Server.Domain.Customer;
+import Server.Domain.Landlord;
+import Server.Domain.Manager;
 import Server.Domain.Property;
+import Server.Domain.RegisteredRenter;
+import Server.Domain.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -20,14 +24,24 @@ public class PRMS{
     public void start(){
         ExecutorService es = Executors.newFixedThreadPool(5);
         Database db = new Database();
-//        Property p = new Property("House", 3, 3, true, "NW", "Active", 100);
+//        Property p = new Property("House", 4, 3, true, "NW", "Active", 100);
 //        db.addProperty(p);
-//        Property temp = new Property(103565, "House", 3, 3, true, "NW", "Active", 100);
+//        Property temp = new Property(802130, "Condo", 3, 3, true, "NW", "Active", 100);
 //        db.removeProperty(temp);
-//        ArrayList<Property> temp = db.getProperties();
-//        for(Property p : temp) {
-//        	System.out.println(p.getID());
+//        System.out.println(db.getProperty(451777).getType());
+//        User u = new RegisteredRenter("youup99", "Youup", "Kim", "youup99@gmail.com", "990926");
+//        User u1 = new Landlord("mulgae", "Minji", "Kim", "test@gmail.com", "123456", db.getProperties());
+//        User u2 = new Manager("manager123", "Manager", "One", "manager@gmail.com", "123");
+//        db.addUser(u);
+//        db.addUser(u1);
+//        db.addUser(u2);
+//        System.out.println(db.getUser("youup99").getEmail());
+//        ArrayList<User> u = db.getUsers();
+//        for(User user : u) {
+//        	System.out.println(user.getUserName());
 //        }
+        db.changeState("Rented", 451777);
+
         try{
             while(true){
                 synchronized(db){

@@ -62,6 +62,49 @@ public class Database{
     	}
     	return false;
     }
+    
+    public boolean changeState(String newState, int ID) {
+    	Connection conn = null;
+    	PreparedStatement changeState = null;
+    	String changeStateString = "UPDATE Property SET listingState = ? WHERE ID = ?";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			changeState = conn.prepareStatement(changeStateString);
+    			changeState.setString(1, newState);
+    			changeState.setInt(2, ID);
+    			changeState.executeUpdate();
+    			conn.close();
+    			return true;
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return false;
+    }
+    
+    public Property getProperty(int ID) {
+    	Connection conn = null;
+    	PreparedStatement getProperty = null;
+    	String getPropertyString = "SELECT * from Property WHERE ID = ?";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			getProperty = conn.prepareStatement(getPropertyString);
+    			getProperty.setInt(1, ID);
+    			ResultSet rs = getProperty.executeQuery();
+    			Property p = new Property(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+        					rs.getBoolean(5), rs.getString(6), rs.getString(7));
+    			conn.close();
+    			return p;
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return null;
+    }
 
     public ArrayList<Property> getProperties(){
         Connection conn = null;
@@ -75,7 +118,7 @@ public class Database{
         		ResultSet rs = getAllProperties.executeQuery();
         		while(rs.next()) {
         			Property p = new Property(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
-        					rs.getBoolean(5), rs.getString(6), rs.getString(7), rs.getDouble(8));
+        					rs.getBoolean(5), rs.getString(6), rs.getString(7));
         			temp.add(p);
         		}
         		conn.close();
@@ -89,15 +132,103 @@ public class Database{
     }
     
     
-    public boolean addUser(User user){
-    	
+    public boolean addUser(User u){
+    	boolean success = true;
+    	Connection conn = null;
+    	PreparedStatement addUser = null;
+    	String addUserString = "INSERT INTO User values (?, ?, ?, ? ,? ,?, ?)";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			addUser = conn.prepareStatement(addUserString);
+    			addUser.setInt(1, u.getID());
+    			addUser.setString(2, u.getType());
+    			addUser.setString(3, u.getUserName());
+    			addUser.setString(4, u.getFirstName());
+    			addUser.setString(5, u.getLastName());
+    			addUser.setString(6, u.getEmail());
+    			addUser.setString(7, u.getPassword());
+    			addUser.executeUpdate();
+    			System.out.println("Added User");
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e) {
+    		e.printStackTrace();
+    		return false;
+    	}
+    	return success;
     }
 
-    public void removeUser(User user){
-
+    public boolean removeUser(User u){
+    	Connection conn = null;
+    	PreparedStatement deleteUser = null;
+    	String deleteUserString = "DELETE FROM User WHERE ID = ?";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			deleteUser = conn.prepareStatement(deleteUserString);
+    			deleteUser.setInt(1, u.getID());
+    			deleteUser.executeUpdate();
+    			conn.close();
+    			return true;
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return false;
     }
-
-    public User validateLogin(String username, String password){
-        
+    
+    public User getUser(String username) {
+    	Connection conn = null;
+    	PreparedStatement getUser = null;
+    	String getUserString = "SELECT * from User WHERE userName = ?";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			getUser = conn.prepareStatement(getUserString);
+    			getUser.setString(1, username);
+    			ResultSet rs = getUser.executeQuery();
+    			User u = new User(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5),
+        					rs.getString(6), rs.getString(7), rs.getString(2));
+    			conn.close();
+    			return u;
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e){
+    		e.printStackTrace();
+    	}
+    	return null;
     }
+    
+    public ArrayList<User> getUsers(){
+        Connection conn = null;
+        PreparedStatement getAllUsers = null;
+        String getAllUsersString = "SELECT * from User";
+        ArrayList<User> temp = new ArrayList<User>();
+        try {
+        	conn = getConn();
+        	if(conn != null) {
+        		getAllUsers = conn.prepareStatement(getAllUsersString);
+        		ResultSet rs = getAllUsers.executeQuery();
+        		while(rs.next()) {
+        			User u = new User(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5),
+        					rs.getString(6), rs.getString(7), rs.getString(2));
+        			temp.add(u);
+        		}
+        		conn.close();
+        		return temp;
+        	}
+        	conn.close();
+        } catch(ClassNotFoundException | SQLException e) {
+        	e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public boolean updateFee()
+
+//    public User validateLogin(String username, String password){
+//        
+//    }
 }

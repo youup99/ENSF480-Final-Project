@@ -45,7 +45,7 @@ public class CreateDatabase{
         try{
             stmt = c.createStatement();
             String sql = "CREATE TABLE User " + "(ID INT PRIMARY KEY	NOT NULL," + " type TEXT     NOT NULL," + " userName TEXT    NOT NULL," + 
-            " firstName TEXT    NOT NULL," + " lastName TEXT      NOT NULL," + " email TEXT    NOT NULL);";
+            " firstName TEXT    NOT NULL," + " lastName TEXT      NOT NULL," + " email TEXT    NOT NULL," + " password TEXT		NOT NULL);";
             stmt.executeUpdate(sql);
             stmt.close();
             c.commit();

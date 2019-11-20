@@ -13,7 +13,7 @@ public class Property {
 	private PropertyFee fee;
 
 	public Property(String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
-			String listingState, double fee) {
+			String listingState) {
 		this.ID = new Random().nextInt(1000000);
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);
@@ -21,11 +21,11 @@ public class Property {
 		this.setFurnished(isFurnished);
 		this.setCityQuadrant(cityQuadrant);
 		this.setListingState(listingState);
-		this.fee = new PropertyFee(fee);
+		this.fee = new PropertyFee();
 	}
 
 	public Property(int ID, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
-			String listingState, double fee) {
+			String listingState) {
 		this.ID = ID;
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);
@@ -33,7 +33,7 @@ public class Property {
 		this.setFurnished(isFurnished);
 		this.setCityQuadrant(cityQuadrant);
 		this.setListingState(listingState);
-		this.fee = new PropertyFee(fee);
+		this.fee = new PropertyFee();
 	}
 
 	public String getType() {

@@ -3,12 +3,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class PropertyFee{
-    private double amount;
+    private double amount = 50;
     private Date feePeriodStart;
     private Date feePeriodEnd;
 
-    public PropertyFee(double amount){
-        this.setAmount(amount);
+    public PropertyFee(){
         this.setFeePeriodStart(new Date());
         Calendar cal = Calendar.getInstance();
         cal.setTime(feePeriodStart);
