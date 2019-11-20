@@ -1,3 +1,5 @@
+package Client.View;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -26,9 +28,13 @@ public class MainView extends JFrame{
 		guest.setBounds(242, 141, 115, 56);
 		getContentPane().add(guest);
 		
-		JLabel options = new JLabel("Please select one of the options");
-		options.setBounds(96, 16, 222, 20);
-		getContentPane().add(options);
+		JLabel optionsLbl = new JLabel("Please select one of the options");
+		optionsLbl.setBounds(96, 16, 222, 20);
+		getContentPane().add(optionsLbl);
+		
+		JLabel exitLbl = new JLabel("Or click X to exit");
+		exitLbl.setBounds(154, 213, 126, 20);
+		getContentPane().add(exitLbl);
 		
 	}
 	

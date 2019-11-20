@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class SearchView extends JFrame{
+public class CreatePropertyView extends JFrame{
 	private String[] types = {"Apartment", "Attached House", "Detached House", "Townhouse"};
 	private String[] nums = {"1", "2", "3", "4", "5"};
 	private String[] quadrant = {"SW", "NW", "SE", "NE"};
@@ -18,9 +18,9 @@ public class SearchView extends JFrame{
 	private JRadioButton noBtn = new JRadioButton("no");
 	private ButtonGroup group = new ButtonGroup();
 	
-	public SearchView() {
+	public CreatePropertyView() {
 		getContentPane().setBackground(new Color(230, 230, 250));
-		setTitle("Search");
+		setTitle("Create New Property");
 		getContentPane().setLayout(null);
 		
 		JLabel typeLbl = new JLabel("Type");
@@ -95,7 +95,7 @@ public class SearchView extends JFrame{
         } else if (group.getSelection().getActionCommand() == "No") {
         	return false;
         }
-        return false;
+		return false;
     }
 	
 }
