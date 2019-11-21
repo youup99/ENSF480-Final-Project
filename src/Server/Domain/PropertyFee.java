@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class PropertyFee{
     private double amount = 50;
+    private int period = 60;
     private Date feePeriodStart;
     private Date feePeriodEnd;
 
@@ -11,7 +12,7 @@ public class PropertyFee{
         this.setFeePeriodStart(new Date());
         Calendar cal = Calendar.getInstance();
         cal.setTime(feePeriodStart);
-        cal.add(Calendar.DAY_OF_MONTH, 60);
+        cal.add(Calendar.DAY_OF_MONTH, period);
         this.setFeePeriodEnd(cal.getTime());
     }
 
@@ -37,5 +38,17 @@ public class PropertyFee{
 
 	public void setFeePeriodEnd(Date feePeriodEnd) {
 		this.feePeriodEnd = feePeriodEnd;
+	}
+
+	public int getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(int period) {
+		this.period = period;
+		Calendar cal = Calendar.getInstance();
+        cal.setTime(feePeriodStart);
+        cal.add(Calendar.DAY_OF_MONTH, period);
+        this.setFeePeriodEnd(cal.getTime());
 	}
 }

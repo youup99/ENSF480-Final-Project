@@ -29,7 +29,7 @@ public class CreateDatabase{
             stmt = c.createStatement();
             String sql = "CREATE TABLE Property " + "(ID INT PRIMARY KEY	NOT NULL," + " type TEXT     NOT NULL," + " numOfBedrooms INT    NOT NULL," + 
             " numOfBathrooms INT    NOT NULL," + " isFurnished BOOLEAN      NOT NULL," + " cityQuadrant TEXT    NOT NULL," + 
-            " listingState TEXT     NOT NULL," + "fee REAL      NOT NULL);";
+            " listingState TEXT     NOT NULL," + " fee REAL      NOT NULL," + " feePeriodStart TEXT," + " feePeriodEnd TEXT);";
             stmt.executeUpdate(sql);
             stmt.close();
             c.commit();

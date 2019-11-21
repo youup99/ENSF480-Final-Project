@@ -31,8 +31,55 @@ public class Operations{
     	return "Unsuccessful!";
     }
     
-    public ArrayList<Property> getProperties() throws IOException{
-    	return db.getProperties();
+    public Property getProperty(int ID) throws IOException, SQLException {
+    	return db.getProperty(ID);
+    }
+    
+    public ArrayList<Property> getProperties(Property p) throws IOException{
+    	return db.getProperties(p);
+    }
+    
+    public String changeState(String newState, int ID) throws IOException{
+    	if(db.changeState(newState, ID)) {
+    		return "Success!";
+    	} else {
+    		return "Unsuccessful!";
+    	}
+    }
+    
+    public String addUser(User u) throws IOException{
+    	if(db.addUser(u)) {
+    		return "Success!";
+    	} else {
+    		return "Unsuccessful!";
+    	}
+    }
+    
+    public String removeUser(User u) throws IOException, SQLException{
+    	if(u != null) {
+    		if(db.removeUser(u)) {
+    			return "Success!";
+    		} else {
+    			return "Unsuccessful!";
+    		}
+    	}
+    	return "Unsuccessful!";
+    }
+    
+    public User getUser(String userName) throws IOException, SQLException {
+    	return db.getUser(userName);
+    }
+    
+    public ArrayList<User> getUsers() throws IOException{
+    	return db.getUsers();
+    }
+    
+    public String updateFee(PropertyFee fee) throws IOException{
+    	if(db.updateFee(fee)) {
+    		return "Success!";
+    	} else {
+    		return "Unsuccessful!";
+    	}
     }
 
     // TODO: GETTERS, ADDERS, DELETERS for Property and User

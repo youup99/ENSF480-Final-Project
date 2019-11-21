@@ -4,6 +4,7 @@ import Server.Domain.Customer;
 import Server.Domain.Landlord;
 import Server.Domain.Manager;
 import Server.Domain.Property;
+import Server.Domain.PropertyFee;
 import Server.Domain.RegisteredRenter;
 import Server.Domain.User;
 
@@ -24,7 +25,7 @@ public class PRMS{
     public void start(){
         ExecutorService es = Executors.newFixedThreadPool(5);
         Database db = new Database();
-//        Property p = new Property("House", 4, 3, true, "NW", "Active", 100);
+//        Property p = new Property("House", 4, 3, true, "NW", "Active");
 //        db.addProperty(p);
 //        Property temp = new Property(802130, "Condo", 3, 3, true, "NW", "Active", 100);
 //        db.removeProperty(temp);
@@ -40,7 +41,11 @@ public class PRMS{
 //        for(User user : u) {
 //        	System.out.println(user.getUserName());
 //        }
-        db.changeState("Rented", 451777);
+//        db.changeState("Rented", 451777);
+//        PropertyFee fee = new PropertyFee();
+//        fee.setAmount(200);
+//        fee.setPeriod(60);
+//        db.updateFee(fee);
 
         try{
             while(true){

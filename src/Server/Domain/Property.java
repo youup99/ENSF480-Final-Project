@@ -9,23 +9,20 @@ public class Property {
 	private int numOfBathrooms;
 	private boolean isFurnished;
 	private String cityQuadrant;
-	private String listingState;
+	private String listingState = "Active";
 	private PropertyFee fee;
 
-	public Property(String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
-			String listingState) {
+	public Property(String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant) {
 		this.ID = new Random().nextInt(1000000);
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);
 		this.setNumOfBathrooms(numOfBathrooms);
 		this.setFurnished(isFurnished);
 		this.setCityQuadrant(cityQuadrant);
-		this.setListingState(listingState);
 		this.fee = new PropertyFee();
 	}
 
-	public Property(int ID, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
-			String listingState) {
+	public Property(int ID, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant, String listingState) {
 		this.ID = ID;
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Server.Domain.Property;
+import Server.Domain.PropertyFee;
 import Server.Domain.User;
 
 public class Database{
@@ -19,7 +20,7 @@ public class Database{
     	boolean success = true;
     	Connection conn = null;
     	PreparedStatement addProperty = null;
-    	String addPropertyString = "INSERT INTO Property values (?, ?, ?, ? ,? ,?, ?, ?)";
+    	String addPropertyString = "INSERT INTO Property values (?, ?, ?, ? ,? ,?, ?, ?, ?, ?)";
     	try {
     		conn = getConn();
     		if(conn != null) {
@@ -32,6 +33,8 @@ public class Database{
     			addProperty.setString(6, p.getCityQuadrant());
     			addProperty.setString(7, p.getListingState());
     			addProperty.setDouble(8, p.getFee().getAmount());
+    			addProperty.setString(9, p.getFee().getFeePeriodStart().toString());
+    			addProperty.setString(10, p.getFee().getFeePeriodEnd().toString());
     			addProperty.executeUpdate();
     			System.out.println("Added property");
     		}
@@ -63,6 +66,7 @@ public class Database{
     	return false;
     }
     
+    // Manager and Landlord
     public boolean changeState(String newState, int ID) {
     	Connection conn = null;
     	PreparedStatement changeState = null;
@@ -106,7 +110,7 @@ public class Database{
     	return null;
     }
 
-    public ArrayList<Property> getProperties(){
+    public ArrayList<Property> getProperties(Property searchCriteria){
         Connection conn = null;
         PreparedStatement getAllProperties = null;
         String getAllPropertiesString = "SELECT * from Property";
@@ -226,7 +230,29 @@ public class Database{
         return null;
     }
     
-    public boolean updateFee()
+    
+    // Manager
+    public boolean updateFee(PropertyFee newFee) {
+    	Connection conn = null;
+    	PreparedStatement updateFee = null;
+    	String updateFeeString = "UPDATE Property SET fee = ?, feePeriodStart = ?, feePeriodEnd = ?";
+    	try {
+    		conn = getConn();
+    		if(conn != null) {
+    			updateFee = conn.prepareStatement(updateFeeString);
+    			updateFee.setDouble(1, newFee.getAmount());
+    			updateFee.setString(2, newFee.getFeePeriodStart().toString());
+    			updateFee.setString(3, newFee.getFeePeriodEnd().toString());
+    			updateFee.executeUpdate();
+    			conn.close();
+    			return true;
+    		}
+    		conn.close();
+    	} catch(ClassNotFoundException | SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return false;
+    }
 
 //    public User validateLogin(String username, String password){
 //        
