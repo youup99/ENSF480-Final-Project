@@ -1,4 +1,4 @@
-package Server.Domain;
+package Client;
 
 import java.io.Serializable;
 import java.util.ArrayList;

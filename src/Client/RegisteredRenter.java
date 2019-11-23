@@ -1,7 +1,7 @@
-package Server.Domain;
+package Client;
 public class RegisteredRenter extends User{
 	private static final long serialVersionUID = 1L;
-
+	
     public PropertyListing propertiesInterested;
 
     public RegisteredRenter(String userName, String firstName, String lastName, String email, String password){

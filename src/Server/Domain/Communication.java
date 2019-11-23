@@ -14,7 +14,7 @@ public class Communication{
     private ObjectOutputStream socketOut;
     private ExecutorService pool;
 
-    Communication(Socket socket) throws IOException{
+    public Communication(Socket socket) throws IOException{
         this.aSocket = socket;
         socketIn = new ObjectInputStream(aSocket.getInputStream());
         socketOut = new ObjectOutputStream(aSocket.getOutputStream());

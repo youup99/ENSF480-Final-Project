@@ -1,4 +1,4 @@
-package Server.Domain;
+package Client;
 import java.util.ArrayList;
 
 public class Landlord extends User{
