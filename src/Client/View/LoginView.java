@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
 	private JTextField nameInput;
-	private JTextField pwInput;
 	private JButton login = new JButton("login");
 	private JButton signUp = new JButton("Sign Up");
+	private JPasswordField password;
 	
     public LoginView() {
     	getContentPane().setBackground(new Color(230, 230, 250));
@@ -19,11 +19,6 @@ public class LoginView extends JFrame {
     	nameInput.setBounds(168, 64, 146, 26);
     	getContentPane().add(nameInput);
     	nameInput.setColumns(10);
-    	
-    	pwInput = new JTextField();
-    	pwInput.setBounds(168, 98, 146, 26);
-    	getContentPane().add(pwInput);
-    	pwInput.setColumns(10);
     	
 
     	login.setBounds(329, 98, 96, 27);
@@ -44,6 +39,10 @@ public class LoginView extends JFrame {
     	signUp.setBounds(329, 64, 96, 27);
     	getContentPane().add(signUp);
     	
+    	password = new JPasswordField();
+    	password.setBounds(168, 98, 146, 26);
+    	getContentPane().add(password);
+    	
     }
     
     public void addLoginListener(ActionListener al)  {
@@ -58,7 +57,7 @@ public class LoginView extends JFrame {
 		return nameInput.getText();
 	}
 	
-	public String getPassword()  {
-		return pwInput.getText();
+	public char[] getPassword()  {
+		return password.getPassword();
 	}
 }

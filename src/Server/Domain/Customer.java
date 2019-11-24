@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
 
-public class Customer implements Runnable{
-	Communication communicator;
-	Operations operations;
+public class Customer implements Runnable {
+    Communication communicator;
+    Operations operations;
 
 	public Customer(Socket aSocket, Database db) {
 		try {
