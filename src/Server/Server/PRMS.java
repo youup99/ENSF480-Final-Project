@@ -6,12 +6,15 @@ import Server.Domain.Manager;
 import Server.Domain.Property;
 import Server.Domain.PropertyFee;
 import Server.Domain.RegisteredRenter;
+import Server.Domain.SummaryReport;
 import Server.Domain.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.sql.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,8 +28,8 @@ public class PRMS{
     public void start(){
         ExecutorService es = Executors.newFixedThreadPool(5);
         Database db = new Database();
-//        Property p = new Property("House", 4, 3, true, "NW", "Active");
-//        db.addProperty(p);
+        Property p = new Property("105 Royal Crest Terrace", "House", 4, 3, true, "NW", "Active");
+        db.addProperty(p);
 //        Property temp = new Property(802130, "Condo", 3, 3, true, "NW", "Active", 100);
 //        db.removeProperty(temp);
 //        System.out.println(db.getProperty(451777).getType());
@@ -46,7 +49,14 @@ public class PRMS{
 //        fee.setAmount(200);
 //        fee.setPeriod(60);
 //        db.updateFee(fee);
-
+//        Calendar cal = Calendar.getInstance();
+//        cal.add(Calendar.DAY_OF_MONTH, 60);
+//        SummaryReport temp = db.getReport(new Date(Calendar.getInstance().getTimeInMillis()), new Date(cal.getTimeInMillis()));
+//        ArrayList<Property> p = temp.getHousesRented();
+//        for(Property pr : p) {
+//        	System.out.println(pr.getType());
+//        }
+        
         try{
             while(true){
                 synchronized(db){

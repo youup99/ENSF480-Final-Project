@@ -10,4 +10,5 @@ public class Landlord extends User{
         super(userName, firstName, lastName, email, password, "Landlord");
         ownedProperties = properties;
     }
+    
 }

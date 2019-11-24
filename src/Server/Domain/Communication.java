@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.concurrent.ExecutorService;
 
 public class Communication{
@@ -29,6 +30,11 @@ public class Communication{
     public String getString() throws ClassNotFoundException, IOException{
         String s = (String) socketIn.readObject();
         return s;
+    }
+    
+    public Date getDate() throws ClassNotFoundException, IOException{
+    	Date d = (Date) socketIn.readObject();
+    	return d;
     }
     
     public Property getProperty() throws ClassNotFoundException, IOException{
@@ -75,4 +81,11 @@ public class Communication{
     	socketOut.writeObject(users);
     	socketOut.flush();
     }
+    
+    public void sendReport(SummaryReport report) throws IOException{
+    	socketOut.reset();
+    	socketOut.writeObject(report);
+    	socketOut.flush();
+    }
+    
 }

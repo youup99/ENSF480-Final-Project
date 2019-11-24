@@ -2,6 +2,7 @@ package Server.Domain;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
 import Server.Database.Database;
 
@@ -80,6 +81,10 @@ public class Operations{
     	} else {
     		return "Unsuccessful!";
     	}
+    }
+    
+    public SummaryReport getReport(Date start, Date end) throws IOException{
+    	return db.getReport(start, end);
     }
 
     // TODO: GETTERS, ADDERS, DELETERS for Property and User

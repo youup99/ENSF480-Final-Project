@@ -1,33 +1,35 @@
 package Server.Domain;
+
 import Server.Database.Database;
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class Customer implements Runnable{
-    Communication communicator;
-    Operations operations;
+	Communication communicator;
+	Operations operations;
 
-    public Customer(Socket aSocket, Database db){
-        try{
-            communicator = new Communication(aSocket);
-            operations = new Operations(db);
-        } catch (IOException e){
-            System.err.println(e.getStackTrace());
-        }
-    }
+	public Customer(Socket aSocket, Database db) {
+		try {
+			communicator = new Communication(aSocket);
+			operations = new Operations(db);
+		} catch (IOException e) {
+			System.err.println(e.getStackTrace());
+		}
+	}
 
-    @Override
-    public void run(){
-        try{
-            this.loop();
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-    }
+	@Override
+	public void run() {
+		try {
+			this.loop();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public void loop() throws IOException{
+	public void loop() throws IOException{
         Boolean run = true;
         while(run){
             String op = "";
@@ -211,6 +213,22 @@ public class Customer implements Runnable{
             			e.printStackTrace();
             		}
             		break;
+            	}
+            	case("get report"): {
+            		try {
+            			Date start = communicator.getDate();
+            			Date end = communicator.getDate();
+            			SummaryReport report = operations.getReport(start, end);
+            			if(report != null) {
+            				communicator.sendReport(report);
+            			} 
+            			else {
+            				communicator.sendString("Could not generate report");
+            			}
+            			break;
+            		} catch(ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
             	}
             }
         }

@@ -1,7 +1,7 @@
 package Server.Domain;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 public class PropertyFee implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -11,11 +11,11 @@ public class PropertyFee implements Serializable{
     private Date feePeriodEnd;
 
     public PropertyFee(){
-        this.setFeePeriodStart(new Date());
+        this.setFeePeriodStart(new Date(Calendar.getInstance().getTimeInMillis()));
         Calendar cal = Calendar.getInstance();
         cal.setTime(feePeriodStart);
         cal.add(Calendar.DAY_OF_MONTH, period);
-        this.setFeePeriodEnd(cal.getTime());
+        this.setFeePeriodEnd(new Date(cal.getTimeInMillis()));
     }
 
 	public double getAmount() {
@@ -38,8 +38,8 @@ public class PropertyFee implements Serializable{
 		return feePeriodEnd;
 	}
 
-	public void setFeePeriodEnd(Date feePeriodEnd) {
-		this.feePeriodEnd = feePeriodEnd;
+	public void setFeePeriodEnd(Date date) {
+		this.feePeriodEnd = date;
 	}
 
 	public int getPeriod() {
@@ -51,6 +51,6 @@ public class PropertyFee implements Serializable{
 		Calendar cal = Calendar.getInstance();
         cal.setTime(feePeriodStart);
         cal.add(Calendar.DAY_OF_MONTH, period);
-        this.setFeePeriodEnd(cal.getTime());
+        this.setFeePeriodEnd(new Date(cal.getTimeInMillis()));
 	}
 }
