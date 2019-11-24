@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Customer implements Runnable{
+public class Customer implements Runnable {
     Communication communicator;
     Operations operations;
 

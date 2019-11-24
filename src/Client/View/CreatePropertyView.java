@@ -17,8 +17,23 @@ public class CreatePropertyView extends JFrame{
 	private JRadioButton yesBtn = new JRadioButton("yes");
 	private JRadioButton noBtn = new JRadioButton("no");
 	private ButtonGroup group = new ButtonGroup();
+	private final JLabel cardNumLbl = new JLabel("Card Number");
+	private final JLabel expiryDateLbl = new JLabel("Expiry Date");
+	private final JLabel cvvLbl = new JLabel("CVV");
+	private final JTextField holderName = new JTextField();
+	private final JTextField cardNum = new JTextField();
+	private final JTextField expiryDate = new JTextField();
+	private final JTextField cvv = new JTextField();
 	
 	public CreatePropertyView() {
+		cvv.setBounds(176, 340, 61, 26);
+		cvv.setColumns(10);
+		expiryDate.setBounds(176, 299, 123, 26);
+		expiryDate.setColumns(10);
+		cardNum.setBounds(176, 260, 177, 26);
+		cardNum.setColumns(10);
+		holderName.setBounds(176, 224, 177, 26);
+		holderName.setColumns(10);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Create New Property");
 		getContentPane().setLayout(null);
@@ -64,8 +79,34 @@ public class CreatePropertyView extends JFrame{
 		group.add(yesBtn);
 		group.add(noBtn);
 		
-		submit.setBounds(142, 199, 115, 29);
+		submit.setBounds(143, 382, 115, 29);
 		getContentPane().add(submit);
+		
+		JLabel payInfoLbl = new JLabel("Payment Information");
+		payInfoLbl.setFont(new Font("Tahoma", Font.BOLD, 16));
+		payInfoLbl.setBounds(41, 199, 182, 20);
+		getContentPane().add(payInfoLbl);
+		
+		JLabel nameLbl = new JLabel("Card Holder Name");
+		nameLbl.setBounds(41, 227, 131, 20);
+		getContentPane().add(nameLbl);
+		cardNumLbl.setBounds(41, 263, 107, 20);
+		
+		getContentPane().add(cardNumLbl);
+		expiryDateLbl.setBounds(41, 299, 96, 20);
+		
+		getContentPane().add(expiryDateLbl);
+		cvvLbl.setBounds(41, 343, 42, 20);
+		
+		getContentPane().add(cvvLbl);
+		
+		getContentPane().add(holderName);
+		
+		getContentPane().add(cardNum);
+		
+		getContentPane().add(expiryDate);
+		
+		getContentPane().add(cvv);
 		
 	}
 	
@@ -89,6 +130,22 @@ public class CreatePropertyView extends JFrame{
 		return (String) cityBox.getSelectedItem();
 	}
 	
+	public String getHolderName()  {
+		return holderName.getText();
+	}
+	
+	public String getCardNum()  {
+		return cardNum.getText();
+	}
+	
+	public String getExpiryDate()  {
+		return expiryDate.getText();
+	}
+	
+	public String getCvv()  {
+		return cvv.getText();
+	}
+	
 	public boolean getFurnished() {
         if (group.getSelection().getActionCommand() == "Yes") {
         	return true;
@@ -97,5 +154,5 @@ public class CreatePropertyView extends JFrame{
         }
 		return false;
     }
-	
+
 }

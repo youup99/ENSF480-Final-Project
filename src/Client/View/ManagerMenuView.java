@@ -6,26 +6,42 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ManagerMenuView extends JFrame{
-	private JButton btnNewButton = new JButton("Change Property Status");
-	private JButton btnNewButton_1 = new JButton("Change Fee");
-	private JButton btnNewButton_2 = new JButton("Get Information of Users");
-	private JButton btnExit = new JButton("Exit");
+	private JButton changeStatus = new JButton("Change Property Status");
+	private JButton changeFee = new JButton("Change Fee");
+	private JButton getUserInfo = new JButton("Get Information of Users");
+	private JButton exit = new JButton("Exit");
 	
 	public ManagerMenuView() {
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Manager Menu");
 		getContentPane().setLayout(null);
 		
-		btnNewButton.setBounds(106, 34, 199, 29);
-		getContentPane().add(btnNewButton);
+		changeStatus.setBounds(106, 34, 199, 29);
+		getContentPane().add(changeStatus);
 		
-		btnNewButton_1.setBounds(149, 89, 115, 29);
-		getContentPane().add(btnNewButton_1);
+		changeFee.setBounds(149, 89, 115, 29);
+		getContentPane().add(changeFee);
 		
-		btnNewButton_2.setBounds(106, 144, 209, 29);
-		getContentPane().add(btnNewButton_2);
+		getUserInfo.setBounds(106, 144, 209, 29);
+		getContentPane().add(getUserInfo);
 		
-		btnExit.setBounds(149, 199, 115, 29);
-		getContentPane().add(btnExit);
+		exit.setBounds(149, 199, 115, 29);
+		getContentPane().add(exit);
+	}
+	
+	public void addChangeStatusListener(ActionListener al)  {
+    	changeStatus.addActionListener(al);
+	}
+    
+    public void addChangeFeeListener(ActionListener al)  {
+    	changeFee.addActionListener(al);
+	}
+    
+    public void addGetUserInfoListener(ActionListener al)  {
+    	getUserInfo.addActionListener(al);
+	}
+    
+    public void addExitListener(ActionListener al)  {
+    	exit.addActionListener(al);
 	}
 }

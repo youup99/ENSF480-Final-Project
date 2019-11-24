@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 class LandlordMenuView extends JFrame{
-	private JButton feeBtn = new JButton("Pay Fees");
 	private JButton editBtn = new JButton("Edit Listing");
 	private JButton createBtn = new JButton("Create Listing");
 	private JButton exitBtn = new JButton("Exit Program");
@@ -15,24 +14,17 @@ class LandlordMenuView extends JFrame{
 		setTitle("Landlord Menu");
 		getContentPane().setLayout(null);
 		
-		feeBtn.setBounds(149, 16, 129, 29);
-		getContentPane().add(feeBtn);
-		
-		editBtn.setBounds(149, 72, 129, 29);
+		editBtn.setBounds(149, 36, 129, 29);
 		getContentPane().add(editBtn);
 		
-		createBtn.setBounds(149, 130, 129, 29);
+		createBtn.setBounds(149, 112, 129, 29);
 		getContentPane().add(createBtn);
 		
 		exitBtn.setBounds(149, 186, 129, 29);
 		getContentPane().add(exitBtn);
 		
 	}
-	
-	public void addFeeListener(ActionListener al)  {
-    	feeBtn.addActionListener(al);
-	}
-    
+
     public void addEditListener(ActionListener al)  {
     	editBtn.addActionListener(al);
 	}

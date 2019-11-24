@@ -1,11 +1,16 @@
-public class PropertyInfoView{
-    private ArrayList<JComponent> guiComponents;
+package Client.View;
 
-    public void showView(){
+import java.util.Enumeration;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
-    }
+public class PropertyInfoView extends JFrame{
 
-    private void addGuiComponents(JComponent component){
-        guiComponents.add(component);
-    }
+	
+	public PropertyInfoView() {
+		
+		
+	}
+
 }
