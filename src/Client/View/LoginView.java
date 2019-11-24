@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JTextField nameInput;
 	private JButton login = new JButton("login");
 	private JButton signUp = new JButton("Sign Up");

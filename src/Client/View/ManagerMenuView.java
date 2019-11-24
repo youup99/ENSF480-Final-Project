@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ManagerMenuView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private JButton changeStatus = new JButton("Change Property Status");
 	private JButton changeFee = new JButton("Change Fee");
 	private JButton getUserInfo = new JButton("Get Information of Users");

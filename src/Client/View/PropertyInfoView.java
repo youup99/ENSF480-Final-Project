@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class PropertyInfoView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private JButton emailBtn = new JButton("Click to send email to landlord");
 	private JTextArea ID = new JTextArea();
 	private JTextArea address = new JTextArea();

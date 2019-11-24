@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 class LandlordMenuView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private JButton editBtn = new JButton("Edit Listing");
 	private JButton createBtn = new JButton("Create Listing");
 	private JButton exitBtn = new JButton("Exit Program");

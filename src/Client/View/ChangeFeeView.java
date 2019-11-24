@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ChangeFeeView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private JTextField changeFee;
 	private JTextField changePeriod;
 	private JButton submit = new JButton("submit");

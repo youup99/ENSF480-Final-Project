@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class CreatePropertyView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private String[] types = {"Apartment", "Attached House", "Detached House", "Townhouse"};
 	private String[] nums = {"1", "2", "3", "4", "5"};
 	private String[] quadrant = {"SW", "NW", "SE", "NE"};
@@ -20,16 +21,14 @@ public class CreatePropertyView extends JFrame{
 	private final JLabel cardNumLbl = new JLabel("Card Number");
 	private final JLabel expiryDateLbl = new JLabel("Expiry Date");
 	private final JLabel cvvLbl = new JLabel("CVV");
-	private final JTextField holderName = new JTextField();
-	private final JTextField cardNum = new JTextField();
-	private final JTextField expiryDate = new JTextField();
-	private final JTextField cvv = new JTextField();
+	private JTextField holderName = new JTextField();
+	private JTextField cardNum = new JTextField();
+	private JTextField cvv = new JTextField();
+	private JFormattedTextField expiryDate = new JFormattedTextField();
 	
 	public CreatePropertyView() {
 		cvv.setBounds(176, 340, 61, 26);
 		cvv.setColumns(10);
-		expiryDate.setBounds(176, 299, 123, 26);
-		expiryDate.setColumns(10);
 		cardNum.setBounds(176, 260, 177, 26);
 		cardNum.setColumns(10);
 		holderName.setBounds(176, 224, 177, 26);
@@ -104,9 +103,10 @@ public class CreatePropertyView extends JFrame{
 		
 		getContentPane().add(cardNum);
 		
-		getContentPane().add(expiryDate);
-		
 		getContentPane().add(cvv);
+		
+		expiryDate.setBounds(176, 298, 82, 26);
+		getContentPane().add(expiryDate);
 		
 	}
 	
@@ -154,5 +154,4 @@ public class CreatePropertyView extends JFrame{
         }
 		return false;
     }
-
 }

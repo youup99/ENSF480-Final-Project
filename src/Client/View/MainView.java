@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MainView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private JButton landlord = new JButton("Landlord");
 	private JButton renter = new JButton("Renter");
 	private JButton manager = new JButton("Manager");
