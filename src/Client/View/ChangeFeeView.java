@@ -20,6 +20,7 @@ public class ChangeFeeView extends JFrame{
 		getContentPane().add(currentFeeLbl);
 		
 		JTextArea currentFee = new JTextArea();
+		currentFee.setEditable(false);
 		currentFee.setBounds(123, 16, 93, 24);
 		getContentPane().add(currentFee);
 		
@@ -28,6 +29,7 @@ public class ChangeFeeView extends JFrame{
 		getContentPane().add(currentPeriodLbl);
 		
 		JTextArea currentPeriod = new JTextArea();
+		currentPeriod.setEditable(false);
 		currentPeriod.setBounds(123, 49, 93, 24);
 		getContentPane().add(currentPeriod);
 		
