@@ -2,8 +2,6 @@ package Server.Domain;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
-
 import Server.Database.Database;
 
 public class Operations{
@@ -36,8 +34,16 @@ public class Operations{
     	return db.getProperty(ID);
     }
     
+    public ArrayList<Property> getAllProperties() throws IOException{
+    	return db.getAllProperties();
+    }
+    
     public ArrayList<Property> getProperties(Property p) throws IOException{
     	return db.getProperties(p);
+    }
+    
+    public ArrayList<Property> getLandlordProperties(String name) throws IOException{
+    	return db.getLandlordProperties(name);
     }
     
     public String changeState(String newState, int ID) throws IOException{
