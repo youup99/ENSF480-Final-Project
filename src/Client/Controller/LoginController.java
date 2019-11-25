@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Client.Communication;
+import Client.Landlord;
 import Client.User;
 import Client.View.LoginView;
 
@@ -32,9 +33,6 @@ public class LoginController implements ActionListener
 	{
 		String username = loginView.getUsername();
 		String password = loginView.getPassword();
-		
-		System.out.println (username + "was Username and Password is " + password);
-		this.openHomePage();
 		Communication cToS = Communication.getInstance();
 		
 		try
@@ -55,7 +53,7 @@ public class LoginController implements ActionListener
 				}
 				else
 				{
-					openHomePage();
+					openHomePage(username, password);
 				}
 			}
 			else 
@@ -64,7 +62,7 @@ public class LoginController implements ActionListener
 				cToS.sendString(username);
 				cToS.sendString(password);
 				
-				this.openHomePage();
+				this.openHomePage(username, password);
 			}
 		}
 		catch (IOException | ClassNotFoundException e2)
@@ -73,7 +71,7 @@ public class LoginController implements ActionListener
 		}
 	}
 
-	private void openHomePage() 
+	private void openHomePage(String username, String password) 
 	{
 		switch (userType)
 		{
@@ -81,7 +79,7 @@ public class LoginController implements ActionListener
 			RenterController renter = new RenterController ();
 			break;
 		case "landlord":
-			LandlordController landlord = new LandlordController ();
+			LandlordController landlord = new LandlordController (new Landlord (username, null, null, null, password, null));
 			break;
 		case "manager":
 			ManagerController manager = new ManagerController ();
