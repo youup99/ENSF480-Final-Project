@@ -36,7 +36,7 @@ public class LoginController implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		String username = loginView.getUsername();
-		String password = loginView.getPassword().toString();
+		String password = loginView.getPassword();
 		Communication cToS = Communication.getInstance();
 		
 		try
@@ -52,7 +52,7 @@ public class LoginController implements ActionListener
 				if (returnedData == null) 
 				{
 					//deal with invalid login case.
-					
+					System.out.println("Incorrect username or password");
 					return;
 				}
 				else
@@ -102,5 +102,3 @@ public class LoginController implements ActionListener
 		loginView.setVisible(false);		
 	}
 }
-
-//TRICK
