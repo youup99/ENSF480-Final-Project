@@ -22,12 +22,12 @@ public class PropertyController implements ActionListener
     
     public void editProperty (Property p)
     {
-    	
+    	//functin of editView to display... To be added by Minji
     }
     
     public void displayProperties (String usertype, ArrayList<Property> properties)
     {
-    	//function of propertyview with properties passed down to it. Implemented in view
+    	//function of propertyview with properties passed down to it. Implemented in view; to be added by Minji
     }
 
 	@Override
@@ -35,8 +35,7 @@ public class PropertyController implements ActionListener
 	{
 		switch (e.getActionCommand())
 		{
-		
-			
+					
 		}
 		
 	}
@@ -47,7 +46,8 @@ public class PropertyController implements ActionListener
 		try {
 			ctos.sendString("add property");
 			ctos.sendProperty(property);
-		} catch (IOException e) {
+			ctos.getString();
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
