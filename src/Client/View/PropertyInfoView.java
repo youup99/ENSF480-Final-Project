@@ -48,7 +48,7 @@ public class PropertyInfoView extends JFrame{
 		getContentPane().add(emailBtn);
 		
 		ID.setEditable(false);
-		ID.setBounds(99, 16, 68, 24);
+		ID.setBounds(99, 16, 118, 24);
 		getContentPane().add(ID);
 		
 		address.setEditable(false);
