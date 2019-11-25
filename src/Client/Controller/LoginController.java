@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import Client.Communication;
 import Client.Landlord;
+import Client.Manager;
 import Client.RegisteredRenter;
 import Client.User;
 import Client.View.LoginView;
@@ -61,14 +62,13 @@ public class LoginController implements ActionListener
 			}
 			else if (e.getActionCommand().equals("register"))
 			{
-				//cToS.sendString("register");
 				newUserView = new NewUserView ();
 				newUserView.setVisible(true);
 				return;
 			}
 			else if (e.getActionCommand().equals("submit"))
 			{
-				cToS.sendString("register");
+				cToS.sendString("add user");
 				User user = new User (newUserView.getuName(), newUserView.getfName(), newUserView.getlName(),
 						newUserView.getEmail(), newUserView.getPassword(), "Registered");
 				cToS.sendUser(user);
@@ -94,7 +94,8 @@ public class LoginController implements ActionListener
 					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword()));
 			break;
 		case "manager":
-			ManagerController manager = new ManagerController ();
+			ManagerController manager = new ManagerController (new Manager (data.getUserName()
+					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword()));
 			break;	
 		}
 		

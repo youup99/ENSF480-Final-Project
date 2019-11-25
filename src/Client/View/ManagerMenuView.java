@@ -32,14 +32,17 @@ public class ManagerMenuView extends JFrame{
 	
 	public void addChangeStatusListener(ActionListener al)  {
     	changeStatus.addActionListener(al);
+    	changeStatus.setActionCommand("change status");
 	}
     
     public void addChangeFeeListener(ActionListener al)  {
     	changeFee.addActionListener(al);
+    	changeFee.setActionCommand("change fee");
 	}
     
     public void addGetUserInfoListener(ActionListener al)  {
     	getUserInfo.addActionListener(al);
+    	getUserInfo.setActionCommand("getInfo");
 	}
     
     public void addExitListener(ActionListener al)  {

@@ -3,9 +3,10 @@ package Client.View;
 import java.util.Enumeration;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PropertyInfoView extends JFrame{
+public class PropertyInfoView extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JButton emailBtn = new JButton("Click to send email to landlord");
 	private JTextArea ID = new JTextArea();
@@ -74,6 +75,7 @@ public class PropertyInfoView extends JFrame{
 	
 	public void addSendEmailListener(ActionListener al)  {
     	emailBtn.addActionListener(al);
+    	emailBtn.setActionCommand("email");
 	}
 	
 	public void setIDField(int id) {
@@ -107,5 +109,15 @@ public class PropertyInfoView extends JFrame{
 	
 	public void setCityQuadrant(String cq) {
 		cityQuadrant.setText(cq);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getActionCommand().equals("email"))
+		{
+			
+		}
+		
 	}
 }

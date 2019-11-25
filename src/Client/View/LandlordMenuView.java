@@ -28,13 +28,16 @@ public class LandlordMenuView extends JFrame{
 
     public void addEditListener(ActionListener al)  {
     	editBtn.addActionListener(al);
+    	editBtn.setActionCommand("edit property");
 	}
     
     public void addCreateListener(ActionListener al)  {
     	createBtn.addActionListener(al);
+    	createBtn.setActionCommand("create property");
 	}
     
     public void addExitListener(ActionListener al)  {
     	exitBtn.addActionListener(al);
+    	exitBtn.setActionCommand("exit");
 	}
 }

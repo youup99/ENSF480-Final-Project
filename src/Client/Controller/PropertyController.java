@@ -46,11 +46,9 @@ public class PropertyController implements ActionListener
 		try {
 			ctos.sendString("add property");
 			ctos.sendProperty(property);
-			ctos.getString();
+			ctos.getString(); //to read the found. 
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
-		}		
-		//Is server gonna give confirmation? If yes, write code to read that object from socket. Sending "found" string
-		
+		}				
 	}
 }

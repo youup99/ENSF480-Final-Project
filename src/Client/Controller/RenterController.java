@@ -56,10 +56,16 @@ public class RenterController implements ActionListener, GeneralRenterController
 			cToS.sendString("get properties");
 			cToS.sendProperty(data);
 			searchResults = cToS.getProperties();
+			if (searchResults == null)
+				throw new NullPointerException();
 			
 		} catch (IOException | ClassNotFoundException e) {
 			
 			e.printStackTrace();
+		} catch (NullPointerException e1)
+		{
+			System.out.println("getProperties() did not retrieve data - returned null to searchResult");
+			e1.printStackTrace();
 		}
 		propertyC = new PropertyController ();
 		propertyC.displayProperties("renter", searchResults);

@@ -9,6 +9,7 @@ import Client.Communication;
 import Client.Landlord;
 import Client.Property;
 import Client.View.CreatePropertyView;
+import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
 
 public class LandlordController implements ActionListener 
@@ -16,7 +17,9 @@ public class LandlordController implements ActionListener
 	private Landlord landlord;
 	private LandlordMenuView landlordView;
 	private CreatePropertyView newProp;
+	private EditPropertyView editProp;
 	private PropertyController propertyC;
+	private ArrayList<Property> ownedProperties;
 	
 	public LandlordController (Landlord l)
 	{
@@ -25,6 +28,7 @@ public class LandlordController implements ActionListener
 		landlord = l;
 		propertyC = new PropertyController ();
 		this.addActionListeners();
+		ownedProperties = new ArrayList<Property> ();
 	}
 	
 	private void addProperty ()
@@ -75,8 +79,8 @@ public class LandlordController implements ActionListener
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}		
-		//landlord.ownedProperties = landlordProperties;
-		propertyC.displayProperties("landlord", landlordProperties);
+		ownedProperties = landlordProperties;
+		propertyC.displayProperties("landlord", landlordProperties); //TODO:CHECK...
 	}
 
 	private void addNewProperty() 
@@ -87,9 +91,7 @@ public class LandlordController implements ActionListener
 				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
 		
 		
-		propertyC.addNewProperty(property);		
-		//Is server gonna give confirmation? If yes, write code to read that object from socket.
-		//TODO: SENDS FOUND
+		propertyC.addNewProperty(property);
 	}
 
 }

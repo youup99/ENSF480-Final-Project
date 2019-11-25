@@ -63,6 +63,7 @@ public class SummaryReportView extends JFrame {
 	
 	public void addCloseListener(ActionListener al)  {
     	btnClose.addActionListener(al);
+    	btnClose.setActionCommand("closeReport");
 	}
 	
 	public void setNumHouseList(int n) {
