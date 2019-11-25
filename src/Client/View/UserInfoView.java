@@ -45,18 +45,23 @@ public class UserInfoView extends JFrame{
 		
 		close.setBounds(174, 198, 115, 29);
 		getContentPane().add(close);
+		userName.setEditable(false);
 		
 		userName.setBounds(109, 16, 180, 24);
 		getContentPane().add(userName);
+		firstName.setEditable(false);
 		
 		firstName.setBounds(109, 52, 180, 24);
 		getContentPane().add(firstName);
+		lastName.setEditable(false);
 		
 		lastName.setBounds(109, 88, 180, 24);
 		getContentPane().add(lastName);
+		email.setEditable(false);
 		
 		email.setBounds(109, 126, 180, 24);
 		getContentPane().add(email);
+		type.setEditable(false);
 		
 		type.setBounds(109, 162, 180, 24);
 		getContentPane().add(type);

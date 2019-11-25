@@ -1,7 +1,6 @@
 package Client.View;
 
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -20,12 +19,11 @@ import Client.User;
 import java.awt.BorderLayout;
 
 public class PropertyView{
-   private static final long serialVersionUID = 1L;
-   private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
+   private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant", "fee"};
    //private String[][] data = setData();
    private String[][] data = {
-         {"12345", "Apartment", "2", "4", "Yes", "NW"},
-         {"67890", "Seperate", "1", "3", "No", "SW"},
+         {"12345", "Apartment", "2", "4", "Yes", "NW", "500"},
+         {"67890", "Seperate", "1", "3", "No", "SW", "500"},
    };
    private ArrayList<Property> propertyList = new ArrayList<Property>();
    private User user;
@@ -37,7 +35,10 @@ public class PropertyView{
         frame.setSize(dim);
         
         JTable table = new JTable(data, columnNames) {
-           @Override
+        private static final long serialVersionUID = 1L;
+			
+
+		@Override
            public boolean isCellEditable(int row,int column) {
               return false;
            }
@@ -67,9 +68,9 @@ public class PropertyView{
               if(e.getClickCount() == 2) {
                  //need to add the way to get data
             	 if (user.getType() == "landlord") {
-            		 EditPropertyView editPropertyView = new EditPropertyView();
+            		 new EditPropertyView();
             	 } else if (user.getType() == "renter") {
-            		 PropertyInfoView propertyInfoView = new PropertyInfoView();
+            		 new PropertyInfoView();
             	 }
               }
            }
