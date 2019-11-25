@@ -120,12 +120,17 @@ public class Database{
     public ArrayList<Property> getProperties(Property searchCriteria){
         Connection conn = null;
         PreparedStatement getAllProperties = null;
-        String getAllPropertiesString = "SELECT * from Property";
+        String getAllPropertiesString = "SELECT * from Property WHERE type = ? AND numOfBedrooms = ? AND numOfBathrooms = ? AND isFurnished = ? AND cityQuadrant = ? AND listingState = 'Active'";
         ArrayList<Property> temp = new ArrayList<Property>();
         try {
         	conn = getConn();
         	if(conn != null) {
         		getAllProperties = conn.prepareStatement(getAllPropertiesString);
+        		getAllProperties.setString(1, searchCriteria.getType());
+        		getAllProperties.setInt(2, searchCriteria.getNumOfBedrooms());
+        		getAllProperties.setInt(3, searchCriteria.getNumOfBathrooms());
+        		getAllProperties.setBoolean(4, searchCriteria.isFurnished());
+        		getAllProperties.setString(5, searchCriteria.getCityQuadrant());
         		ResultSet rs = getAllProperties.executeQuery();
         		while(rs.next()) {
         			Property p = new Property(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
