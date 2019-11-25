@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class EditPropertyView extends JFrame{
+	private static final long serialVersionUID = 1L;
 	private String [] status = {"active", "rented", "cancelled", "suspended"}; 
 	private JButton saveBtn = new JButton("Save");
 	private JTextArea id = new JTextArea();
