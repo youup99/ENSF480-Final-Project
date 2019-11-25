@@ -1,23 +1,28 @@
 package Client;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 public class PropertyFee implements Serializable{
 	private static final long serialVersionUID = 1L;
     private double amount = 50;
     private int period = 60;
-    private Date feePeriodStart;
-    private Date feePeriodEnd;
+    private String feePeriodStart;
+    private String feePeriodEnd;
 
     public PropertyFee(){
-        this.setFeePeriodStart(new Date());
+        this.setFeePeriodStart(new Date(Calendar.getInstance().getTimeInMillis()).toString());
         Calendar cal = Calendar.getInstance();
-        cal.setTime(feePeriodStart);
+        cal.setTime(new Date(Calendar.getInstance().getTimeInMillis()));;
         cal.add(Calendar.DAY_OF_MONTH, period);
-        this.setFeePeriodEnd(cal.getTime());
+        this.setFeePeriodEnd(new Date(cal.getTimeInMillis()).toString());
     }
 
+    public PropertyFee(String feePeriodStart, String feePeriodEnd) {
+    	this.setFeePeriodStart(feePeriodStart);
+    	this.setFeePeriodEnd(feePeriodEnd);
+    }
+    
 	public double getAmount() {
 		return amount;
 	}
@@ -26,31 +31,32 @@ public class PropertyFee implements Serializable{
 		this.amount = amount;
 	}
 
-	public Date getFeePeriodStart() {
+	public String getFeePeriodStart() {
 		return feePeriodStart;
 	}
 
-	public void setFeePeriodStart(Date feePeriodStart) {
+	public void setFeePeriodStart(String feePeriodStart) {
 		this.feePeriodStart = feePeriodStart;
 	}
 
-	public Date getFeePeriodEnd() {
+	public String getFeePeriodEnd() {
 		return feePeriodEnd;
 	}
 
-	public void setFeePeriodEnd(Date feePeriodEnd) {
-		this.feePeriodEnd = feePeriodEnd;
+	public void setFeePeriodEnd(String date) {
+		this.feePeriodEnd = date;
 	}
 
 	public int getPeriod() {
 		return period;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void setPeriod(int period) {
 		this.period = period;
 		Calendar cal = Calendar.getInstance();
-        cal.setTime(feePeriodStart);
+        cal.setTime(new java.util.Date(feePeriodStart));
         cal.add(Calendar.DAY_OF_MONTH, period);
-        this.setFeePeriodEnd(cal.getTime());
+        this.setFeePeriodEnd(new Date(cal.getTimeInMillis()).toString());
 	}
 }

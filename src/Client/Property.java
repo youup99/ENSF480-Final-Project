@@ -3,9 +3,12 @@ package Client;
 import java.io.Serializable;
 import java.util.Random;
 
+import Server.Domain.PropertyFee;
+
 public class Property implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int ID;
+	private String address;
 	private String type;
 	private int numOfBedrooms;
 	private int numOfBathrooms;
@@ -13,19 +16,27 @@ public class Property implements Serializable{
 	private String cityQuadrant;
 	private String listingState = "Active";
 	private PropertyFee fee;
+	private String landlordName;
+	private String landlordEmail;
 
-	public Property(String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant) {
+	public Property(String address, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
+			String landlordName, String landlordEmail) {
 		this.ID = new Random().nextInt(1000000);
+		this.setAddress(address);
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);
 		this.setNumOfBathrooms(numOfBathrooms);
 		this.setFurnished(isFurnished);
 		this.setCityQuadrant(cityQuadrant);
 		this.fee = new PropertyFee();
+		this.setLandlordName(landlordName);
+		this.setLandlordEmail(landlordEmail);
 	}
-
-	public Property(int ID, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant, String listingState) {
+	
+	public Property(int ID, String address, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant, 
+			String listingState, String landlordName, String landlordEmail) {
 		this.ID = ID;
+		this.setAddress(address);
 		this.setType(type);
 		this.setNumOfBedrooms(numOfBedrooms);
 		this.setNumOfBathrooms(numOfBathrooms);
@@ -33,6 +44,37 @@ public class Property implements Serializable{
 		this.setCityQuadrant(cityQuadrant);
 		this.setListingState(listingState);
 		this.fee = new PropertyFee();
+		this.setLandlordName(landlordName);
+		this.setLandlordEmail(landlordEmail);
+	}
+	
+	public Property(String address, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant, 
+			PropertyFee fee, String landlordName, String landlordEmail) {
+		this.ID = new Random().nextInt(1000000);
+		this.setAddress(address);
+		this.setType(type);
+		this.setNumOfBedrooms(numOfBedrooms);
+		this.setNumOfBathrooms(numOfBathrooms);
+		this.setFurnished(isFurnished);
+		this.setCityQuadrant(cityQuadrant);
+		this.setFee(fee);
+		this.setLandlordName(landlordName);
+		this.setLandlordEmail(landlordEmail);
+	}
+
+	public Property(int ID, String address, String type, int numOfBedrooms, int numOfBathrooms, boolean isFurnished, String cityQuadrant,
+			String listingState, PropertyFee fee, String landlordName, String landlordEmail) {
+		this.ID = ID;
+		this.setAddress(address);
+		this.setType(type);
+		this.setNumOfBedrooms(numOfBedrooms);
+		this.setNumOfBathrooms(numOfBathrooms);
+		this.setFurnished(isFurnished);
+		this.setCityQuadrant(cityQuadrant);
+		this.setListingState(listingState);
+		this.setFee(fee); 
+		this.setLandlordName(landlordName);
+		this.setLandlordEmail(landlordEmail);
 	}
 
 	public String getType() {
@@ -95,4 +137,27 @@ public class Property implements Serializable{
 		return ID;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getLandlordName() {
+		return landlordName;
+	}
+
+	public void setLandlordName(String landlordName) {
+		this.landlordName = landlordName;
+	}
+
+	public String getLandlordEmail() {
+		return landlordEmail;
+	}
+
+	public void setLandlordEmail(String landlordEmail) {
+		this.landlordEmail = landlordEmail;
+	}
 }

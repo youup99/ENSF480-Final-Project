@@ -5,14 +5,14 @@ import java.sql.Date;
 
 public class SummaryReport implements Serializable{
 	private static final long serialVersionUID = 1L;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int totalListed;
     private int totalRented;
     private int totalActive;
     private ArrayList<Property> housesRented;
 
-    public SummaryReport(Date startDate, Date endDate, int totalListed, int totalRented, int totalActive, ArrayList<Property> housesRented){
+    public SummaryReport(String startDate, String endDate, int totalListed, int totalRented, int totalActive, ArrayList<Property> housesRented){
     	this.setStartDate(startDate);
     	this.setEndDate(endDate);
     	this.setTotalListed(totalListed);
@@ -21,19 +21,19 @@ public class SummaryReport implements Serializable{
     	this.setHousesRented(housesRented);
     }
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

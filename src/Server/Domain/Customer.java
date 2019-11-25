@@ -230,6 +230,22 @@ public class Customer implements Runnable {
             			e.printStackTrace();
             		}
             	}
+            	case("login"): {
+            		try {
+            			String username = communicator.getString();
+            			String password = communicator.getString();
+            			User u = operations.login(username, password);
+            			if(u != null) {
+            				communicator.sendUser(u);
+            			}
+            			else {
+            				communicator.sendString("Incorrect username or password");
+            			}
+            			break;
+            		} catch(ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
+            	}
             }
         }
     }

@@ -86,6 +86,9 @@ public class Operations{
     public SummaryReport getReport(Date start, Date end) throws IOException{
     	return db.getReport(start, end);
     }
+    
+    public User login(String username, String password) throws IOException{
+    	return db.login(username, password);
+    }
 
-    // TODO: GETTERS, ADDERS, DELETERS for Property and User
 }
