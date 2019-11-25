@@ -50,6 +50,6 @@ public class PropertyController implements ActionListener
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
-		//Is server gonna give confirmation? If yes, write code to read that object from socket.
+		//Is server gonna give confirmation? If yes, write code to read that object from socket. Sending "found" string
 	}
 }

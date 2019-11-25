@@ -91,7 +91,7 @@ public class LoginController implements ActionListener
 			break;
 		case "landlord":
 			LandlordController landlord = new LandlordController (new Landlord (data.getUserName()
-					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword(), null));
+					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword()));
 			break;
 		case "manager":
 			ManagerController manager = new ManagerController ();

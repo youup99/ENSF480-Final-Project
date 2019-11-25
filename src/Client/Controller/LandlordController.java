@@ -66,16 +66,16 @@ public class LandlordController implements ActionListener
 	private void getLandlordProperties ()
 	{
 		Communication ctos = Communication.getInstance();
-		ArrayList<Property> landlordProperties;
+		ArrayList<Property> landlordProperties = new ArrayList<Property>();
 		try {
 			ctos.sendString("landlord properties");
 			ctos.sendString (landlord.getFirstName() + " " + landlord.getLastName());
 			landlordProperties = ctos.getProperties(); //TODO: IMPLEMENT GETPROPERTIES
 			
-		} catch (IOException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}		
-		landlord.ownedProperties = landlordProperties;
+		//landlord.ownedProperties = landlordProperties;
 		propertyC.displayProperties("landlord", landlordProperties);
 	}
 
