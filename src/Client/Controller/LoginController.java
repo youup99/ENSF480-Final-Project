@@ -101,3 +101,5 @@ public class LoginController implements ActionListener
 		loginView.setVisible(false);		
 	}
 }
+
+//TRICK

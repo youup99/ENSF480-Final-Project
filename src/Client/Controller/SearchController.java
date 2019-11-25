@@ -30,6 +30,6 @@ public class SearchController implements ActionListener
 		Property criteria = new Property ("", searchView.getTypes(), Integer.parseInt(searchView.getBed()),
 				Integer.parseInt(searchView.getBath()), searchView.getFurnished(), searchView.getCity(), null, null );
 		searchView.setVisible(false);
-		renter.getSearchData(criteria);
+		renter.getSearchData(criteria);		
 	}
 }

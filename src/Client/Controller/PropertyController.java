@@ -22,7 +22,7 @@ public class PropertyController implements ActionListener
     
     public void editProperty (Property p)
     {
-    	editView.
+    	
     }
     
     public void displayProperties (String usertype, ArrayList<Property> properties)

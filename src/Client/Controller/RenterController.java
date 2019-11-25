@@ -37,7 +37,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 			return;
 		}
 		
-		search =  new SearchController (this);
+		search = new SearchController (this);
 	}
 	
 	public void getSearchData (Property data)

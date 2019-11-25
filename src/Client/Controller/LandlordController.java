@@ -89,6 +89,7 @@ public class LandlordController implements ActionListener
 		
 		propertyC.addNewProperty(property);		
 		//Is server gonna give confirmation? If yes, write code to read that object from socket.
+		//TODO: SENDS FOUND
 	}
 
 }
