@@ -16,6 +16,7 @@ public class MainController implements ActionListener
     
     public MainController ()
     {
+    	clientToServer = Communication.getInstance();
     	mainView = new MainView ();
     	this.addListenersToView();
     	mainView.setVisible(true);
