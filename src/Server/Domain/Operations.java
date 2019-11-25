@@ -83,7 +83,7 @@ public class Operations{
     	}
     }
     
-    public SummaryReport getReport(Date start, Date end) throws IOException{
+    public SummaryReport getReport(String start, String end) throws IOException{
     	return db.getReport(start, end);
     }
     

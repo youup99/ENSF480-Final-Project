@@ -28,7 +28,7 @@ public class PRMS{
     public void start(){
         ExecutorService es = Executors.newFixedThreadPool(5);
         Database db = new Database();
-//        Property p = new Property("105 Royal Crest Terrace", "House", 4, 3, true, "NW", "Active");
+//        Property p = new Property("123 Test Drive", "Condo", 4, 3, true, "NW", "Minji", "test@gmail.com");
 //        db.addProperty(p);
 //        Property temp = new Property(802130, "Condo", 3, 3, true, "NW", "Active", 100);
 //        db.removeProperty(temp);
@@ -49,11 +49,14 @@ public class PRMS{
 //        fee.setAmount(200);
 //        fee.setPeriod(60);
 //        db.updateFee(fee);
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, 60);
-        System.out.println(new Date(cal.getTimeInMillis()).toString());
-        SummaryReport temp = db.getReport(new Date(Calendar.getInstance().getTimeInMillis()), new Date(cal.getTimeInMillis()));
-        System.out.println(temp.getTotalListed());
+//        Calendar cal = Calendar.getInstance();
+//        cal.add(Calendar.DAY_OF_MONTH, 60);
+//        System.out.println(new Date(cal.getTimeInMillis()).toString());
+//        SummaryReport temp = db.getReport("2019-11-01", "2021-01-01");
+//        ArrayList<Property> p = temp.getHousesRented();
+//        for(Property pr : p) {
+//        	System.out.println(pr.getID());
+//        }
         
         try{
             while(true){

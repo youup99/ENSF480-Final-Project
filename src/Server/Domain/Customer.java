@@ -216,8 +216,8 @@ public class Customer implements Runnable {
             	}
             	case("get report"): {
             		try {
-            			Date start = communicator.getDate();
-            			Date end = communicator.getDate();
+            			String start = communicator.getString();
+            			String end = communicator.getString();
             			SummaryReport report = operations.getReport(start, end);
             			if(report != null) {
             				communicator.sendReport(report);

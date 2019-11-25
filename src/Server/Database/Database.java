@@ -264,11 +264,15 @@ public class Database{
     public SummaryReport getReport(String start, String end) {
     	Connection conn = null;
     	PreparedStatement getReport = null;
-    	String getListedString = "SELECT COUNT(*) AS NumberOfListed FROM Property WHERE (SELECT (julianday('now') - julianday(?)) AS INTEGER) <= 0 AND (SELECT (julianday('2022-01-01') - julianday(?)) AS INTEGER) > 0";
-    	String getRentedString = "SELECT COUNT(*) AS NumberOfRented FROM Property WHERE julianday(?) >= feePeriodStart AND julianday(?) > feePeriodEnd AND listingState = 'Rented'";
-    	String getActiveString = "SELECT COUNT(*) AS NumberOfActive FROM Property WHERE julianday(?) >= feePeriodStart AND julianday(?) > feePeriodEnd AND listingState = 'Active'";
+    	String getListedString = "SELECT COUNT(*) AS NumberOfListed FROM Property WHERE \r\n" + 
+    			"        strftime('%s', feePeriodStart) BETWEEN strftime('%s', ?) AND strftime('%s', ?)";
+    	String getRentedString = "SELECT COUNT(*) AS NumberOfRented FROM Property WHERE \r\n" + 
+    			"  		 strftime('%s', feePeriodStart) BETWEEN strftime('%s', ?) AND strftime('%s', ?) AND listingState = 'Rented'";
+    	String getActiveString = "SELECT COUNT(*) AS NumberOfActive FROM Property WHERE \r\n" + 
+    			"  		 strftime('%s', feePeriodStart) BETWEEN strftime('%s', ?) AND strftime('%s', ?) AND listingState = 'Active'";
     	ArrayList<Property> temp = new ArrayList<Property>();
-    	String getAllRentedString = "SELECT * FROM Property WHERE julianday(?) >= feePeriodStart AND julianday(?) > feePeriodEnd AND listingState = 'Rented'";
+    	String getAllRentedString = "SELECT * FROM Property WHERE \r\n" + 
+    			"    	 strftime('%s', feePeriodStart) BETWEEN strftime('%s', ?) AND strftime('%s', ?) AND listingState = 'Rented'";
     	try {
     		conn = getConn();
     		if(conn != null) {
@@ -289,9 +293,9 @@ public class Database{
     			getReport.setString(2, end);
     			ResultSet rs3 = getReport.executeQuery();
     			while(rs3.next()) {
-        			Property p = new Property(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-        					rs.getBoolean(6), rs.getString(7), rs.getString(8), new PropertyFee(rs.getString(9), rs.getString(10)), 
-        					rs.getString(12), rs.getString(13));
+        			Property p = new Property(rs3.getInt(1), rs3.getString(2), rs3.getString(3), rs3.getInt(4), rs3.getInt(5),
+        					rs3.getBoolean(6), rs3.getString(7), rs3.getString(8), new PropertyFee(rs3.getString(9), rs3.getString(10)), 
+        					rs3.getString(12), rs3.getString(13));
         			temp.add(p);
     			}
     			SummaryReport summaryReport = new SummaryReport(start, end, rs.getInt(1), rs1.getInt(1), rs2.getInt(1), temp);
