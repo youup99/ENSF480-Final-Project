@@ -121,18 +121,19 @@ public class CreatePropertyView extends JFrame{
 	
 	public void addSubmitListener(ActionListener al)  {
     	submit.addActionListener(al);
+    	submit.setActionCommand("addSubmit");
 	}
 	
 	public String getTypes() {
 		return (String) typeBox.getSelectedItem();
 	}
 	
-	public String getBed() {
-		return (String) bedBox.getSelectedItem();
+	public int getBed() {
+		return Integer.parseInt((String) bedBox.getSelectedItem());
 	}
 	
-	public String getBath() {
-		return (String) bathBox.getSelectedItem();
+	public int getBath() {
+		return Integer.parseInt((String)bathBox.getSelectedItem());
 	}
 	
 	public String getCity() {

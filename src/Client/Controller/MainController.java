@@ -34,12 +34,13 @@ public class MainController implements ActionListener
     	MainController controller = new MainController ();
     }
 
-	@Override
+    @Override
 	public void actionPerformed (ActionEvent e) 
 	{
 		if (e.getActionCommand().equals("guest"))
 		{
-			
+			mainView.setVisible(false);
+			SearchController search = new SearchController (); //Unregistered can search...
 		}
 		else
 		{

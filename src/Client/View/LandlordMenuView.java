@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-class LandlordMenuView extends JFrame{
+public class LandlordMenuView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton editBtn = new JButton("Edit Listing");
 	private JButton createBtn = new JButton("Create Listing");
