@@ -39,6 +39,7 @@ public class EditPropertyView extends JFrame{
 	
 	public void addSaveListener(ActionListener al)  {
     	saveBtn.addActionListener(al);
+    	saveBtn.setActionCommand("saveEditProperty");
 	}
 	
 	public void setID(int idd) {

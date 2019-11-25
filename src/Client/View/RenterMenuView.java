@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-class RenterMenuView extends JFrame{
+public class RenterMenuView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton searchBtn = new JButton("Search");
 	private JButton exitBtn = new JButton("Exit Program");

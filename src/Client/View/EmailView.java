@@ -8,6 +8,7 @@ public class EmailView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JTextField subject;
 	private JTextField from;
+	private JTextField to;
 	private JTextArea email = new JTextArea();
 	private JButton btnSend = new JButton("send");
 	

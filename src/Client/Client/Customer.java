@@ -3,6 +3,9 @@ package Client.Client;
 import java.io.IOException;
 import java.net.Socket;
 
+import Client.Controller.LoginController;
+import Client.Controller.MainController;
+import Client.View.LoginView;
 import Server.Domain.Communication;
 
 public class Customer {
@@ -16,11 +19,8 @@ public class Customer {
 		}
 	}
 	
-	public void login() {
-		
-	}
-	
 	public void start() {
-		
+		MainController mc = new MainController();
+
 	}
 }

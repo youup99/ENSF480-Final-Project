@@ -72,6 +72,7 @@ public class SearchView extends JFrame{
 	
 	public void addSubmitListener(ActionListener al)  {
     	submit.addActionListener(al);
+    	submit.setActionCommand("searchSubmit");
 	}
 	
 	public String getTypes() {

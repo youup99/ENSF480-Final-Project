@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
 
 public class Customer implements Runnable {
     Communication communicator;
@@ -54,7 +53,6 @@ public class Customer implements Runnable {
             			success = operations.addProperty(temp);
             			if(success.contentEquals("Success!")) {
             				communicator.sendString("added");
-            				communicator.sendProperty(temp);
             			}
             			else {
             				communicator.sendString("Error adding property");
@@ -101,10 +99,35 @@ public class Customer implements Runnable {
             		}
             		break;
             	}
+            	case("get all properties"): {
+            		ArrayList<Property> properties = operations.getAllProperties();
+					if(properties != null) {
+						communicator.sendProperties(properties);
+					}
+					else {
+						communicator.sendString("Could not find properties");
+					}
+            		break;
+            	}
             	case("get properties"): {
             		try {
             			Property searchCriteria = communicator.getProperty();
             			ArrayList<Property> properties = operations.getProperties(searchCriteria);
+            			if(properties != null) {
+            				communicator.sendProperties(properties);
+            			}
+            			else {
+            				communicator.sendString("Could not find properties");
+            			}
+            		} catch(ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
+            		break;
+            	}
+            	case("landlord properties"): {
+            		try {
+            			String name = communicator.getString();
+            			ArrayList<Property> properties = operations.getLandlordProperties(name);
             			if(properties != null) {
             				communicator.sendProperties(properties);
             			}
@@ -225,10 +248,10 @@ public class Customer implements Runnable {
             			else {
             				communicator.sendString("Could not generate report");
             			}
-            			break;
             		} catch(ClassNotFoundException e) {
             			e.printStackTrace();
             		}
+            		break;
             	}
             	case("login"): {
             		try {
@@ -239,12 +262,35 @@ public class Customer implements Runnable {
             				communicator.sendUser(u);
             			}
             			else {
-            				communicator.sendString("Incorrect username or password");
+            				communicator.sendUser(null);
             			}
             			break;
             		} catch(ClassNotFoundException e) {
             			e.printStackTrace();
             		}
+            	}
+            	case("register"): {
+            		String success;
+            		try {
+            			User newUser = communicator.getUser();
+            			success = operations.addUser(newUser);
+            			if(success.contentEquals("Success!")) {
+            				System.out.println("Added new user");
+            			}
+            		} catch(ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
+            		break;
+            	}
+            	case("preferences"): {
+            		try {
+            			RegisteredRenter rr = (RegisteredRenter) communicator.getUser();
+            			Property p = communicator.getProperty();
+            			rr.propertiesInterested.addNewListing(p);
+            		} catch (ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
+            		break;
             	}
             }
         }

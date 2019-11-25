@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-class LandlordMenuView extends JFrame{
+public class LandlordMenuView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton editBtn = new JButton("Edit Listing");
 	private JButton createBtn = new JButton("Create Listing");
@@ -28,13 +28,16 @@ class LandlordMenuView extends JFrame{
 
     public void addEditListener(ActionListener al)  {
     	editBtn.addActionListener(al);
+    	editBtn.setActionCommand("edit property");
 	}
     
     public void addCreateListener(ActionListener al)  {
     	createBtn.addActionListener(al);
+    	createBtn.setActionCommand("create property");
 	}
     
     public void addExitListener(ActionListener al)  {
     	exitBtn.addActionListener(al);
+    	exitBtn.setActionCommand("exit");
 	}
 }

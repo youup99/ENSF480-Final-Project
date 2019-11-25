@@ -8,16 +8,34 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 
-import Server.Domain.Property;
-import Server.Domain.PropertyFee;
-import Server.Domain.User;
+import Client.Property;
+import Client.PropertyFee;
+import Client.User;
 
 public class Communication{
 	private ServerSocket serverSocket;
     private Socket socket;
     private ObjectInputStream socketIn;
     private ObjectOutputStream socketOut;
-    private ExecutorService pool; 
+    private ExecutorService pool; //Not required...
+    private static Communication onlyInstance;
+    
+    public static Communication getInstance ()
+    {
+    	if (onlyInstance == null)
+    	{
+			try 
+			{
+				onlyInstance = new Communication (new Socket ("localhost", 9090));
+			} catch (IOException e) 
+			{
+				System.err.println ("Error initialising Client Socket");
+				e.printStackTrace();
+			}
+    	}
+    	
+    	return onlyInstance;
+    }
 
     private Communication(Socket socket) throws IOException{
     	this.socket = socket;
@@ -47,6 +65,12 @@ public class Communication{
     	socketOut.flush();
     }
     
+    public ArrayList<Property> getProperties() throws IOException, ClassNotFoundException{
+    	@SuppressWarnings("unchecked")
+		ArrayList<Property> properties = (ArrayList<Property>) socketIn.readObject();
+    	return properties;
+    }
+    
     public void sendProperties(ArrayList<Property> properties) throws IOException{
     	socketOut.reset();
     	socketOut.writeObject(properties);
@@ -73,6 +97,12 @@ public class Communication{
     	socketOut.reset();
     	socketOut.writeObject(user);
     	socketOut.flush();
+    }
+    
+    public ArrayList<User> getUsers() throws IOException, ClassNotFoundException{
+    	@SuppressWarnings("unchecked")
+		ArrayList<User> users = (ArrayList<User>) socketIn.readObject();
+    	return users;
     }
     
     public void sendUsers(ArrayList<User> users) throws IOException{
