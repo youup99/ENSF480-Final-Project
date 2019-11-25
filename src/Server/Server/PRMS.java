@@ -28,36 +28,6 @@ public class PRMS{
     public void start(){
         ExecutorService es = Executors.newFixedThreadPool(5);
         Database db = new Database();
-//        Property p = new Property("123 Test Drive", "Condo", 4, 3, true, "NW", "Minji", "test@gmail.com");
-//        db.addProperty(p);
-//        Property temp = new Property(802130, "Condo", 3, 3, true, "NW", "Active", 100);
-//        db.removeProperty(temp);
-//        System.out.println(db.getProperty(451777).getType());
-//        User u = new RegisteredRenter("youup99", "Youup", "Kim", "youup99@gmail.com", "990926");
-//        User u1 = new Landlord("mulgae", "Minji", "Kim", "test@gmail.com", "123456", db.getProperties());
-//        User u2 = new Manager("manager123", "Manager", "One", "manager@gmail.com", "123");
-//        db.addUser(u);
-//        db.addUser(u1);
-//        db.addUser(u2);
-//        System.out.println(db.getUser("youup99").getEmail());
-//        ArrayList<User> u = db.getUsers();
-//        for(User user : u) {
-//        	System.out.println(user.getUserName());
-//        }
-//        db.changeState("Rented", 451777);
-//        PropertyFee fee = new PropertyFee();
-//        fee.setAmount(200);
-//        fee.setPeriod(60);
-//        db.updateFee(fee);
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.DAY_OF_MONTH, 60);
-//        System.out.println(new Date(cal.getTimeInMillis()).toString());
-//        SummaryReport temp = db.getReport("2019-11-01", "2021-01-01");
-//        ArrayList<Property> p = temp.getHousesRented();
-//        for(Property pr : p) {
-//        	System.out.println(pr.getID());
-//        }
-        
         try{
             while(true){
                 synchronized(db){

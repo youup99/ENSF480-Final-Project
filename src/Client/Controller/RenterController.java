@@ -40,12 +40,12 @@ public class RenterController implements ActionListener, GeneralRenterController
 		search = new SearchController (this);
 	}
 	
-	public void getSearchData (Property data)
+	public void addPreference (Property data)
 	{
 		Communication cToS = Communication.getInstance();
 		try {
 			cToS.sendString("preferences"); //TODO: will change, only temporary
-			cToS.sendString(renter.getFirstName() + " " + renter.getLastName());
+			cToS.sendUser(renter);
 			cToS.sendProperty(data); //preferences
 		} catch (IOException e) {
 			
