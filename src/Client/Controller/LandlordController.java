@@ -15,12 +15,14 @@ public class LandlordController implements ActionListener
 	private Landlord landlord;
 	private LandlordMenuView landlordView;
 	private CreatePropertyView newProp;
+	private PropertyController propertyC;
 	
 	public LandlordController (Landlord l)
 	{
 		landlordView = new LandlordMenuView ();
 		landlordView.setVisible(true);
 		landlord = l;
+		propertyC = new PropertyController ();
 		this.addActionListeners();
 	}
 	
@@ -46,10 +48,8 @@ public class LandlordController implements ActionListener
 		case "add property":
 			this.addProperty();
 			break;
-		case "pay fee":
-			getLandlordProperties();
-			break;
 		case "edit property":
+			this.getLandlordProperties();
 			break;
 		case "addSubmit":
 			addNewProperty();
@@ -68,14 +68,7 @@ public class LandlordController implements ActionListener
 				newProp.getBath(), newProp.getFurnished(),
 				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
 		
-		Communication ctos = Communication.getInstance();
-		try {
-			ctos.sendString("add property");
-			ctos.sendProperty(property);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		propertyC.addNewProperty(property);		
 		//Is server gonna give confirmation? If yes, write code to read that object from socket.
 	}
 
