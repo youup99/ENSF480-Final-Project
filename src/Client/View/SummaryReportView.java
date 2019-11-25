@@ -2,15 +2,23 @@ package Client.View;
 
 import java.util.Enumeration;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class SummaryReportView extends JFrame {
 	private static final long serialVersionUID = 1L;
+	private String[] col = {"Landlord name", "Property ID", "Address"};
+	private String[][] data = {{"Minji Kim", "12345", "75 sage bluff view NW"},
+			{"David", "57789", "3456 24th ave NW"}
+			};
 	private JTextArea houseList = new JTextArea();
 	private JTextArea houseRent = new JTextArea();
 	private JTextArea activeListing = new JTextArea();
 	private JButton btnClose = new JButton("Close");
+	private JTable table;
 	
 	public SummaryReportView() {
 		setTitle("Summary Report");
@@ -28,37 +36,62 @@ public class SummaryReportView extends JFrame {
 		JLabel activeLbl = new JLabel("Number of Active Listings:");
 		activeLbl.setBounds(15, 87, 189, 20);
 		getContentPane().add(activeLbl);
+		houseList.setBounds(208, 16, 66, 24);
 		
 		houseList.setEditable(false);
 		houseList.setEnabled(false);
 		houseList.setForeground(new Color(0, 0, 0));
-		houseList.setBounds(208, 16, 66, 24);
 		getContentPane().add(houseList);
+		houseRent.setBounds(208, 52, 66, 24);
 		
 		houseRent.setForeground(Color.BLACK);
 		houseRent.setEnabled(false);
 		houseRent.setEditable(false);
-		houseRent.setBounds(208, 52, 66, 24);
 		getContentPane().add(houseRent);
+		activeListing.setBounds(208, 87, 66, 24);
 		
 		activeListing.setForeground(Color.BLACK);
 		activeListing.setEnabled(false);
 		activeListing.setEditable(false);
-		activeListing.setBounds(208, 87, 66, 24);
 		getContentPane().add(activeListing);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 123, 497, 2);
+		separator.setBounds(0, 123, 524, 2);
 		getContentPane().add(separator);
 		
 		JLabel listLbl = new JLabel("List of Houses Rented");
-		listLbl.setFont(new Font("Tahoma", Font.BOLD, 16));
 		listLbl.setBounds(10, 132, 194, 20);
+		listLbl.setFont(new Font("Tahoma", Font.BOLD, 16));
 		getContentPane().add(listLbl);
-		
 		btnClose.setBounds(191, 382, 115, 29);
 		getContentPane().add(btnClose);
-		//Add List
+	    JScrollPane scrollPane = new JScrollPane();
+	    scrollPane.setBounds(15, 156, 509, 218);
+		scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		getContentPane().add(scrollPane);
+		
+		
+		JTable table = new JTable(data, col) {
+	           @Override
+	           public boolean isCellEditable(int row,int column) {
+	              return false;
+	           }
+	        };
+		table.setBounds(15, 156, 481, 218);
+		//getContentPane().add(table);
+		TableColumnModel tcm = table.getColumnModel();
+		scrollPane.setViewportView(table);
+		
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+        dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for(int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(dtcr);
+         }
+        
+        setResizable(false);
+        //pack();
+        setVisible(true);
 	}
 	
 	public void addCloseListener(ActionListener al)  {
