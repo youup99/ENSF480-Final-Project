@@ -68,6 +68,10 @@ public class EmailView extends JFrame{
 		return email.getText();
 	}
 	
+	public String getSubject() {
+		return subject.getText();
+	}
+	
 	public void setTo(String ll) {
 		to.setText(ll);
 	}
