@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import Client.Communication;
 import Client.Landlord;
 import Client.Property;
+import Client.PropertyFee;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
@@ -33,8 +34,12 @@ public class LandlordController implements ActionListener
 	
 	private void addProperty ()
 	{
+		PropertyFee propertyFee = new PropertyFee();
 		newProp = new CreatePropertyView ();
+		newProp.setFee(propertyFee.getAmount()); //TODO view needs to display the fee paid...
 		newProp.setVisible(true); //No need for previous one to be invisible
+		
+		
 		newProp.addSubmitListener(this);
 	}
 	
@@ -86,7 +91,7 @@ public class LandlordController implements ActionListener
 	private void addNewProperty() 
 	{
 		newProp.setVisible(false);
-		Property property = new Property (" ", newProp.getTypes(), newProp.getBed(), //WHERE is address from
+		Property property = new Property ("address?", newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
 				newProp.getBath(), newProp.getFurnished(),
 				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
 		
