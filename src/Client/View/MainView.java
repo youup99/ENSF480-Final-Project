@@ -19,16 +19,16 @@ public class MainView extends JFrame{
 
 		landlord.setBounds(66, 57, 115, 56);
 		getContentPane().add(landlord);
-		
+		landlord.setActionCommand("landlord");
 		renter.setBounds(242, 57, 115, 56);
 		getContentPane().add(renter);
-		
+		renter.setActionCommand("renter");
 		manager.setBounds(66, 141, 115, 56);
 		getContentPane().add(manager);
-		
+		manager.setActionCommand("manager");
 		guest.setBounds(242, 141, 115, 56);
 		getContentPane().add(guest);
-		
+		guest.setActionCommand("guest");
 		JLabel optionsLbl = new JLabel("Please select one of the options");
 		optionsLbl.setBounds(96, 16, 222, 20);
 		getContentPane().add(optionsLbl);

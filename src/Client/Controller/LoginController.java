@@ -6,12 +6,15 @@ import java.io.IOException;
 
 import Client.Communication;
 import Client.Landlord;
+import Client.RegisteredRenter;
 import Client.User;
 import Client.View.LoginView;
+import Client.View.NewUserView;
 
 public class LoginController implements ActionListener
 {
     private LoginView loginView;
+    private NewUserView newUserView;
     private String userType;
     
     public LoginController (String userType)
@@ -53,16 +56,23 @@ public class LoginController implements ActionListener
 				}
 				else
 				{
-					openHomePage(username, password);
+					openHomePage(returnedData);
 				}
 			}
-			else 
+			else if (e.getActionCommand().equals("register"))
+			{
+				//cToS.sendString("register");
+				newUserView = new NewUserView ();
+				newUserView.setVisible(true);
+				return;
+			}
+			else if (e.getActionCommand().equals("submit"))
 			{
 				cToS.sendString("register");
-				cToS.sendString(username);
-				cToS.sendString(password);
-				
-				this.openHomePage(username, password);
+				User user = new User (newUserView.getuName(), newUserView.getfName(), newUserView.getlName(),
+						newUserView.getEmail(), newUserView.getPassword(), "Registered");
+				cToS.sendUser(user);
+				this.openHomePage(user);
 			}
 		}
 		catch (IOException | ClassNotFoundException e2)
@@ -71,15 +81,17 @@ public class LoginController implements ActionListener
 		}
 	}
 
-	private void openHomePage(String username, String password) 
+	private void openHomePage(User data) 
 	{
 		switch (userType)
 		{
 		case "renter":
-			RenterController renter = new RenterController ();
+			RenterController renter = new RenterController (new RegisteredRenter (data.getUserName(), data.getFirstName(),
+					data.getLastName(), data.getEmail(), data.getPassword()));
 			break;
 		case "landlord":
-			LandlordController landlord = new LandlordController (new Landlord (username, null, null, null, password, null));
+			LandlordController landlord = new LandlordController (new Landlord (data.getUserName()
+					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword(), null));
 			break;
 		case "manager":
 			ManagerController manager = new ManagerController ();

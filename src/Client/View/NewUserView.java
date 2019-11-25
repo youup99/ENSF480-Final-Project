@@ -70,6 +70,7 @@ public class NewUserView extends JFrame{
 	
 	public void addSubmitListener(ActionListener al)  {
     	submit.addActionListener(al);
+    	submit.setActionCommand("submit");
 	}
 	
 	public String getfName() {
@@ -84,8 +85,8 @@ public class NewUserView extends JFrame{
 		return uName.getText();
 	}
 	
-	public char[] getPassword() {
-		return password.getPassword();
+	public String getPassword() {
+		return String.copyValueOf(password.getPassword());
 	}
 	
 	public String getEmail() {
