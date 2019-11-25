@@ -50,9 +50,14 @@ public class LandlordController implements ActionListener
 			break;
 		case "edit property":
 			this.getLandlordProperties();
+			
 			break;
-		case "addSubmit":
+		case "addSubmit": //For add property
 			addNewProperty();
+			break;
+		case "exit":
+			landlordView.setVisible(false);
+			break;
 		}
 	}
 	
@@ -64,9 +69,10 @@ public class LandlordController implements ActionListener
 	private void addNewProperty() 
 	{
 		newProp.setVisible(false);
-		Property property = new Property ("", newProp.getTypes(), newProp.getBed(),
+		Property property = new Property (" ", newProp.getTypes(), newProp.getBed(), //WHERE is address from
 				newProp.getBath(), newProp.getFurnished(),
 				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
+		
 		
 		propertyC.addNewProperty(property);		
 		//Is server gonna give confirmation? If yes, write code to read that object from socket.

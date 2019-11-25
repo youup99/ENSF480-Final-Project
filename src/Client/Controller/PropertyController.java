@@ -3,6 +3,7 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Client.Communication;
 import Client.Property;
@@ -14,7 +15,12 @@ public class PropertyController implements ActionListener
 
     public void addListenersToView()
     {
-        
+      
+    }
+    
+    public void displayProperties (ArrayList<Property> properties)
+    {
+    	//function of propertyview with properties passed down to it.
     }
 
 	@Override
