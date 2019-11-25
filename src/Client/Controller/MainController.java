@@ -40,7 +40,7 @@ public class MainController implements ActionListener
 		if (e.getActionCommand().equals("guest"))
 		{
 			mainView.setVisible(false);
-			SearchController search = new SearchController (); //Unregistered can search...
+			GuestController guests = new GuestController (); //Unregistered can search...
 		}
 		else
 		{
