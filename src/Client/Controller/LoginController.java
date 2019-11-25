@@ -32,7 +32,7 @@ public class LoginController implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		String username = loginView.getUsername();
-		String password = loginView.getPassword();
+		String password = loginView.getPassword().toString();
 		Communication cToS = Communication.getInstance();
 		
 		try

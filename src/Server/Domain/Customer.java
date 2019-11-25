@@ -101,10 +101,35 @@ public class Customer implements Runnable {
             		}
             		break;
             	}
+            	case("get all properties"): {
+            		ArrayList<Property> properties = operations.getAllProperties();
+					if(properties != null) {
+						communicator.sendProperties(properties);
+					}
+					else {
+						communicator.sendString("Could not find properties");
+					}
+            		break;
+            	}
             	case("get properties"): {
             		try {
             			Property searchCriteria = communicator.getProperty();
             			ArrayList<Property> properties = operations.getProperties(searchCriteria);
+            			if(properties != null) {
+            				communicator.sendProperties(properties);
+            			}
+            			else {
+            				communicator.sendString("Could not find properties");
+            			}
+            		} catch(ClassNotFoundException e) {
+            			e.printStackTrace();
+            		}
+            		break;
+            	}
+            	case("landlord properties"): {
+            		try {
+            			String name = communicator.getString();
+            			ArrayList<Property> properties = operations.getLandlordProperties(name);
             			if(properties != null) {
             				communicator.sendProperties(properties);
             			}
