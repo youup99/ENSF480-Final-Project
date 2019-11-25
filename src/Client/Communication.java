@@ -65,6 +65,12 @@ public class Communication{
     	socketOut.flush();
     }
     
+    public ArrayList<Property> getProperties() throws IOException, ClassNotFoundException{
+    	@SuppressWarnings("unchecked")
+		ArrayList<Property> properties = (ArrayList<Property>) socketIn.readObject();
+    	return properties;
+    }
+    
     public void sendProperties(ArrayList<Property> properties) throws IOException{
     	socketOut.reset();
     	socketOut.writeObject(properties);
@@ -91,6 +97,12 @@ public class Communication{
     	socketOut.reset();
     	socketOut.writeObject(user);
     	socketOut.flush();
+    }
+    
+    public ArrayList<User> getUsers() throws IOException, ClassNotFoundException{
+    	@SuppressWarnings("unchecked")
+		ArrayList<User> users = (ArrayList<User>) socketIn.readObject();
+    	return users;
     }
     
     public void sendUsers(ArrayList<User> users) throws IOException{

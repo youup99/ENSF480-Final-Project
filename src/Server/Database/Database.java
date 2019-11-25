@@ -201,7 +201,6 @@ public class Database{
         return null;
     }
     
-    
     public boolean addUser(User u){
     	boolean success = true;
     	Connection conn = null;
