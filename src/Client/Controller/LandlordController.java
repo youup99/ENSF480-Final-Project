@@ -3,6 +3,7 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Client.Communication;
 import Client.Landlord;
@@ -50,6 +51,7 @@ public class LandlordController implements ActionListener
 			break;
 		case "edit property":
 			this.getLandlordProperties();
+			//display property, allow landlord to select one.
 			
 			break;
 		case "addSubmit": //For add property
@@ -63,7 +65,18 @@ public class LandlordController implements ActionListener
 	
 	private void getLandlordProperties ()
 	{
-		//Communicate to server to get data. Assign properties to arraylist in landlord object.
+		Communication ctos = Communication.getInstance();
+		ArrayList<Property> landlordProperties;
+		try {
+			ctos.sendString("landlord properties");
+			ctos.sendString (landlord.getFirstName() + " " + landlord.getLastName());
+			landlordProperties = ctos.getProperties(); //TODO: IMPLEMENT GETPROPERTIES
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+		landlord.ownedProperties = landlordProperties;
+		propertyC.displayProperties("landlord", landlordProperties);
 	}
 
 	private void addNewProperty() 

@@ -7,20 +7,27 @@ import java.util.ArrayList;
 
 import Client.Communication;
 import Client.Property;
+import Client.View.EditPropertyView;
 import Client.View.PropertyView;
 
 public class PropertyController implements ActionListener 
 {
     private PropertyView propertyView;
+    private EditPropertyView editView;
 
     public void addListenersToView()
     {
       
     }
     
-    public void displayProperties (ArrayList<Property> properties)
+    public void editProperty (Property p)
     {
-    	//function of propertyview with properties passed down to it.
+    	editView.
+    }
+    
+    public void displayProperties (String usertype, ArrayList<Property> properties)
+    {
+    	//function of propertyview with properties passed down to it. Implemented in view
     }
 
 	@Override
