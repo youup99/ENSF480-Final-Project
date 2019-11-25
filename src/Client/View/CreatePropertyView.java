@@ -1,9 +1,14 @@
 package Client.View;
 
+import java.util.Date;
 import java.util.Enumeration;
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class CreatePropertyView extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -24,9 +29,13 @@ public class CreatePropertyView extends JFrame{
 	private JTextField holderName = new JTextField();
 	private JTextField cardNum = new JTextField();
 	private JTextField cvv = new JTextField();
-	private JFormattedTextField expiryDate = new JFormattedTextField();
+
+	private JFormattedTextField expiryDate = new JFormattedTextField(new SimpleDateFormat("yyyy/MM"));
+	
 	
 	public CreatePropertyView() {
+		expiryDate.setValue(new Date());
+        
 		cvv.setBounds(176, 340, 61, 26);
 		cvv.setColumns(10);
 		cardNum.setBounds(176, 260, 177, 26);
@@ -105,7 +114,7 @@ public class CreatePropertyView extends JFrame{
 		
 		getContentPane().add(cvv);
 		
-		expiryDate.setBounds(176, 298, 82, 26);
+		expiryDate.setBounds(176, 298, 69, 26);
 		getContentPane().add(expiryDate);
 		
 	}
@@ -139,7 +148,7 @@ public class CreatePropertyView extends JFrame{
 	}
 	
 	public String getExpiryDate()  {
-		return expiryDate.getText();
+		return (String) expiryDate.getValue();
 	}
 	
 	public String getCvv()  {
