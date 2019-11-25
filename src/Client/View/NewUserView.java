@@ -15,6 +15,7 @@ public class NewUserView extends JFrame{
 	private JButton submit = new JButton("submit");
 	
 	public NewUserView() {
+		setSize(303, 295);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Register");
 		getContentPane().setLayout(null);

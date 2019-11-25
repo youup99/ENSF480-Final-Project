@@ -13,6 +13,7 @@ public class ManagerMenuView extends JFrame{
 	private JButton exit = new JButton("Exit");
 	
 	public ManagerMenuView() {
+		setSize(431, 310);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Manager Menu");
 		getContentPane().setLayout(null);

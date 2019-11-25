@@ -15,6 +15,7 @@ public class ChangeFeeView extends JFrame{
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Change Fee");
 		getContentPane().setLayout(null);
+		setSize(290, 256);
 		
 		JLabel currentFeeLbl = new JLabel("Current Fee: $");
 		currentFeeLbl.setBounds(15, 16, 115, 20);

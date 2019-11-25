@@ -10,14 +10,15 @@ public class RenterMenuView extends JFrame{
 	private JButton exitBtn = new JButton("Exit Program");
 	
 	public RenterMenuView() {
+		setSize(418, 281);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Renter Menu");
 		getContentPane().setLayout(null);
 		
-		searchBtn.setBounds(140, 58, 129, 29);
+		searchBtn.setBounds(124, 46, 129, 29);
 		getContentPane().add(searchBtn);
 		
-		exitBtn.setBounds(140, 160, 132, 29);
+		exitBtn.setBounds(124, 160, 132, 29);
 		getContentPane().add(exitBtn);
 	}
 	

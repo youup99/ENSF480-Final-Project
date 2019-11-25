@@ -17,6 +17,7 @@ public class PropertyInfoView extends JFrame implements ActionListener{
 	private JTextArea cityQuadrant = new JTextArea();
 	
 	public PropertyInfoView() {
+		setSize(456, 335);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Property View");
 		getContentPane().setLayout(null);

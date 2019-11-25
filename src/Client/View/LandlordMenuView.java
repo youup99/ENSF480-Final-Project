@@ -11,6 +11,7 @@ public class LandlordMenuView extends JFrame{
 	private JButton exitBtn = new JButton("Exit Program");
 	
 	public LandlordMenuView() {
+		setSize(448, 318);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Landlord Menu");
 		getContentPane().setLayout(null);

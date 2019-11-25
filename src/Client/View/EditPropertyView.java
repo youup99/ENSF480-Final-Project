@@ -13,6 +13,7 @@ public class EditPropertyView extends JFrame{
 	private JComboBox comboBox = new JComboBox(status);
 	
 	public EditPropertyView() {
+		setSize(278, 222);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Edit Property");
 		getContentPane().setLayout(null);

@@ -16,6 +16,7 @@ public class UserInfoView extends JFrame{
 	private JTextArea type = new JTextArea();
 	
 	public UserInfoView() {
+		setSize(331, 301);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("User Informaiton");
 		getContentPane().setLayout(null);

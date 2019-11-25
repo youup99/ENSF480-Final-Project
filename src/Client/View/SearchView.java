@@ -20,6 +20,7 @@ public class SearchView extends JFrame{
 	private ButtonGroup group = new ButtonGroup();
 	
 	public SearchView() {
+		setSize(421, 308);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Search");
 		getContentPane().setLayout(null);

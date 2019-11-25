@@ -13,6 +13,7 @@ public class EmailView extends JFrame{
 	private JButton btnSend = new JButton("send");
 	
     public EmailView() {
+    	setSize(452, 450);
     	getContentPane().setBackground(new Color(230, 230, 250));
     	setTitle("Send Email");
     	getContentPane().setLayout(null);

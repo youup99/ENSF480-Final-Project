@@ -19,11 +19,11 @@ import Client.User;
 import java.awt.BorderLayout;
 
 public class PropertyView{
-   private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant", "fee"};
+   private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
    //private String[][] data = setData();
    private String[][] data = {
-         {"12345", "Apartment", "2", "4", "Yes", "NW", "500"},
-         {"67890", "Seperate", "1", "3", "No", "SW", "500"},
+         {"12345", "Apartment", "2", "4", "Yes", "NW"},
+         {"67890", "Seperate", "1", "3", "No", "SW"},
    };
    private ArrayList<Property> propertyList = new ArrayList<Property>();
    private User user;

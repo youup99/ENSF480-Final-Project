@@ -29,18 +29,19 @@ public class CreatePropertyView extends JFrame{
 	private JTextField holderName = new JTextField();
 	private JTextField cardNum = new JTextField();
 	private JTextField cvv = new JTextField();
-
+	private JTextArea currentFee = new JTextArea();
 	private JFormattedTextField expiryDate = new JFormattedTextField(new SimpleDateFormat("yyyy/MM"));
-	
+	private final JLabel addressLbl = new JLabel("Address");
+	private JTextField address;
 	
 	public CreatePropertyView() {
 		expiryDate.setValue(new Date());
-        
-		cvv.setBounds(176, 340, 61, 26);
+        setSize(450, 543);
+		cvv.setBounds(176, 404, 61, 26);
 		cvv.setColumns(10);
-		cardNum.setBounds(176, 260, 177, 26);
+		cardNum.setBounds(176, 331, 177, 26);
 		cardNum.setColumns(10);
-		holderName.setBounds(176, 224, 177, 26);
+		holderName.setBounds(176, 295, 177, 26);
 		holderName.setColumns(10);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Create New Property");
@@ -87,26 +88,31 @@ public class CreatePropertyView extends JFrame{
 		group.add(yesBtn);
 		group.add(noBtn);
 		
-		submit.setBounds(143, 382, 115, 29);
+		submit.setBounds(144, 441, 115, 29);
 		getContentPane().add(submit);
 		
 		JLabel payInfoLbl = new JLabel("Payment Information");
 		payInfoLbl.setFont(new Font("Tahoma", Font.BOLD, 16));
-		payInfoLbl.setBounds(41, 199, 182, 20);
+		payInfoLbl.setBounds(41, 270, 182, 20);
 		getContentPane().add(payInfoLbl);
 		
 		JLabel nameLbl = new JLabel("Card Holder Name");
-		nameLbl.setBounds(41, 227, 131, 20);
+		nameLbl.setBounds(41, 298, 131, 20);
 		getContentPane().add(nameLbl);
-		cardNumLbl.setBounds(41, 263, 107, 20);
+		cardNumLbl.setBounds(41, 334, 107, 20);
 		
 		getContentPane().add(cardNumLbl);
-		expiryDateLbl.setBounds(41, 299, 96, 20);
+		expiryDateLbl.setBounds(41, 370, 96, 20);
 		
 		getContentPane().add(expiryDateLbl);
-		cvvLbl.setBounds(41, 343, 42, 20);
+		cvvLbl.setBounds(41, 407, 42, 20);
 		
 		getContentPane().add(cvvLbl);
+		
+		address = new JTextField();
+		address.setBounds(157, 196, 256, 26);
+		getContentPane().add(address);
+		address.setColumns(10);
 		
 		getContentPane().add(holderName);
 		
@@ -114,8 +120,19 @@ public class CreatePropertyView extends JFrame{
 		
 		getContentPane().add(cvv);
 		
-		expiryDate.setBounds(176, 298, 69, 26);
+		expiryDate.setBounds(176, 369, 69, 26);
 		getContentPane().add(expiryDate);
+		
+		JLabel currentFeeLbl = new JLabel("Current Fee: $");
+		currentFeeLbl.setBounds(41, 246, 107, 20);
+		getContentPane().add(currentFeeLbl);
+		
+		currentFee.setEditable(false);
+		currentFee.setBounds(144, 246, 69, 24);
+		getContentPane().add(currentFee);
+		addressLbl.setBounds(41, 199, 69, 20);
+		
+		getContentPane().add(addressLbl);
 		
 	}
 	
@@ -140,6 +157,10 @@ public class CreatePropertyView extends JFrame{
 		return (String) cityBox.getSelectedItem();
 	}
 	
+	public String getAddress() {
+		return address.getText();
+	}
+	
 	public String getHolderName()  {
 		return holderName.getText();
 	}
@@ -154,6 +175,10 @@ public class CreatePropertyView extends JFrame{
 	
 	public String getCvv()  {
 		return cvv.getText();
+	}
+	
+	public void setCurrentFee(Double fee) {
+		currentFee.setText(Double.toString(fee));
 	}
 	
 	public boolean getFurnished() {

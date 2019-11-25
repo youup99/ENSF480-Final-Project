@@ -12,6 +12,7 @@ public class LoginView extends JFrame {
 	private JPasswordField password;
 	
     public LoginView() {
+    	setSize(518, 209);
     	getContentPane().setBackground(new Color(230, 230, 250));
     	setTitle("Login");
     	getContentPane().setLayout(null);
