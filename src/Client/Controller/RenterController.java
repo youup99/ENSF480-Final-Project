@@ -42,7 +42,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 		search = new SearchController (this);
 	}
 	
-	public void addPreference (Property data)
+	public void getSearchData (Property data)
 	{
 		ArrayList<Property> searchResults = null;
 		
