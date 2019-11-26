@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public class PropertyListing implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-    private ArrayList<Property> properties;
+    private ArrayList<Property> properties = new ArrayList<Property>();
 
     public PropertyListing(ArrayList<Property> properties){
-        properties = new ArrayList<Property>();
+        this.properties = new ArrayList<Property>();
     }
 
     public PropertyListing() {
-		this.properties = null;
+
 	}
 
 	public void addNewListing(Property p){

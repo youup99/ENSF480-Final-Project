@@ -5,16 +5,22 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
+import Client.Controller.RenterController;
 import Functionality.Property;
 
 public class RenterPropertyView extends PropertyView {
-
-	public RenterPropertyView() {
-		super();
+	private RenterController rc;
+	
+	public RenterPropertyView(String[][] data) {
+		super(data);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+	}
+	
+	public void setRenterController(RenterController rc) {
+		this.rc = rc;
 	}
 
 	@Override
@@ -23,6 +29,8 @@ public class RenterPropertyView extends PropertyView {
         int row = target.getSelectedRow();
         Property sendData = propertyList.get(row);
         propertyInfo = new PropertyInfoView(sendData);
+        propertyInfo.addSendEmailListener(this);
 	}
+
 	
 }

@@ -11,8 +11,8 @@ import Functionality.Property;
 public class LandlordPropertyView extends PropertyView {
 	private LandlordController landc;
 	
-	public LandlordPropertyView() {
-		super();
+	public LandlordPropertyView(String[][] data) {
+		super(data);
 		editView.addSaveListener(this);
 	}
 	
