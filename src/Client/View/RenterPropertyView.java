@@ -9,20 +9,21 @@ import Functionality.Property;
 
 public class RenterPropertyView extends PropertyView {
 
-	public RenterPropertyView() {
-		super();
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+	public RenterPropertyView(String [][] data) {
+		super(data);
 	}
 
 	@Override
-	public void clickedAction(MouseEvent e) {
-		JTable target = (JTable) e.getSource();
-        int row = target.getSelectedRow();
-        Property sendData = propertyList.get(row);
-        propertyInfo = new PropertyInfoView(sendData);
+	public void mouseAction(MouseEvent e) {
+		int index = table.getSelectedRow();
+		Property sendData = propertyList.get(index);
+        editView = new EditPropertyView(sendData);
 	}
-	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

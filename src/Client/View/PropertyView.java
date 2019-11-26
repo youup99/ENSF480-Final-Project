@@ -33,13 +33,14 @@ public abstract class PropertyView implements ActionListener{
    protected EditPropertyView editView;
    
    protected PropertyInfoView propertyInfo;
-
+   protected JTable table;
+   
    public PropertyView(String[][] dataa) {
     	Dimension dim = new Dimension(1000,200);
     	frame = new JFrame("Property View");
         frame.setLocation(200,400);
         frame.setSize(dim);
-        JTable table = new JTable(dataa, columnNames) {
+        table = new JTable(dataa, columnNames) {
         private static final long serialVersionUID = 1L;
 			
 		@Override
@@ -49,6 +50,7 @@ public abstract class PropertyView implements ActionListener{
         };
         
         JScrollPane scrollpane = new JScrollPane(table);
+        
         scrollpane.setPreferredSize(dim);
         scrollpane.setVerticalScrollBarPolicy(scrollpane.VERTICAL_SCROLLBAR_ALWAYS);
         frame.getContentPane().add(scrollpane, BorderLayout.CENTER);
@@ -67,24 +69,19 @@ public abstract class PropertyView implements ActionListener{
 
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.addMouseListener(new MouseAdapter() {
-           public void mouseClicked(MouseEvent e) {
-              if(e.getClickCount() == 2) {
-            	  clickedAction(e);
-              }
-           }
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		mouseAction(e);
+        	}
         });
-        
     }
    
-   public abstract void clickedAction(MouseEvent e);
+   public abstract void mouseAction(MouseEvent e);
    
    public void setDisplay(ArrayList<Property> p)  {
 	   propertyList = p;
 	}
 
-   @Override
-   abstract public void actionPerformed(ActionEvent e);
-   
    public void setVisible (boolean b)
    {
 	   frame.setVisible(b);
