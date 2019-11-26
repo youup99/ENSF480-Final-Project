@@ -55,7 +55,7 @@ public class LandlordController implements ActionListener
 	{
 		switch (e.getActionCommand())
 		{
-		case "add property":
+		case "create property":
 			this.addProperty();
 			break;
 		case "edit property":
