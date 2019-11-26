@@ -46,6 +46,10 @@ public class ManagerController implements ActionListener
 	private void showFeeWindow ()
 	{
 		changeFeeView = new ChangeFeeView ();
+		PropertyFee fee = new PropertyFee();
+		changeFeeView.setFee(fee.getAmount());
+		changeFeeView.setPeriod(fee.getPeriod());
+		changeFeeView.setVisible(true);
 		changeFeeView.addSubmitListener (this);
 		
 	}
