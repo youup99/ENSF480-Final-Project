@@ -61,6 +61,9 @@ public class ManagerController implements ActionListener
 		case "change status":
 			this.changeStatus();			
 			break;
+		case "getInfo":
+			getUserInfo();
+			break;
 		case "report":
 			openReportForm();
 			break;
@@ -70,10 +73,44 @@ public class ManagerController implements ActionListener
 		case "closeReport":
 			summary.setVisible(false);
 			break;
+		}		
+	}
+	
+	private void getUserInfo ()
+	{
+		userView = new UserListView ();
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("get users");
+			userView.setDisplay(c.getUsers());
+			userView.setVisible(true);
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	private void generateReport() 
+	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("get report");
+			c.sendString(reportReq.getStartDate());
+			c.sendString (reportReq.getEndDate());
+			SummaryReport report = c.getReport();
+			summary = new SummaryReportView();
+			summary.setNumActiveList(report.getTotalActive());
+			summary.setNumHouseList(report.getTotalListed());
+			summary.setNumHouseRent(report.getTotalRented());
+			summary.setVisible(true);
+			summary.addCloseListener(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
-
+	
 	private void changeStatus() 
 	{
 		Communication c = Communication.getInstance();
@@ -91,27 +128,6 @@ public class ManagerController implements ActionListener
 		propView.setManagerController (this);
 	}
 	
-	private void generateReport() 
-	{
-		Communication c = Communication.getInstance();
-		try {
-			c.sendString("get report");
-			c.sendString(reportReq.getStartDate());
-			c.sendString (reportReq.getEndDate());
-			SummaryReport report = c.getReport();
-			summary = new SummaryReportView();
-			summary.setNumActiveList(report.getTotalActive());
-			summary.setNumHouseList(report.getTotalListed());
-			summary.setNumHouseRent(report.getTotalRented());
-			summary.setVisible(true);
-			summary.addCloseListener(this);
-		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
 	private void getReport() 
 	{
 		Communication c = Communication.getInstance();
