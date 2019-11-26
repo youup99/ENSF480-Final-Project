@@ -5,11 +5,13 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
+import Client.Controller.GuestController;
 import Client.Controller.RenterController;
 import Functionality.Property;
 
 public class RenterPropertyView extends PropertyView {
 	private RenterController rc;
+	private GuestController gc;
 	
 	public RenterPropertyView(String[][] data) {
 		super(data);
@@ -26,6 +28,10 @@ public class RenterPropertyView extends PropertyView {
 	
 	public void setRenterController(RenterController rc) {
 		this.rc = rc;
+	}
+	
+	public void setGuestController(GuestController gc) {
+		this.gc = gc;
 	}
 
 	@Override
