@@ -1,15 +1,13 @@
 package Client.View;
 
-import java.util.Enumeration;
 import javax.swing.*;
 
 import Functionality.Property;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PropertyInfoView extends JFrame implements ActionListener{
+public class PropertyInfoView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton emailBtn = new JButton("Click to send email to landlord");
 	private JTextArea ID = new JTextArea();
@@ -121,13 +119,4 @@ public class PropertyInfoView extends JFrame implements ActionListener{
 		return property;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		if (e.getActionCommand().equals("email"))
-		{
-			
-		}
-		
-	}
 }

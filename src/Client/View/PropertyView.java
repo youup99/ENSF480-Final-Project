@@ -25,19 +25,19 @@ import Client.Controller.RenterController;
 
 import java.awt.BorderLayout;
 
-public class PropertyView implements ActionListener{
+public abstract class PropertyView implements ActionListener{
    private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
    private String[][] data;
 //   private String[][] data = {
 //         {"12345", "Apartment", "2", "4", "Yes", "NW"},
 //         {"67890", "Separate", "1", "3", "No", "SW"},
 //   };
-   private ArrayList<Property> propertyList = new ArrayList<Property>();
-   private LandlordController landc;
-   private EditPropertyView editView;
-   private ManagerController managerc;
-   private RenterController renterc;
-   private PropertyInfoView propertyInfo;
+   protected ArrayList<Property> propertyList = new ArrayList<Property>();
+   
+   protected EditPropertyView editView;
+   
+   protected PropertyInfoView propertyInfo;
+
    
    public PropertyView() {
     	Dimension dim = new Dimension(1000,200);
@@ -75,27 +75,14 @@ public class PropertyView implements ActionListener{
         table.addMouseListener(new MouseAdapter() {
            public void mouseClicked(MouseEvent e) {
               if(e.getClickCount() == 2) {
-            	  if (renterc == null) {
-            		  //manager || landlord
-            		  JTable target = (JTable) e.getSource();
-                      int row = target.getSelectedRow();
-                      Property sendData = propertyList.get(row);
-                      editView = new EditPropertyView(sendData);
-            	  } else {
-            		  //renter
-            		  JTable target = (JTable) e.getSource();
-                      int row = target.getSelectedRow();
-                      Property sendData = propertyList.get(row);
-                      propertyInfo = new PropertyInfoView(sendData);
-            	  }
-            	  
+            	  clickedAction(e);
               }
            }
-           
         });
-        editView.addSaveListener(this);
+        
     }
    
+   public abstract void clickedAction(MouseEvent e);
    public void setData() {
 	   for(int i = 0; i < propertyList.size(); i++) {
 		   for(int j = 0; j < 5; j++) {
@@ -125,24 +112,8 @@ public class PropertyView implements ActionListener{
 	}
 
    @Override
-   public void actionPerformed(ActionEvent e) {
-	   if (managerc == null) {
-		   Property temp = editView.getSelectedProperty();
-		   temp.setListingState(editView.getStatus());
-		   landc.updateStatus(temp);
-	   } else {
-		   Property temp = editView.getSelectedProperty();
-		   temp.setListingState(editView.getStatus());
-		   managerc.updateStatus(temp);
-	   }
-   }
+   abstract public void actionPerformed(ActionEvent e);
    
-   public void setLandlordController(LandlordController llc) {
-	   landc = llc;
-   }
-   
-   public void setManagerController(ManagerController mc) {
-	   managerc = mc;
-   }
+
 }
 
