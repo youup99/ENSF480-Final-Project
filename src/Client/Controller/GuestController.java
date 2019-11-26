@@ -29,6 +29,7 @@ public class GuestController implements GeneralRenterController, ActionListener
 	private void addListenersToClass ()
 	{
 		renterView.addSearchListener (this);
+		renterView.addExitListener(this);
 	}
 
 	@Override
