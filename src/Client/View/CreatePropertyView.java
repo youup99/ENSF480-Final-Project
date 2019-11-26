@@ -1,13 +1,11 @@
 package Client.View;
 
 import java.util.Date;
-import java.util.Enumeration;
+
 import javax.swing.*;
-import javax.swing.text.MaskFormatter;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class CreatePropertyView extends JFrame{

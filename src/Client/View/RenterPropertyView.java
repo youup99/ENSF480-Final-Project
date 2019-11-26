@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
-import Client.Property;
+import Functionality.Property;
 
 public class RenterPropertyView extends PropertyView {
 

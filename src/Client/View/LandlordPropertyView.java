@@ -5,8 +5,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
-import Client.Property;
 import Client.Controller.LandlordController;
+import Functionality.Property;
 
 public class LandlordPropertyView extends PropertyView {
 	private LandlordController landc;

@@ -2,7 +2,7 @@ package Client.View;
 
 import javax.swing.*;
 
-import Client.Property;
+import Functionality.Property;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
