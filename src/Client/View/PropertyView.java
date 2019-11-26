@@ -23,6 +23,7 @@ import java.awt.BorderLayout;
 public abstract class PropertyView implements ActionListener{
    private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
    private String[][] data;
+   private JFrame frame;
 //   private String[][] data = {
 //         {"12345", "Apartment", "2", "4", "Yes", "NW"},
 //         {"67890", "Separate", "1", "3", "No", "SW"},
@@ -35,7 +36,7 @@ public abstract class PropertyView implements ActionListener{
 
    public PropertyView() {
     	Dimension dim = new Dimension(1000,200);
-    	JFrame frame = new JFrame("Property View");
+    	frame = new JFrame("Property View");
         frame.setLocation(200,400);
         frame.setSize(dim);
         setData();
@@ -108,6 +109,9 @@ public abstract class PropertyView implements ActionListener{
    @Override
    abstract public void actionPerformed(ActionEvent e);
    
-
+   public void setVisible (boolean b)
+   {
+	   frame.setVisible(b);
+   }
 }
 

@@ -34,8 +34,4 @@ public class ManagerPropertyView extends PropertyView {
         Property sendData = propertyList.get(row);
         editView = new EditPropertyView(sendData);
 	}
-
-
-
-
 }

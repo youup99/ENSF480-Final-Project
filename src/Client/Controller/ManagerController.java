@@ -149,6 +149,7 @@ public class ManagerController implements ActionListener
 		propView = new ManagerPropertyView();
 		propView.setManagerController (this);
 		propView.setDisplay(allProperties);
+		propView.setVisible(true);
 	}
 	
 	private void getReport() 
