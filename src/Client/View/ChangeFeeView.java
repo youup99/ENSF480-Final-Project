@@ -73,7 +73,7 @@ public class ChangeFeeView extends JFrame{
 	}
 	
 	public void setPeriod(int period) {
-		currentFee.setText(Double.toString(period));
+		currentFee.setText(Integer.toString(period));
 	}
 	
 	public Double getChangeFee() {
