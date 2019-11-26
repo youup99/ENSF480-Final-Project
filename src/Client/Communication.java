@@ -114,7 +114,7 @@ public class Communication{
     	socketOut.flush();
     }
     
-    public SummaryReport getReport(String start, String end) throws IOException, ClassNotFoundException{
+    public SummaryReport getReport() throws IOException, ClassNotFoundException{
     	SummaryReport report = (SummaryReport) socketIn.readObject();
     	return report;
     }

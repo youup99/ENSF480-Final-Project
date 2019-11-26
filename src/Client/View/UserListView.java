@@ -74,6 +74,14 @@ public class UserListView{
        	   }
        }
    }
-
+  public void setVisible (boolean b)
+   {
+	frame.setVisible(b); 
+   }
+	
+  public void setDisplay (ArrayList<User> users)
+   {
+	   userList = users;
+   }
 }
 
