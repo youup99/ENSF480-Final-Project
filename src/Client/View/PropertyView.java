@@ -16,9 +16,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 import Client.Property;
-import Client.User;
 import Client.Controller.LandlordController;
 import Client.Controller.ManagerController;
+import Client.Controller.RenterController;
 import Client.Landlord;
 
 import java.awt.BorderLayout;
@@ -31,11 +31,12 @@ public class PropertyView implements ActionListener{
 //         {"67890", "Separate", "1", "3", "No", "SW"},
 //   };
    private ArrayList<Property> propertyList = new ArrayList<Property>();
-   private User user;
    private LandlordController landc;
    private EditPropertyView editView;
    private ManagerController managerc;
-
+   private RenterController renterc;
+   private PropertyInfoView propertyInfo;
+   
    public PropertyView() {
     	Dimension dim = new Dimension(1000,200);
     	JFrame frame = new JFrame("Property View");
@@ -72,10 +73,20 @@ public class PropertyView implements ActionListener{
         table.addMouseListener(new MouseAdapter() {
            public void mouseClicked(MouseEvent e) {
               if(e.getClickCount() == 2) {
-            	  JTable target = (JTable) e.getSource();
-                  int row = target.getSelectedRow();
-                  Property sendData = propertyList.get(row);
-                  editView = new EditPropertyView(sendData);
+            	  if (renterc == null) {
+            		  //manager || landlord
+            		  JTable target = (JTable) e.getSource();
+                      int row = target.getSelectedRow();
+                      Property sendData = propertyList.get(row);
+                      editView = new EditPropertyView(sendData);
+            	  } else {
+            		  //renter
+            		  JTable target = (JTable) e.getSource();
+                      int row = target.getSelectedRow();
+                      Property sendData = propertyList.get(row);
+                      propertyInfo = new PropertyInfoView(sendData);
+            	  }
+            	  
               }
            }
            
@@ -122,6 +133,14 @@ public class PropertyView implements ActionListener{
 		   temp.setListingState(editView.getStatus());
 		   managerc.updateStatus(temp);
 	   }
+   }
+   
+   public void setLandlordController(LandlordController llc) {
+	   landc = llc;
+   }
+   
+   public void setManagerController(ManagerController mc) {
+	   managerc = mc;
    }
 }
 

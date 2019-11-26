@@ -20,7 +20,7 @@ import java.awt.BorderLayout;
 
 public class UserListView{
    private static final long serialVersionUID = 1L;
-   private String[] columnNames = {"UserName", "FirstName", "LastName", "email", "Type"};
+   private String[] columnNames = {"ID", "UserName", "FirstName", "LastName", "email", "Type"};
    private String[][] data;
 //   private String[][] data = {
 //         {"asdf", "Minji", "Kim", "minjikm19@gmail.com", "renter"},
@@ -57,30 +57,22 @@ public class UserListView{
         frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
-
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.addMouseListener(new MouseAdapter() {
-           public void mouseClicked(MouseEvent e) {
-              if(e.getClickCount() == 2) {
-                 //need to add the way to get data
-                 UserInfoView userInfoView = new UserInfoView();
-              }
-           }
-        });
     }
    
    public void setData() {
 	   for(int i = 0; i < userList.size(); i++) {
-		   for(int j = 0; j < 4; j++) {
+		   for(int j = 0; j < 5; j++) {
 			    if (j == 0) {
+			       data[i][j] = Integer.toString(userList.get(i).getID());
+			    } else if (j == 1) {
 				   data[i][j] = userList.get(i).getUserName();
-       			} else if (j == 1) {
+       			} else if (j == 2) {
        			   data[i][j] = userList.get(i).getFirstName();
-       		    } else if (j == 2) {
-       			   data[i][j] = userList.get(i).getLastName();
        		    } else if (j == 3) {
-       			   data[i][j] = userList.get(i).getEmail();
+       			   data[i][j] = userList.get(i).getLastName();
        		    } else if (j == 4) {
+       			   data[i][j] = userList.get(i).getEmail();
+       		    } else if (j == 5) {
        			   data[i][j] = userList.get(i).getType();
        		    }
        	   }
