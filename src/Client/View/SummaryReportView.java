@@ -1,9 +1,13 @@
 package Client.View;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
+
+import Client.Property;
+import Client.SummaryReport;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -11,18 +15,19 @@ import java.awt.event.ActionListener;
 public class SummaryReportView{
 	private static final long serialVersionUID = 1L;
 	private String[] col = {"Landlord name", "Property ID", "Address"};
-	private String[][] data = {{"Minji Kim", "12345", "75 sage bluff view NW"},
-			{"David", "57789", "3456 24th ave NW"}
-			};
+//	private String[][] data = {{"Minji Kim", "12345", "75 sage bluff view NW"},
+//			{"David", "57789", "3456 24th ave NW"}
+//			};
+	private String[][] data;
 	private JTextArea houseList = new JTextArea();
 	private JTextArea houseRent = new JTextArea();
 	private JTextArea activeListing = new JTextArea();
 	private JButton btnClose = new JButton("Close");
+	private SummaryReport summaryReport;
 	
 	public SummaryReportView() {
-		Dimension dim = new Dimension(562, 483);
     	JFrame frame = new JFrame("Summary Report");
-        frame.setSize(dim);
+        frame.setSize(551, 483);
 		frame.getContentPane().setBackground(new Color(230, 230, 250));
 		frame.getContentPane().setLayout(null);
 		
@@ -57,7 +62,7 @@ public class SummaryReportView{
 		frame.getContentPane().add(activeListing);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 123, 524, 2);
+		separator.setBounds(0, 123, 530, 2);
 		frame.getContentPane().add(separator);
 		
 		JLabel listLbl = new JLabel("List of Houses Rented");
@@ -67,6 +72,7 @@ public class SummaryReportView{
 		btnClose.setBounds(208, 398, 115, 29);
 		frame.getContentPane().add(btnClose);
 		
+		setData();
 		JTable table = new JTable(data, col) {
 	           @Override
 	           public boolean isCellEditable(int row,int column) {
@@ -111,5 +117,19 @@ public class SummaryReportView{
 	
 	public void setNumActiveList(int n) {
 		activeListing.setText(Integer.toString(n));
+	}
+	
+	public void setData() {
+		for(int i = 0; i < summaryReport.getHousesRented().size(); i++) {
+			for(int j = 0; j < 2; j++) {
+			    if (j == 0) {
+				   data[i][j] = summaryReport.getHousesRented().get(i).getLandlordName();
+       			} else if (j == 1) {
+       			   data[i][j] = Integer.toString(summaryReport.getHousesRented().get(i).getID());
+       		    } else if (j == 2) {
+       			   data[i][j] = summaryReport.getHousesRented().get(i).getAddress();
+       		    }
+       	   }
+	    }	
 	}
 }

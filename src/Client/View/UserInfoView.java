@@ -4,10 +4,10 @@ import java.util.Enumeration;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserInfoView extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private JButton deleteUser = new JButton("Delete User");
 	private JButton close = new JButton("Close");
 	private JTextArea userName = new JTextArea();
 	private JTextArea firstName = new JTextArea();
@@ -40,11 +40,12 @@ public class UserInfoView extends JFrame{
 		JLabel typeLbl = new JLabel("Type");
 		typeLbl.setBounds(15, 162, 69, 20);
 		getContentPane().add(typeLbl);
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
-		deleteUser.setBounds(25, 198, 115, 29);
-		getContentPane().add(deleteUser);
-		
-		close.setBounds(174, 198, 115, 29);
+		close.setBounds(93, 200, 115, 29);
 		getContentPane().add(close);
 		userName.setEditable(false);
 		

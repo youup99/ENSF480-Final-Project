@@ -26,12 +26,12 @@ public class CreatePropertyView extends JFrame{
 	private final JLabel cardNumLbl = new JLabel("Card Number");
 	private final JLabel expiryDateLbl = new JLabel("Expiry Date");
 	private final JLabel cvvLbl = new JLabel("CVV");
+	private final JLabel addressLbl = new JLabel("Address");
 	private JTextField holderName = new JTextField();
 	private JTextField cardNum = new JTextField();
 	private JTextField cvv = new JTextField();
 	private JTextArea currentFee = new JTextArea();
 	private JFormattedTextField expiryDate = new JFormattedTextField(new SimpleDateFormat("yyyy/MM"));
-	private final JLabel addressLbl = new JLabel("Address");
 	private JTextField address;
 	
 	public CreatePropertyView() {

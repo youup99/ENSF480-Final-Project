@@ -20,11 +20,11 @@ import java.awt.BorderLayout;
 
 public class PropertyView{
    private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
-   //private String[][] data = setData();
-   private String[][] data = {
-         {"12345", "Apartment", "2", "4", "Yes", "NW"},
-         {"67890", "Seperate", "1", "3", "No", "SW"},
-   };
+   private String[][] data;
+//   private String[][] data = {
+//         {"12345", "Apartment", "2", "4", "Yes", "NW"},
+//         {"67890", "Separate", "1", "3", "No", "SW"},
+//   };
    private ArrayList<Property> propertyList = new ArrayList<Property>();
    private User user;
 
@@ -33,11 +33,10 @@ public class PropertyView{
     	JFrame frame = new JFrame("Property View");
         frame.setLocation(200,400);
         frame.setSize(dim);
-        
+        setData();
         JTable table = new JTable(data, columnNames) {
         private static final long serialVersionUID = 1L;
 			
-
 		@Override
            public boolean isCellEditable(int row,int column) {
               return false;
@@ -63,8 +62,7 @@ public class PropertyView{
 
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.addMouseListener(new MouseAdapter() {
-
-		public void mouseClicked(MouseEvent e) {
+           public void mouseClicked(MouseEvent e) {
               if(e.getClickCount() == 2) {
                  //need to add the way to get data
             	 if (user.getType() == "landlord") {
@@ -78,7 +76,27 @@ public class PropertyView{
     }
    
    public void setData() {
-	   
+	   for(int i = 0; i < propertyList.size(); i++) {
+		   for(int j = 0; j < 5; j++) {
+			    if (j == 0) {
+				   data[i][j] = Integer.toString(propertyList.get(i).getID());
+       			} else if (j == 1) {
+       			   data[i][j] = propertyList.get(i).getType();
+       		    } else if (j == 2) {
+       			   data[i][j] = Integer.toString(propertyList.get(i).getNumOfBedrooms());
+       		    } else if (j == 3) {
+       			   data[i][j] = Integer.toString(propertyList.get(i).getNumOfBathrooms());
+       		    } else if (j == 4) {
+       			   if (propertyList.get(i).isFurnished() == true) {
+       				   data[i][j] = "Yes";
+       			   } else if (propertyList.get(i).isFurnished() == false) {
+       				   data[i][j] = "No";
+       			   }
+       		    } else if (j == 5) {
+       			   data[i][j] = propertyList.get(i).getCityQuadrant();
+       		    }
+       	   }
+       }
    }
 }
 
