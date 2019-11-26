@@ -12,6 +12,7 @@ public class ManagerPropertyView extends PropertyView {
 	private ManagerController managerc;
 	
 	public ManagerPropertyView() {
+		super();
 		editView.addSaveListener(this);
 	}
 

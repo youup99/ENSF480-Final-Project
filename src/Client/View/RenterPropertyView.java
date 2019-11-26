@@ -9,6 +9,9 @@ import Functionality.Property;
 
 public class RenterPropertyView extends PropertyView {
 
+	public RenterPropertyView() {
+		super();
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
