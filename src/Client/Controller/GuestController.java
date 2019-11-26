@@ -16,6 +16,8 @@ public class GuestController implements GeneralRenterController, ActionListener
 	private RenterMenuView renterView;
 	private PropertyController propertyC;
 	private RenterPropertyView propView;
+	private ArrayList<Property> searchResults = null;
+	private String[][] dataa;
 	
 	public GuestController ()
 	{
@@ -32,7 +34,6 @@ public class GuestController implements GeneralRenterController, ActionListener
 	@Override
 	public void getSearchData(Property p) 
 	{
-		ArrayList<Property> searchResults = null;
 		Communication ctos = Communication.getInstance();
 		try {
 			ctos.sendString("get properties");
@@ -44,7 +45,29 @@ public class GuestController implements GeneralRenterController, ActionListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String[][] dataa = new String[searchResults.size()][6];
+		setData();
+		
+		propView = new RenterPropertyView(dataa);
+		propView.setGuestController(this);
+		propView.setDisplay(searchResults);
+		propView.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getActionCommand().equals("exit"))
+		{
+			System.out.println("guestExit");
+			System.exit(1);
+			
+		}
+		System.out.println("outside of exit");
+		search = new SearchController (this);		
+	}
+	
+	public void setData() {
+		dataa = new String[searchResults.size()][6];
 		for(int i = 0; i < searchResults.size(); i++) {
 			   for(int j = 0; j < 6; j++) {
 				    if (j == 0) {
@@ -66,22 +89,6 @@ public class GuestController implements GeneralRenterController, ActionListener
 	       		    }
 	       	   }
 	       }	
-		propView = new RenterPropertyView(dataa);
-		propView.setGuestController(this);
-		propView.setDisplay(searchResults);
-		propView.setVisible(true);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		if (e.getActionCommand().equals("exit"))
-		{
-			renterView.setVisible(false);
-			return;
-		}
-		
-		search = new SearchController (this);		
 	}
 
 }
