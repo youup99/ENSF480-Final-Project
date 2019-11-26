@@ -1,4 +1,4 @@
-package Server.Domain;
+package Functionality;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class PropertyListing implements Serializable{
     private ArrayList<Property> properties;
 
     public PropertyListing(ArrayList<Property> properties){
-        this.properties = properties;
+        properties = new ArrayList<Property>();
     }
 
     public PropertyListing() {

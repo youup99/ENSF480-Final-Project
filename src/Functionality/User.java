@@ -1,4 +1,4 @@
-package Server.Domain;
+package Functionality;
 
 import java.io.Serializable;
 import java.util.Random;

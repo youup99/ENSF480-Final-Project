@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-import Client.Manager;
-import Client.Property;
-import Client.SummaryReport;
 import Client.View.ManagerMenuView;
 import Client.View.PropertyView;
 import Client.View.ReportRequestView;
 import Client.View.SummaryReportView;
+import Functionality.Manager;
+import Functionality.Property;
+import Functionality.SummaryReport;
 
 public class ManagerController implements ActionListener
 {
@@ -74,27 +74,6 @@ public class ManagerController implements ActionListener
 		
 	}
 
-	private void generateReport() 
-	{
-		Communication c = Communication.getInstance();
-		try {
-			c.sendString("get report");
-			c.sendString(reportReq.getStartDate());
-			c.sendString (reportReq.getEndDate());
-			SummaryReport report = c.getReport();
-			summary = new SummaryReportView();
-			summary.setNumActiveList(report.getTotalActive());
-			summary.setNumHouseList(report.getTotalListed());
-			summary.setNumHouseRent(report.getTotalRented());
-			summary.setVisible(true);
-			summary.addCloseListener(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
 	private void changeStatus() 
 	{
 		Communication c = Communication.getInstance();
@@ -111,11 +90,55 @@ public class ManagerController implements ActionListener
 		propView.setDisplay(allProperties);
 		propView.setManagerController (this);
 	}
-
-	private void openReportForm() 
+	
+	private void generateReport() 
 	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("get report");
+			c.sendString(reportReq.getStartDate());
+			c.sendString (reportReq.getEndDate());
+			SummaryReport report = c.getReport();
+			summary = new SummaryReportView();
+			summary.setNumActiveList(report.getTotalActive());
+			summary.setNumHouseList(report.getTotalListed());
+			summary.setNumHouseRent(report.getTotalRented());
+			summary.setVisible(true);
+			summary.addCloseListener(this);
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	private void getReport() 
+	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("get report");
+			c.sendString(reportReq.getStartDate());
+			c.sendString (reportReq.getEndDate());
+			SummaryReport report = c.getReport();
+			summary = new SummaryReportView();
+			summary.setNumActiveList(report.getTotalActive());
+			summary.setNumHouseList(report.getTotalListed());
+			summary.setNumHouseRent(report.getTotalRented());
+			summary.setVisible(true);
+			summary.addCloseListener(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void openReportForm() {
 		reportReq = new ReportRequestView();
-		reportReq.addGenerateReportListener(this);		
+		reportReq.addGenerateReportListener(this);
 	}
 	
 	public void updateStatus (Property p)

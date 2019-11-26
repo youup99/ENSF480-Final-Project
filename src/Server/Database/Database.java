@@ -7,11 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Server.Domain.Landlord;
-import Server.Domain.Property;
-import Server.Domain.PropertyFee;
-import Server.Domain.SummaryReport;
-import Server.Domain.User;
+import Functionality.Property;
+import Functionality.PropertyFee;
+import Functionality.SummaryReport;
+import Functionality.User;
 
 public class Database{
     public Connection getConn() throws ClassNotFoundException, SQLException{

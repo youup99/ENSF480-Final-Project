@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-import Client.Property;
 import Client.View.RenterMenuView;
+import Functionality.Property;
 
 public class GuestController implements GeneralRenterController, ActionListener
 {

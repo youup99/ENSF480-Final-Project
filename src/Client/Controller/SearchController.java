@@ -3,8 +3,8 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Client.Property;
 import Client.View.SearchView;
+import Functionality.Property;
 
 public class SearchController implements ActionListener
 {

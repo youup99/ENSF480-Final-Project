@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Client.Communication;
-import Client.Landlord;
-import Client.Manager;
-import Client.RegisteredRenter;
-import Client.User;
 import Client.View.LoginView;
 import Client.View.NewUserView;
+import Functionality.Landlord;
+import Functionality.Manager;
+import Functionality.RegisteredRenter;
+import Functionality.User;
 
 public class LoginController implements ActionListener
 {

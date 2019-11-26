@@ -1,6 +1,7 @@
-package Server.Domain;
+package Functionality;
 import java.io.Serializable;
 import java.util.ArrayList;
+
 import java.sql.Date;
 
 public class SummaryReport implements Serializable{

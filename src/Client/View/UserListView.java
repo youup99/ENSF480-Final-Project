@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
-import Client.User;
+import Functionality.User;
 
 import java.awt.BorderLayout;
 

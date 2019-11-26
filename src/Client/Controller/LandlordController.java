@@ -6,13 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-import Client.Landlord;
-import Client.Property;
-import Client.PropertyFee;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
-import Client.View.PropertyView;
+
+import Functionality.Landlord;
+import Functionality.Property;
+import Functionality.PropertyFee;
+
 
 public class LandlordController implements ActionListener 
 {

@@ -1,4 +1,5 @@
-package Client;
+package Functionality;
+
 public class Manager extends User{
 	private static final long serialVersionUID = 1L;
 
