@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
+import Client.View.ChangeFeeView;
 import Client.View.ManagerMenuView;
 import Client.View.ManagerPropertyView;
 import Client.View.PropertyView;
@@ -14,6 +15,7 @@ import Client.View.SummaryReportView;
 import Client.View.UserListView;
 import Functionality.Manager;
 import Functionality.Property;
+import Functionality.PropertyFee;
 import Functionality.SummaryReport;
 
 public class ManagerController implements ActionListener
@@ -24,6 +26,7 @@ public class ManagerController implements ActionListener
 	private ManagerPropertyView propView;
 	private ReportRequestView reportReq;
 	private UserListView userView;
+	private ChangeFeeView changeFeeView;
 	
 	public ManagerController (Manager m)
 	{
@@ -40,14 +43,25 @@ public class ManagerController implements ActionListener
 		managerView.addGetUserInfoListener(this);
 	}
 	
+	private void showFeeWindow ()
+	{
+		changeFeeView = new ChangeFeeView ();
+		changeFeeView.addSubmitListener (this);
+		
+	}
+	
 	private void changeFee ()
 	{
 		Communication c = Communication.getInstance();
 		try {
-			c.sendString("change fee");
-			Double newFee = managerView.getNewFee(); //TODO
-			c.sendString(newFee.toString());
-			
+			PropertyFee temp = new PropertyFee ();
+			if (changeFeeView.getChangeFee() != null)
+				temp.setAmount(changeFeeView.getChangeFee());
+			if (Integer.valueOf((changeFeeView.getChangePeriod())) != null)
+				temp.setPeriod(changeFeeView.getChangePeriod());
+			c.sendString("update fee");
+			c.sendPropertyFee(temp);
+			changeFeeView.setVisible(false);			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +73,7 @@ public class ManagerController implements ActionListener
 		switch (e.getActionCommand())
 		{
 		case "change fee":
-			changeFee();
+			showFeeWindow();
 			break;
 		case "change status":
 			this.changeStatus();			
@@ -75,6 +89,8 @@ public class ManagerController implements ActionListener
 			break;
 		case "closeReport":
 			summary.setVisible(false);
+		case "submitFee":
+			this.changeFee();
 			break;
 		}		
 	}

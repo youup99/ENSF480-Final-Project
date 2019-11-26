@@ -66,6 +66,7 @@ public class ChangeFeeView extends JFrame{
 	
 	public void addSubmitListener(ActionListener al)  {
     	submit.addActionListener(al);
+    	submit.setActionCommand("submitFee");
 	}
 	
 	public void setFee(double fee) {
