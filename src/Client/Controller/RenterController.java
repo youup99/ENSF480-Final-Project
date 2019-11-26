@@ -38,8 +38,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 	{
 		if (e.getActionCommand().equals("exit"))
 		{
-			renterView.setVisible(false);
-			return;
+			System.exit(1);
 		}
 		
 		search = new SearchController (this);

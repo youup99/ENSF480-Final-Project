@@ -68,8 +68,7 @@ public class LandlordController implements ActionListener
 			addNewProperty();
 			break;
 		case "exit":
-			landlordView.setVisible(false);
-			break;
+			System.exit(1);
 		}
 	}
 	
