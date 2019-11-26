@@ -2,6 +2,9 @@ package Client.View;
 
 import java.util.Enumeration;
 import javax.swing.*;
+
+import Client.Property;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +18,10 @@ public class PropertyInfoView extends JFrame implements ActionListener{
 	private JTextArea numOfBaths = new JTextArea();
 	private JTextArea furnished = new JTextArea();
 	private JTextArea cityQuadrant = new JTextArea();
+	private Property property;
 	
-	public PropertyInfoView() {
+	public PropertyInfoView(Property p) {
+		property = p;
 		setSize(456, 335);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Property View");
@@ -110,6 +115,10 @@ public class PropertyInfoView extends JFrame implements ActionListener{
 	
 	public void setCityQuadrant(String cq) {
 		cityQuadrant.setText(cq);
+	}
+	
+	public Property getSelectedProperty() {
+		return property;
 	}
 
 	@Override

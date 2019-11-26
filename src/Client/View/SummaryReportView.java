@@ -18,6 +18,7 @@ public class SummaryReportView{
 //			{"David", "57789", "3456 24th ave NW"}
 //			};
 	private String[][] data;
+	private JFrame frame = new JFrame("Summary Report");
 	private JTextArea houseList = new JTextArea();
 	private JTextArea houseRent = new JTextArea();
 	private JTextArea activeListing = new JTextArea();
@@ -25,7 +26,7 @@ public class SummaryReportView{
 	private SummaryReport summaryReport;
 	
 	public SummaryReportView() {
-    	JFrame frame = new JFrame("Summary Report");
+    	
         frame.setSize(551, 483);
 		frame.getContentPane().setBackground(new Color(230, 230, 250));
 		frame.getContentPane().setLayout(null);
@@ -130,5 +131,11 @@ public class SummaryReportView{
        		    }
        	   }
 	    }	
+	}
+	
+	public void setVisible(boolean v) {
+		if (v == false) {
+			frame.setVisible(false);
+		}
 	}
 }

@@ -6,12 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-<<<<<<< HEAD
-=======
-import Client.Manager;
-import Client.Property;
-import Client.SummaryReport;
->>>>>>> 4b6dae0666187c67b5f763b8346f75ec6238fdc3
 import Client.View.ManagerMenuView;
 import Client.View.PropertyView;
 import Client.View.SummaryReportView;
@@ -64,8 +58,11 @@ public class ManagerController implements ActionListener
 		case "change status":
 			this.changeStatus();			
 			break;
-		case "getInfo":
-			getReport();
+		case "report":
+			openReportForm();
+			break;
+		case "generateReport":
+			generateReport();
 			break;
 		case "closeReport":
 			summary.setVisible(false);
@@ -96,6 +93,8 @@ public class ManagerController implements ActionListener
 		Communication c = Communication.getInstance();
 		try {
 			c.sendString("get report");
+			c.sendString(reportReq.getStartDate());
+			c.sendString (reportReq.getEndDate());
 			SummaryReport report = c.getReport();
 			summary = new SummaryReportView();
 			summary.setNumActiveList(report.getTotalActive());

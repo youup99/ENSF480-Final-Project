@@ -61,5 +61,6 @@ public class ManagerMenuView extends JFrame{
     
     public void addCreateListener(ActionListener al) {
     	createNewReport.addActionListener(al);
+    	createNewReport.setActionCommand("report");
     }
 }

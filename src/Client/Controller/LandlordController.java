@@ -9,13 +9,11 @@ import Client.Communication;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
-<<<<<<< HEAD
+
 import Functionality.Landlord;
 import Functionality.Property;
 import Functionality.PropertyFee;
-=======
-import Client.View.PropertyView;
->>>>>>> 4b6dae0666187c67b5f763b8346f75ec6238fdc3
+
 
 public class LandlordController implements ActionListener 
 {
