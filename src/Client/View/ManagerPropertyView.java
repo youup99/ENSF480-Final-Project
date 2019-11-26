@@ -11,8 +11,8 @@ import Functionality.Property;
 public class ManagerPropertyView extends PropertyView {
 	private ManagerController managerc;
 	
-	public ManagerPropertyView() {
-		super();
+	public ManagerPropertyView(String[][]dataa) {
+		super(dataa);
 		editView.addSaveListener(this);
 	}
 

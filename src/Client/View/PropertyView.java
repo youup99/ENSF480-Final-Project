@@ -21,9 +21,9 @@ import Functionality.Property;
 import java.awt.BorderLayout;
 
 public abstract class PropertyView implements ActionListener{
-   private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
-   private String[][] data;
-   private JFrame frame;
+   protected String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
+   protected String[][] data;
+   protected JFrame frame;
 //   private String[][] data = {
 //         {"12345", "Apartment", "2", "4", "Yes", "NW"},
 //         {"67890", "Separate", "1", "3", "No", "SW"},
@@ -34,13 +34,12 @@ public abstract class PropertyView implements ActionListener{
    
    protected PropertyInfoView propertyInfo;
 
-   public PropertyView() {
+   public PropertyView(String[][] dataa) {
     	Dimension dim = new Dimension(1000,200);
     	frame = new JFrame("Property View");
         frame.setLocation(200,400);
         frame.setSize(dim);
-        setData();
-        JTable table = new JTable(data, columnNames) {
+        JTable table = new JTable(dataa, columnNames) {
         private static final long serialVersionUID = 1L;
 			
 		@Override
@@ -78,29 +77,6 @@ public abstract class PropertyView implements ActionListener{
     }
    
    public abstract void clickedAction(MouseEvent e);
-   public void setData() {
-	   for(int i = 0; i < propertyList.size(); i++) {
-		   for(int j = 0; j < 5; j++) {
-			    if (j == 0) {
-				   data[i][j] = Integer.toString(propertyList.get(i).getID());
-       			} else if (j == 1) {
-       			   data[i][j] = propertyList.get(i).getType();
-       		    } else if (j == 2) {
-       			   data[i][j] = Integer.toString(propertyList.get(i).getNumOfBedrooms());
-       		    } else if (j == 3) {
-       			   data[i][j] = Integer.toString(propertyList.get(i).getNumOfBathrooms());
-       		    } else if (j == 4) {
-       			   if (propertyList.get(i).isFurnished() == true) {
-       				   data[i][j] = "Yes";
-       			   } else if (propertyList.get(i).isFurnished() == false) {
-       				   data[i][j] = "No";
-       			   }
-       		    } else if (j == 5) {
-       			   data[i][j] = propertyList.get(i).getCityQuadrant();
-       		    }
-       	   }
-       }
-   }
    
    public void setDisplay(ArrayList<Property> p)  {
 	   propertyList = p;

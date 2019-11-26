@@ -55,7 +55,7 @@ public class PropertyFee implements Serializable{
 	public void setPeriod(int period) {
 		this.period = period;
 		Calendar cal = Calendar.getInstance();
-        cal.setTime(new java.util.Date(feePeriodStart));
+        //cal.setTime(new java.util.Date(feePeriodStart));
         cal.add(Calendar.DAY_OF_MONTH, period);
         this.setFeePeriodEnd(new Date(cal.getTimeInMillis()).toString());
 	}

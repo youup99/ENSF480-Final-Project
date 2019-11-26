@@ -145,8 +145,29 @@ public class ManagerController implements ActionListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
-		propView = new ManagerPropertyView();
+		String[][] data = new String[allProperties.size()][6];
+		for(int i = 0; i < allProperties.size(); i++) {
+			   for(int j = 0; j < 5; j++) {
+				    if (j == 0) {
+					   data[i][j] = Integer.toString(allProperties.get(i).getID());
+	       			} else if (j == 1) {
+	       			   data[i][j] = allProperties.get(i).getType();
+	       		    } else if (j == 2) {
+	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBedrooms());
+	       		    } else if (j == 3) {
+	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBathrooms());
+	       		    } else if (j == 4) {
+	       			   if (allProperties.get(i).isFurnished() == true) {
+	       				   data[i][j] = "Yes";
+	       			   } else if (allProperties.get(i).isFurnished() == false) {
+	       				   data[i][j] = "No";
+	       			   }
+	       		    } else if (j == 5) {
+	       			   data[i][j] = allProperties.get(i).getCityQuadrant();
+	       		    }
+	       	   }
+	       }		
+		propView = new ManagerPropertyView(data);
 		propView.setManagerController (this);
 		propView.setDisplay(allProperties);
 		propView.setVisible(true);
