@@ -3,17 +3,23 @@ package Client.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTable;
-
 import Client.Controller.ManagerController;
 import Functionality.Property;
 
 public class ManagerPropertyView extends PropertyView {
 	private ManagerController managerc;
 	
-	public ManagerPropertyView(String[][]dataa) {
-		super(dataa);
+	public ManagerPropertyView(String[][]data) {
+		super(data);
 		editView.addSaveListener(this);
+	}
+	
+	@Override
+	public void mouseAction(MouseEvent e) {
+		int index = table.getSelectedRow();
+		Property sendData = propertyList.get(index);
+        editView = new EditPropertyView(sendData);
+        editView.setVisible(true);
 	}
 
 	@Override
@@ -27,11 +33,4 @@ public class ManagerPropertyView extends PropertyView {
 		managerc = mc;
 	}
 
-	@Override
-	public void clickedAction(MouseEvent e) {
-		JTable target = (JTable) e.getSource();
-        int row = target.getSelectedRow();
-        Property sendData = propertyList.get(row);
-        editView = new EditPropertyView(sendData);
-	}
 }

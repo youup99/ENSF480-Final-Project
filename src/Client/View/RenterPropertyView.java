@@ -17,10 +17,7 @@ public class RenterPropertyView extends PropertyView {
 
 	@Override
 	public void mouseAction(MouseEvent e) {
-		int index = table.getSelectedRow();
-		Property sendData = propertyList.get(index);
-        editView = new EditPropertyView(sendData);
-        propertyInfo.addSendEmailListener(this);
+		
 	}
 	
 	public void setRenterController(RenterController rc) {
@@ -32,6 +29,4 @@ public class RenterPropertyView extends PropertyView {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 }
