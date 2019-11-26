@@ -1,7 +1,11 @@
 package Client.View;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.*;
+
+import Client.Property;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -11,8 +15,11 @@ public class EditPropertyView extends JFrame{
 	private JButton saveBtn = new JButton("Save");
 	private JTextArea id = new JTextArea();
 	private JComboBox comboBox = new JComboBox(status);
+	private Property property;
 	
-	public EditPropertyView() {
+	public EditPropertyView(Property p) {
+		property = p;
+		
 		setSize(278, 222);
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Edit Property");
@@ -43,8 +50,8 @@ public class EditPropertyView extends JFrame{
     	saveBtn.setActionCommand("saveEditProperty");
 	}
 	
-	public void setID(int idd) {
-		id.setText(Integer.toString(idd));
+	public void setID() {
+		id.setText(Integer.toString(property.getID()));
 	}
 	
 	public String getStatus() {
