@@ -20,7 +20,8 @@ public class RenterPropertyView extends PropertyView {
 		int index = table.getSelectedRow();
 		Property sendData = propertyList.get(index);
         editView = new EditPropertyView(sendData);
-        propertyInfo.addSendEmailListener(this);
+        editView.setVisible(true);
+        //propertyInfo.addSendEmailListener(this);
 	}
 	
 	public void setRenterController(RenterController rc) {
