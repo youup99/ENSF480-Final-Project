@@ -9,6 +9,7 @@ import Client.Communication;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
+import Client.View.LandlordPropertyView;
 import Client.View.PropertyView;
 import Functionality.Landlord;
 import Functionality.Property;
@@ -20,7 +21,7 @@ public class LandlordController implements ActionListener
 	private Landlord landlord;
 	private LandlordMenuView landlordView;
 	private CreatePropertyView newProp;
-	private PropertyView propView;
+	private LandlordPropertyView propView;
 	private PropertyController propertyC;
 	private ArrayList<Property> ownedProperties;
 	
@@ -88,7 +89,7 @@ public class LandlordController implements ActionListener
 		}		
 		ownedProperties = landlordProperties;
 		
-		propView = new PropertyView ();
+		propView = new LandlordPropertyView();
 		propView.setLandlordController(this);
 		propView.setDisplay(ownedProperties);
 	}

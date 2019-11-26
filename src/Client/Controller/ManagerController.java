@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 import Client.Communication;
 import Client.View.ManagerMenuView;
+import Client.View.ManagerPropertyView;
 import Client.View.PropertyView;
 import Client.View.ReportRequestView;
 import Client.View.SummaryReportView;
+import Client.View.UserListView;
 import Functionality.Manager;
 import Functionality.Property;
 import Functionality.SummaryReport;
@@ -19,8 +21,9 @@ public class ManagerController implements ActionListener
 	private ManagerMenuView managerView;
 	private Manager manager;
 	private SummaryReportView summary;
-	private PropertyView propView;
+	private ManagerPropertyView propView;
 	private ReportRequestView reportReq;
+	private UserListView userView;
 	
 	public ManagerController (Manager m)
 	{
@@ -104,7 +107,7 @@ public class ManagerController implements ActionListener
 			summary.setNumHouseRent(report.getTotalRented());
 			summary.setVisible(true);
 			summary.addCloseListener(this);
-		} catch (IOException e) {
+		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -123,7 +126,7 @@ public class ManagerController implements ActionListener
 			e.printStackTrace();
 		}
 				
-		propView = new PropertyView ();		
+		propView = new ManagerPropertyView();		
 		propView.setDisplay(allProperties);
 		propView.setManagerController (this);
 	}

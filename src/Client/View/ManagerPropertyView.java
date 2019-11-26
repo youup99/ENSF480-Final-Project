@@ -6,8 +6,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
-import Client.Property;
 import Client.Controller.ManagerController;
+import Functionality.Property;
 
 public class ManagerPropertyView extends PropertyView {
 	private ManagerController managerc;

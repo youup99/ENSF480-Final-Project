@@ -22,6 +22,7 @@ public class UserListView{
    private static final long serialVersionUID = 1L;
    private String[] columnNames = {"ID", "UserName", "FirstName", "LastName", "email", "Type"};
    private String[][] data;
+   private JFrame frame = new JFrame("User List");
 //   private String[][] data = {
 //         {"asdf", "Minji", "Kim", "minjikm19@gmail.com", "renter"},
 //         {"qfwea", "Youup", "Kim", "youup.kim99@gmail.com", "landlord"},
@@ -30,7 +31,6 @@ public class UserListView{
    
    public UserListView() {
     	Dimension dim = new Dimension(800,200);
-    	JFrame frame = new JFrame("User List");
         frame.setLocation(200,400);
         frame.setSize(dim);
         setData();
@@ -80,7 +80,7 @@ public class UserListView{
    }
   public void setVisible (boolean b)
    {
-	frame.setVisible(b); 
+	  frame.setVisible(b); 
    }
 	
   public void setDisplay (ArrayList<User> users)
