@@ -66,6 +66,7 @@ public class ChangeFeeView extends JFrame{
 	
 	public void addSubmitListener(ActionListener al)  {
     	submit.addActionListener(al);
+    	submit.setActionCommand("submitFee");
 	}
 	
 	public void setFee(double fee) {
@@ -73,7 +74,7 @@ public class ChangeFeeView extends JFrame{
 	}
 	
 	public void setPeriod(int period) {
-		currentFee.setText(Double.toString(period));
+		currentFee.setText(Integer.toString(period));
 	}
 	
 	public Double getChangeFee() {
