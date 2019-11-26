@@ -17,7 +17,7 @@ public class RenterPropertyView extends PropertyView {
 
 	@Override
 	public void mouseAction(MouseEvent e) {
-		
+		propertyInfo.addSendEmailListener(this);
 	}
 	
 	public void setRenterController(RenterController rc) {

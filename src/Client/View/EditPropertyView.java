@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class EditPropertyView extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private String [] status = {"active", "rented", "cancelled", "suspended"}; 
+	private String [] status = {"Active", "Rented", "Cancelled", "Suspended"}; 
 	private JButton saveBtn = new JButton("Save");
 	private JTextArea id = new JTextArea();
 	private JComboBox comboBox = new JComboBox(status);

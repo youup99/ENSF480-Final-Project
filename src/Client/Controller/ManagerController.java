@@ -28,6 +28,10 @@ public class ManagerController implements ActionListener
 	private ReportRequestView reportReq;
 	private UserListView userView;
 	private ChangeFeeView changeFeeView;
+	private ArrayList<Property> allProperties = new ArrayList<Property> ();
+	private String[][] data;
+	private ArrayList<User> u = new ArrayList<User>();
+	private String[][] userData;
 	
 	public ManagerController (Manager m)
 	{
@@ -103,29 +107,13 @@ public class ManagerController implements ActionListener
 	private void getUserInfo ()
 	{
 		Communication c = Communication.getInstance();
-		ArrayList<User> u = new ArrayList<User>();
+		
 		try {
 			c.sendString("get users");
 			u = c.getUsers();
-			String[][] data = new String[u.size()][6];
-			   for(int i = 0; i < u.size(); i++) {
-				   for(int j = 0; j < 6; j++) {
-					    if (j == 0) {
-					       data[i][j] = Integer.toString(u.get(i).getID());
-					    } else if (j == 1) {
-						   data[i][j] = u.get(i).getUserName();
-		       			} else if (j == 2) {
-		       			   data[i][j] = u.get(i).getFirstName();
-		       		    } else if (j == 3) {
-		       			   data[i][j] = u.get(i).getLastName();
-		       		    } else if (j == 4) {
-		       			   data[i][j] = u.get(i).getEmail();
-		       		    } else if (j == 5) {
-		       			   data[i][j] = u.get(i).getType();
-		       		    }
-		       	   }
-		       }
-			userView = new UserListView(data);
+			setUserData();
+			
+			userView = new UserListView(userData);
 			userView.setManagerController(this);
 			userView.setDisplay(c.getUsers());
 			userView.setVisible(true);
@@ -159,7 +147,7 @@ public class ManagerController implements ActionListener
 	private void changeStatus() 
 	{
 		Communication c = Communication.getInstance();
-		ArrayList<Property> allProperties = new ArrayList<Property> ();
+		
 		try {
 			c.sendString ("get all properties");
 			allProperties = c.getProperties();
@@ -167,28 +155,9 @@ public class ManagerController implements ActionListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String[][] data = new String[allProperties.size()][6];
-		for(int i = 0; i < allProperties.size(); i++) {
-			   for(int j = 0; j < 6; j++) {
-				    if (j == 0) {
-					   data[i][j] = Integer.toString(allProperties.get(i).getID());
-	       			} else if (j == 1) {
-	       			   data[i][j] = allProperties.get(i).getType();
-	       		    } else if (j == 2) {
-	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBedrooms());
-	       		    } else if (j == 3) {
-	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBathrooms());
-	       		    } else if (j == 4) {
-	       			   if (allProperties.get(i).isFurnished() == true) {
-	       				   data[i][j] = "Yes";
-	       			   } else if (allProperties.get(i).isFurnished() == false) {
-	       				   data[i][j] = "No";
-	       			   }
-	       		    } else if (j == 5) {
-	       			   data[i][j] = allProperties.get(i).getCityQuadrant();
-	       		    }
-	       	   }
-	       }		
+		
+		setPropertyData();
+		
 		propView = new ManagerPropertyView(data);
 		propView.setManagerController (this);
 		propView.setDisplay(allProperties);
@@ -235,5 +204,51 @@ public class ManagerController implements ActionListener
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void setPropertyData() {
+		data = new String[allProperties.size()][6];
+		for(int i = 0; i < allProperties.size(); i++) {
+			   for(int j = 0; j < 6; j++) {
+				    if (j == 0) {
+					   data[i][j] = Integer.toString(allProperties.get(i).getID());
+	       			} else if (j == 1) {
+	       			   data[i][j] = allProperties.get(i).getType();
+	       		    } else if (j == 2) {
+	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBedrooms());
+	       		    } else if (j == 3) {
+	       			   data[i][j] = Integer.toString(allProperties.get(i).getNumOfBathrooms());
+	       		    } else if (j == 4) {
+	       			   if (allProperties.get(i).isFurnished() == true) {
+	       				   data[i][j] = "Yes";
+	       			   } else if (allProperties.get(i).isFurnished() == false) {
+	       				   data[i][j] = "No";
+	       			   }
+	       		    } else if (j == 5) {
+	       			   data[i][j] = allProperties.get(i).getCityQuadrant();
+	       		    }
+	       	   }
+	       }
+	}
+	
+	public void serUserData() {
+		userData = new String[u.size()][6];
+		   for(int i = 0; i < u.size(); i++) {
+			   for(int j = 0; j < 6; j++) {
+				    if (j == 0) {
+				       data[i][j] = Integer.toString(u.get(i).getID());
+				    } else if (j == 1) {
+					   data[i][j] = u.get(i).getUserName();
+	       			} else if (j == 2) {
+	       			   data[i][j] = u.get(i).getFirstName();
+	       		    } else if (j == 3) {
+	       			   data[i][j] = u.get(i).getLastName();
+	       		    } else if (j == 4) {
+	       			   data[i][j] = u.get(i).getEmail();
+	       		    } else if (j == 5) {
+	       			   data[i][j] = u.get(i).getType();
+	       		    }
+	       	   }
+	       }
 	}
 }

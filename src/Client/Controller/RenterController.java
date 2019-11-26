@@ -19,7 +19,8 @@ public class RenterController implements ActionListener, GeneralRenterController
 	private RegisteredRenter renter;
 	private PropertyController propertyC;
 	private RenterPropertyView propView;
-	
+	private ArrayList<Property> searchResults = null;
+	private String[][] dataa;
 	public RenterController (RegisteredRenter renter)
 	{
 		renterView = new RenterMenuView ();
@@ -46,7 +47,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 	
 	public void getSearchData (Property data)
 	{
-		ArrayList<Property> searchResults = null;
+		
 		
 		Communication cToS = Communication.getInstance();
 		try {
@@ -69,7 +70,17 @@ public class RenterController implements ActionListener, GeneralRenterController
 			System.out.println("getProperties() did not retrieve data - returned null to searchResult");
 			e1.printStackTrace();
 		}
-		String[][] dataa = new String[searchResults.size()][6];
+		
+		setData();
+			
+		propView = new RenterPropertyView(dataa);
+		propView.setRenterController(this);
+		propView.setDisplay(searchResults);
+		propView.setVisible(true);
+	}
+	
+	public void setData() {
+		dataa = new String[searchResults.size()][6];
 		for(int i = 0; i < searchResults.size(); i++) {
 			   for(int j = 0; j < 6; j++) {
 				    if (j == 0) {
@@ -90,11 +101,6 @@ public class RenterController implements ActionListener, GeneralRenterController
 	       			   dataa[i][j] = searchResults.get(i).getCityQuadrant();
 	       		    }
 	       	   }
-	       }	
-		propView = new RenterPropertyView(dataa);
-		propView.setRenterController(this);
-		propView.setDisplay(searchResults);
-		propView.setVisible(true);
+	       }
 	}
-
 }
