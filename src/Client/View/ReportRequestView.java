@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class ReportRequestView extends JFrame{
+public class ReportRequestView extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton generateReport = new JButton("Generate Report");
 	private JFormattedTextField startDate = new JFormattedTextField(new SimpleDateFormat("yyyy-MM-dd"));
@@ -46,6 +46,7 @@ class ReportRequestView extends JFrame{
 	
 	public void addGenerateReportListener(ActionListener al)  {
     	generateReport.addActionListener(al);
+    	generateReport.setActionCommand("generateReport");
 	}
 	
 	public String getStartDate()  {

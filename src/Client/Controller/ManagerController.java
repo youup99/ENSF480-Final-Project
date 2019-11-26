@@ -11,6 +11,7 @@ import Client.Property;
 import Client.SummaryReport;
 import Client.View.ManagerMenuView;
 import Client.View.PropertyView;
+import Client.View.ReportRequestView;
 import Client.View.SummaryReportView;
 
 public class ManagerController implements ActionListener
@@ -19,6 +20,7 @@ public class ManagerController implements ActionListener
 	private Manager manager;
 	private SummaryReportView summary;
 	private PropertyView propView;
+	private ReportRequestView reportReq;
 	
 	public ManagerController (Manager m)
 	{
@@ -59,12 +61,36 @@ public class ManagerController implements ActionListener
 		case "change status":
 			this.changeStatus();			
 			break;
-		case "getInfo":
-			getReport();
+		case "report":
+			openReportForm();
+			break;
+		case "generateReport":
+			generateReport();
 			break;
 		case "closeReport":
 			summary.setVisible(false);
 			break;
+		}
+		
+	}
+
+	private void generateReport() 
+	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("get report");
+			c.sendString(reportReq.getStartDate());
+			c.sendString (reportReq.getEndDate());
+			SummaryReport report = c.getReport();
+			summary = new SummaryReportView();
+			summary.setNumActiveList(report.getTotalActive());
+			summary.setNumHouseList(report.getTotalListed());
+			summary.setNumHouseRent(report.getTotalRented());
+			summary.setVisible(true);
+			summary.addCloseListener(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
@@ -86,23 +112,10 @@ public class ManagerController implements ActionListener
 		propView.setManagerController (this);
 	}
 
-	private void getReport() 
+	private void openReportForm() 
 	{
-		Communication c = Communication.getInstance();
-		try {
-			c.sendString("get report");
-			SummaryReport report = c.getReport();
-			summary = new SummaryReportView();
-			summary.setNumActiveList(report.getTotalActive());
-			summary.setNumHouseList(report.getTotalListed());
-			summary.setNumHouseRent(report.getTotalRented());
-			summary.setVisible(true);
-			summary.addCloseListener(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		reportReq = new ReportRequestView();
+		reportReq.addGenerateReportListener(this);		
 	}
 	
 	public void updateStatus (Property p)
