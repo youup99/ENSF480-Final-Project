@@ -3,8 +3,6 @@ package Client.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTable;
-
 import Client.Controller.GuestController;
 import Client.Controller.RenterController;
 import Functionality.Property;
@@ -19,6 +17,15 @@ public class RenterPropertyView extends PropertyView {
 
 	@Override
 	public void mouseAction(MouseEvent e) {
+		int index = table.getSelectedRow();
+		if (propertyList.size() > 0) {
+			Property sendData = propertyList.get(index);
+			propertyInfo = new PropertyInfoView(sendData);
+		} else {
+			Property sendData = null;
+			propertyInfo = new PropertyInfoView(sendData);
+		}
+		propertyInfo.setVisible(true);
 		propertyInfo.addSendEmailListener(this);
 	}
 	
