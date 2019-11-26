@@ -75,6 +75,13 @@ public class PropertyInfoView extends JFrame{
 		cityQuadrant.setEditable(false);
 		cityQuadrant.setBounds(125, 191, 52, 24);
 		getContentPane().add(cityQuadrant);
+		
+		setIDField();
+		setAddressField();
+		setNumOfBedField();
+		setNumOfBathField();
+		setFurnished();
+		setCityQuadrant();
 	}
 	
 	public void addSendEmailListener(ActionListener al)  {
@@ -82,37 +89,32 @@ public class PropertyInfoView extends JFrame{
     	emailBtn.setActionCommand("email");
 	}
 	
-	public void setIDField(int id) {
-		String data = Integer.toString(id);
-		ID.setText(data);
+	public void setIDField() {
+		ID.setText(Integer.toString(property.getID()));
 	}
 	
-	public void setAddressField(String ad) {
-		address.setText(ad);
+	public void setAddressField() {
+		address.setText(property.getAddress());
 	}
 	
-	public void setNumOfBedField(int n) {
-		String data = Integer.toString(n);
-		numOfBeds.setText(data);
+	public void setNumOfBedField() {
+		numOfBeds.setText(Integer.toString(property.getNumOfBedrooms()));
 	}
 	
-	public void setNumOfBathField(int n) {
-		String data = Integer.toString(n);
-		numOfBaths.setText(data);
+	public void setNumOfBathField() {
+		numOfBaths.setText(Integer.toString(property.getNumOfBathrooms()));
 	}
 	
-	public void setFurnished(boolean b) {
-		String data;
-		if (b == true) {
-			data = "yes";
+	public void setFurnished() {
+		if (property.isFurnished() == true) {
+			furnished.setText("Yes");
 		} else {
-			data = "no";
+			furnished.setText("No");
 		}
-		furnished.setText(data);
 	}
 	
-	public void setCityQuadrant(String cq) {
-		cityQuadrant.setText(cq);
+	public void setCityQuadrant() {
+		cityQuadrant.setText(property.getCityQuadrant());
 	}
 	
 	public Property getSelectedProperty() {

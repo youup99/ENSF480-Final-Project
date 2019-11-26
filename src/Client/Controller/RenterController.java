@@ -47,8 +47,6 @@ public class RenterController implements ActionListener, GeneralRenterController
 	
 	public void getSearchData (Property data)
 	{
-		
-		
 		Communication cToS = Communication.getInstance();
 		try {
 			cToS.sendString("preferences"); //TODO: will change, only temporary
