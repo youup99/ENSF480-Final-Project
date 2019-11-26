@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 public class ChangeFeeView extends JFrame{
 	private static final long serialVersionUID = 1L;
+	private JTextArea currentFee = new JTextArea();
+	private JTextArea currentPeriod = new JTextArea();
 	private JTextField changeFee;
 	private JTextField changePeriod;
 	private JButton submit = new JButton("submit");
@@ -20,7 +22,6 @@ public class ChangeFeeView extends JFrame{
 		currentFeeLbl.setBounds(15, 16, 115, 20);
 		getContentPane().add(currentFeeLbl);
 		
-		JTextArea currentFee = new JTextArea();
 		currentFee.setEditable(false);
 		currentFee.setBounds(123, 16, 93, 24);
 		getContentPane().add(currentFee);
@@ -29,7 +30,6 @@ public class ChangeFeeView extends JFrame{
 		currentPeriodLbl.setBounds(15, 49, 115, 20);
 		getContentPane().add(currentPeriodLbl);
 		
-		JTextArea currentPeriod = new JTextArea();
 		currentPeriod.setEditable(false);
 		currentPeriod.setBounds(123, 49, 93, 24);
 		getContentPane().add(currentPeriod);
@@ -68,11 +68,19 @@ public class ChangeFeeView extends JFrame{
     	submit.addActionListener(al);
 	}
 	
-	public String getChangeFee() {
-		return changeFee.getText();
+	public void setFee(double fee) {
+		currentFee.setText(Double.toString(fee));
 	}
 	
-	public String getChangePeriod() {
-		return changePeriod.getText();
+	public void setPeriod(int period) {
+		currentFee.setText(Double.toString(period));
+	}
+	
+	public Double getChangeFee() {
+		return Double.parseDouble(changeFee.getText());
+	}
+	
+	public int getChangePeriod() {
+		return Integer.parseInt(changePeriod.getText());
 	}
 }

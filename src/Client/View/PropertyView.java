@@ -33,7 +33,6 @@ public abstract class PropertyView implements ActionListener{
    
    protected PropertyInfoView propertyInfo;
 
-   
    public PropertyView() {
     	Dimension dim = new Dimension(1000,200);
     	JFrame frame = new JFrame("Property View");
