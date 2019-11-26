@@ -231,7 +231,7 @@ public class ManagerController implements ActionListener
 	       }
 	}
 	
-	public void serUserData() {
+	public void setUserData() {
 		userData = new String[u.size()][6];
 		   for(int i = 0; i < u.size(); i++) {
 			   for(int j = 0; j < 6; j++) {
