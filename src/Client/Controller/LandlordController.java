@@ -22,6 +22,9 @@ public class LandlordController implements ActionListener
 	private LandlordPropertyView propView;
 	private PropertyController propertyC;
 	private ArrayList<Property> ownedProperties;
+	private ArrayList<Property> landlordProperties = new ArrayList<Property>();
+	String[][] data;
+
 	
 	public LandlordController (Landlord l)
 	{
@@ -75,7 +78,6 @@ public class LandlordController implements ActionListener
 	private void getLandlordProperties ()
 	{
 		Communication ctos = Communication.getInstance();
-		ArrayList<Property> landlordProperties = new ArrayList<Property>();
 		try {
 			ctos.sendString("landlord properties");
 			ctos.sendString (landlord.getFirstName() + " " + landlord.getLastName());
@@ -85,7 +87,14 @@ public class LandlordController implements ActionListener
 			e.printStackTrace();
 		}		
 		ownedProperties = landlordProperties;
-		String[][] data = new String[landlordProperties.size()][6];
+		setData();
+		propView = new LandlordPropertyView(data);
+		propView.setLandlordController(this);
+		propView.setDisplay(ownedProperties);
+	}
+	
+	public void setData() {
+		data = new String[landlordProperties.size()][6];
 		for(int i = 0; i < landlordProperties.size(); i++) {
 			   for(int j = 0; j < 6; j++) {
 				    if (j == 0) {
@@ -106,10 +115,7 @@ public class LandlordController implements ActionListener
 	       			   data[i][j] = landlordProperties.get(i).getCityQuadrant();
 	       		    }
 	       	   }
-	       }		
-		propView = new LandlordPropertyView(data);
-		propView.setLandlordController(this);
-		propView.setDisplay(ownedProperties);
+	       }
 	}
 	
 	public void updateStatus (Property p)

@@ -17,8 +17,14 @@ public class LandlordPropertyView extends PropertyView {
 	@Override
 	public void mouseAction(MouseEvent e) {
 		int index = table.getSelectedRow();
-		Property sendData = propertyList.get(index);
-        editView = new EditPropertyView(sendData);
+		if(propertyList.size() > 0) {
+			Property sendData = propertyList.get(index);
+			editView = new EditPropertyView(sendData);
+		}
+		else {
+			Property sendData = null;
+			editView = new EditPropertyView(sendData);
+		}
         editView.setVisible(true);
 	}
 	
