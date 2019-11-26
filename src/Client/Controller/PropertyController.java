@@ -29,7 +29,7 @@ public class PropertyController implements ActionListener
     {
     	//function of propertyview with properties passed down to it. Implemented in view; to be added by Minji
     }
-
+x
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
