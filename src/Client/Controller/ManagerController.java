@@ -53,7 +53,7 @@ public class ManagerController implements ActionListener
 		changeFeeView.addSubmitListener (this);
 		
 	}
-	
+//test
 	private void changeFee ()
 	{
 		Communication c = Communication.getInstance();
