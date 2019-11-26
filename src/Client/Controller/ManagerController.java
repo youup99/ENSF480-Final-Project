@@ -17,6 +17,7 @@ import Functionality.Manager;
 import Functionality.Property;
 import Functionality.PropertyFee;
 import Functionality.SummaryReport;
+import Functionality.User;
 
 public class ManagerController implements ActionListener
 {
@@ -101,10 +102,31 @@ public class ManagerController implements ActionListener
 	
 	private void getUserInfo ()
 	{
-		userView = new UserListView ();
 		Communication c = Communication.getInstance();
+		ArrayList<User> u = new ArrayList<User>();
 		try {
 			c.sendString("get users");
+			u = c.getUsers();
+			String[][] data = new String[u.size()][6];
+			   for(int i = 0; i < u.size(); i++) {
+				   for(int j = 0; j < 6; j++) {
+					    if (j == 0) {
+					       data[i][j] = Integer.toString(u.get(i).getID());
+					    } else if (j == 1) {
+						   data[i][j] = u.get(i).getUserName();
+		       			} else if (j == 2) {
+		       			   data[i][j] = u.get(i).getFirstName();
+		       		    } else if (j == 3) {
+		       			   data[i][j] = u.get(i).getLastName();
+		       		    } else if (j == 4) {
+		       			   data[i][j] = u.get(i).getEmail();
+		       		    } else if (j == 5) {
+		       			   data[i][j] = u.get(i).getType();
+		       		    }
+		       	   }
+		       }
+			userView = new UserListView(data);
+			userView.setManagerController(this);
 			userView.setDisplay(c.getUsers());
 			userView.setVisible(true);
 		} catch (IOException | ClassNotFoundException e) {
@@ -147,7 +169,7 @@ public class ManagerController implements ActionListener
 		}
 		String[][] data = new String[allProperties.size()][6];
 		for(int i = 0; i < allProperties.size(); i++) {
-			   for(int j = 0; j < 5; j++) {
+			   for(int j = 0; j < 6; j++) {
 				    if (j == 0) {
 					   data[i][j] = Integer.toString(allProperties.get(i).getID());
 	       			} else if (j == 1) {

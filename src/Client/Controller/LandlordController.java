@@ -85,8 +85,29 @@ public class LandlordController implements ActionListener
 			e.printStackTrace();
 		}		
 		ownedProperties = landlordProperties;
-		
-		propView = new LandlordPropertyView();
+		String[][] data = new String[landlordProperties.size()][6];
+		for(int i = 0; i < landlordProperties.size(); i++) {
+			   for(int j = 0; j < 6; j++) {
+				    if (j == 0) {
+					   data[i][j] = Integer.toString(landlordProperties.get(i).getID());
+	       			} else if (j == 1) {
+	       			   data[i][j] = landlordProperties.get(i).getType();
+	       		    } else if (j == 2) {
+	       			   data[i][j] = Integer.toString(landlordProperties.get(i).getNumOfBedrooms());
+	       		    } else if (j == 3) {
+	       			   data[i][j] = Integer.toString(landlordProperties.get(i).getNumOfBathrooms());
+	       		    } else if (j == 4) {
+	       			   if (landlordProperties.get(i).isFurnished() == true) {
+	       				   data[i][j] = "Yes";
+	       			   } else if (landlordProperties.get(i).isFurnished() == false) {
+	       				   data[i][j] = "No";
+	       			   }
+	       		    } else if (j == 5) {
+	       			   data[i][j] = landlordProperties.get(i).getCityQuadrant();
+	       		    }
+	       	   }
+	       }		
+		propView = new LandlordPropertyView(data);
 		propView.setLandlordController(this);
 		propView.setDisplay(ownedProperties);
 	}
