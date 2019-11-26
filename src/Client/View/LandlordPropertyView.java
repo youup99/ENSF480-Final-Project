@@ -12,6 +12,7 @@ public class LandlordPropertyView extends PropertyView {
 	private LandlordController landc;
 	
 	public LandlordPropertyView() {
+		super();
 		editView.addSaveListener(this);
 	}
 	

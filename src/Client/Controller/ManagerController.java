@@ -146,9 +146,9 @@ public class ManagerController implements ActionListener
 			e.printStackTrace();
 		}
 				
-		propView = new ManagerPropertyView();		
-		propView.setDisplay(allProperties);
+		propView = new ManagerPropertyView();
 		propView.setManagerController (this);
+		propView.setDisplay(allProperties);
 	}
 	
 	private void getReport() 
