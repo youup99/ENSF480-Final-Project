@@ -9,7 +9,7 @@ import Client.Communication;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
-
+import Client.View.PropertyView;
 import Functionality.Landlord;
 import Functionality.Property;
 import Functionality.PropertyFee;
@@ -109,7 +109,7 @@ public class LandlordController implements ActionListener
 	private void addNewProperty() 
 	{
 		newProp.setVisible(false);
-		Property property = new Property ("address?", newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
+		Property property = new Property (newProp.getAddress(), newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
 				newProp.getBath(), newProp.getFurnished(),
 				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
 		

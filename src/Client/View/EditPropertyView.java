@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.*;
 
-import Client.Property;
+import Functionality.Property;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
