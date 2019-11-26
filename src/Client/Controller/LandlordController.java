@@ -12,13 +12,14 @@ import Client.PropertyFee;
 import Client.View.CreatePropertyView;
 import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
+import Client.View.PropertyView;
 
 public class LandlordController implements ActionListener 
 {
 	private Landlord landlord;
 	private LandlordMenuView landlordView;
 	private CreatePropertyView newProp;
-	private EditPropertyView editProp;
+	private PropertyView propView;
 	private PropertyController propertyC;
 	private ArrayList<Property> ownedProperties;
 	
@@ -36,7 +37,7 @@ public class LandlordController implements ActionListener
 	{
 		PropertyFee propertyFee = new PropertyFee();
 		newProp = new CreatePropertyView ();
-		newProp.setFee(propertyFee.getAmount()); //TODO view needs to display the fee paid...
+		newProp.setCurrentFee(propertyFee.getAmount()); //TODO view needs to display the fee paid...
 		newProp.setVisible(true); //No need for previous one to be invisible
 		
 		
@@ -85,7 +86,23 @@ public class LandlordController implements ActionListener
 			e.printStackTrace();
 		}		
 		ownedProperties = landlordProperties;
-		propertyC.displayProperties("landlord", landlordProperties); //TODO:CHECK...
+		
+		propView = new PropertyView ();
+		propView.setLandlordController(this);
+		propView.setDisplay(ownedProperties);
+	}
+	
+	public void updateStatus (Property p)
+	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("change state");
+			c.sendString (p.getListingState());
+			c.sendString(Integer.toString(p.getID()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void addNewProperty() 

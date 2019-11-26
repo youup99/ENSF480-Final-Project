@@ -3,11 +3,14 @@ package Client.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Client.Communication;
 import Client.Manager;
+import Client.Property;
 import Client.SummaryReport;
 import Client.View.ManagerMenuView;
+import Client.View.PropertyView;
 import Client.View.SummaryReportView;
 
 public class ManagerController implements ActionListener
@@ -15,6 +18,7 @@ public class ManagerController implements ActionListener
 	private ManagerMenuView managerView;
 	private Manager manager;
 	private SummaryReportView summary;
+	private PropertyView propView;
 	
 	public ManagerController (Manager m)
 	{
@@ -53,6 +57,7 @@ public class ManagerController implements ActionListener
 			changeFee();
 			break;
 		case "change status":
+			this.changeStatus();			
 			break;
 		case "getInfo":
 			getReport();
@@ -62,6 +67,23 @@ public class ManagerController implements ActionListener
 			break;
 		}
 		
+	}
+
+	private void changeStatus() 
+	{
+		Communication c = Communication.getInstance();
+		ArrayList<Property> allProperties = new ArrayList<Property> ();
+		try {
+			c.sendString ("get all properties");
+			allProperties = c.getProperties();
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		propView = new PropertyView ();		
+		propView.setDisplay(allProperties);
+		propView.setManagerController (this);
 	}
 
 	private void getReport() 
@@ -81,5 +103,18 @@ public class ManagerController implements ActionListener
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void updateStatus (Property p)
+	{
+		Communication c = Communication.getInstance();
+		try {
+			c.sendString("change state");
+			c.sendString (p.getListingState());
+			c.sendString(Integer.toString(p.getID()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
