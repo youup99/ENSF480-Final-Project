@@ -1,6 +1,6 @@
 package Client.Controller;
 
-import Client.Property;
+import Functionality.Property;
 
 public interface GeneralRenterController 
 {

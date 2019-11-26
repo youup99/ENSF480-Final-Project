@@ -2,6 +2,11 @@ package Server.Domain;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import Functionality.Property;
+import Functionality.PropertyFee;
+import Functionality.SummaryReport;
+import Functionality.User;
 import Server.Database.Database;
 
 public class Operations{
@@ -72,8 +77,6 @@ public class Operations{
     	}
     	return "Unsuccessful!";
     }
-    
-    public String addPreference()
     
     public User getUser(String userName) throws IOException, SQLException {
     	return db.getUser(userName);

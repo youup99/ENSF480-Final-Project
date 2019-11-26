@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.concurrent.ExecutorService;
 
+import Functionality.Property;
+import Functionality.PropertyFee;
+import Functionality.SummaryReport;
+import Functionality.User;
+
 public class Communication{
     private ServerSocket serverSocket;
     private Socket aSocket;
@@ -17,8 +22,8 @@ public class Communication{
 
     public Communication(Socket socket) throws IOException{
         this.aSocket = socket;
-        socketIn = new ObjectInputStream(aSocket.getInputStream());
         socketOut = new ObjectOutputStream(aSocket.getOutputStream());
+        socketIn = new ObjectInputStream(aSocket.getInputStream());
     }
 
     public void sendString(String s) throws IOException{

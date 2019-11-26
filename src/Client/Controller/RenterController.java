@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-import Client.Property;
-import Client.RegisteredRenter;
-import Client.View.RenterMenuView;;
+import Client.View.RenterMenuView;
+import Functionality.Property;
+import Functionality.RegisteredRenter;;
 
 public class RenterController implements ActionListener, GeneralRenterController 
 {

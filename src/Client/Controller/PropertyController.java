@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Client.Communication;
-import Client.Property;
 import Client.View.EditPropertyView;
 import Client.View.PropertyView;
+import Functionality.Property;
 
 public class PropertyController implements ActionListener 
 {

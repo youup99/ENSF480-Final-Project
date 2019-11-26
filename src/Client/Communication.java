@@ -8,9 +8,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 
-import Client.Property;
-import Client.PropertyFee;
-import Client.User;
+import Functionality.Property;
+import Functionality.PropertyFee;
+import Functionality.SummaryReport;
+import Functionality.User;
 
 public class Communication{
 	private ServerSocket serverSocket;
@@ -26,7 +27,9 @@ public class Communication{
     	{
 			try 
 			{
+				System.out.println("TEST");
 				onlyInstance = new Communication (new Socket ("localhost", 9090));
+				System.out.println("TEST1");
 			} catch (IOException e) 
 			{
 				System.err.println ("Error initialising Client Socket");
@@ -39,8 +42,8 @@ public class Communication{
 
     private Communication(Socket socket) throws IOException{
     	this.socket = socket;
-        socketIn = new ObjectInputStream(socket.getInputStream());
         socketOut = new ObjectOutputStream(socket.getOutputStream());
+        socketIn = new ObjectInputStream(socket.getInputStream());
     }
     
     public void sendString(String s) throws IOException{
@@ -109,5 +112,10 @@ public class Communication{
     	socketOut.reset();
     	socketOut.writeObject(users);
     	socketOut.flush();
+    }
+    
+    public SummaryReport getReport(String start, String end) throws IOException, ClassNotFoundException{
+    	SummaryReport report = (SummaryReport) socketIn.readObject();
+    	return report;
     }
 }

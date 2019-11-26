@@ -13,8 +13,10 @@ public class Customer {
 	
 	public Customer(String serverName, int portNumber) {
 		try {
-			communicator = new Communication(new Socket(serverName, portNumber));
-		} catch(IOException e) {
+			communicator = new Communication(new Socket(serverName, portNumber));	
+			System.out.println("Started");
+		} 
+		catch(IOException e) {
 			System.err.println(e.getStackTrace());
 		}
 	}

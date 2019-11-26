@@ -1,6 +1,8 @@
 package Client.View;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -13,12 +15,20 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+<<<<<<< HEAD
+import Functionality.Property;
+import Functionality.User;
+=======
 import Client.Property;
 import Client.User;
+import Client.Controller.LandlordController;
+import Client.Controller.ManagerController;
+import Client.Landlord;
+>>>>>>> 4b6dae0666187c67b5f763b8346f75ec6238fdc3
 
 import java.awt.BorderLayout;
 
-public class PropertyView{
+public class PropertyView implements ActionListener{
    private String[] columnNames = {"ID", "Type", "numOfBedroom", "numOfBathroom", "isFurnished", "cityQuadrant"};
    private String[][] data;
 //   private String[][] data = {
@@ -27,6 +37,9 @@ public class PropertyView{
 //   };
    private ArrayList<Property> propertyList = new ArrayList<Property>();
    private User user;
+   private LandlordController landc;
+   private EditPropertyView editView;
+   private ManagerController managerc;
 
    public PropertyView() {
     	Dimension dim = new Dimension(1000,200);
@@ -64,15 +77,15 @@ public class PropertyView{
         table.addMouseListener(new MouseAdapter() {
            public void mouseClicked(MouseEvent e) {
               if(e.getClickCount() == 2) {
-                 //need to add the way to get data
-            	 if (user.getType() == "landlord") {
-            		 new EditPropertyView();
-            	 } else if (user.getType() == "renter") {
-            		 new PropertyInfoView();
-            	 }
+            	  JTable target = (JTable) e.getSource();
+                  int row = target.getSelectedRow();
+                  Property sendData = propertyList.get(row);
+                  editView = new EditPropertyView(sendData);
               }
            }
+           
         });
+        editView.addSaveListener(this);
     }
    
    public void setData() {
@@ -97,6 +110,23 @@ public class PropertyView{
        		    }
        	   }
        }
+   }
+   
+   public void setDisplay(ArrayList<Property> p)  {
+	   propertyList = p;
+	}
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+	   if (managerc == null) {
+		   Property temp = editView.getSelectedProperty();
+		   temp.setListingState(editView.getStatus());
+		   landc.updateStatus(temp);
+	   } else {
+		   Property temp = editView.getSelectedProperty();
+		   temp.setListingState(editView.getStatus());
+		   managerc.updateStatus(temp);
+	   }
    }
 }
 

@@ -6,8 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
-import Client.Property;
-import Client.SummaryReport;
+import Functionality.SummaryReport;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
