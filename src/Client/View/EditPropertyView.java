@@ -1,7 +1,5 @@
 package Client.View;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
 import javax.swing.*;
 
 import Functionality.Property;

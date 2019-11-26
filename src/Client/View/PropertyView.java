@@ -16,11 +16,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 import Functionality.Property;
-import Functionality.User;
-
-import Client.Controller.LandlordController;
-import Client.Controller.ManagerController;
-import Client.Controller.RenterController;
 
 
 import java.awt.BorderLayout;

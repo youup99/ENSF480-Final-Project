@@ -15,6 +15,7 @@ public class MainView extends JFrame{
 		getContentPane().setBackground(new Color(230, 230, 250));
 		setTitle("Main Menu");
 		getContentPane().setLayout(null);
+		setSize(450, 300);
 		
 
 		landlord.setBounds(66, 57, 115, 56);
