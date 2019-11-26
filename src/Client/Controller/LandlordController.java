@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 import Client.Communication;
 import Client.View.CreatePropertyView;
-import Client.View.EditPropertyView;
 import Client.View.LandlordMenuView;
 import Client.View.LandlordPropertyView;
-import Client.View.PropertyView;
 import Functionality.Landlord;
 import Functionality.Property;
 import Functionality.PropertyFee;
