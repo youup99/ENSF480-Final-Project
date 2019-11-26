@@ -57,4 +57,8 @@ public class EditPropertyView extends JFrame{
 	public String getStatus() {
 		return (String) comboBox.getSelectedItem();
 	}
+	
+	public Property getSelectedProperty() {
+		return property;
+	}
 }
