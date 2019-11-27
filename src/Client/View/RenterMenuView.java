@@ -28,5 +28,6 @@ public class RenterMenuView extends JFrame{
     
     public void addExitListener(ActionListener al)  {
     	exitBtn.addActionListener(al);
+    	exitBtn.setActionCommand("exit");
 	}
 }

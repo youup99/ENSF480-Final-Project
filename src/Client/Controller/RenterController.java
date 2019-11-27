@@ -32,6 +32,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 	private void addListenersToClass ()
 	{
 		renterView.addSearchListener (this);
+		renterView.addExitListener (this);
 	}
 
 	@Override

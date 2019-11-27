@@ -17,14 +17,8 @@ public class ManagerPropertyView extends PropertyView {
 	@Override
 	public void mouseAction(MouseEvent e) {
 		int index = table.getSelectedRow();
-		if(propertyList.size() > 0) {
-			Property sendData = propertyList.get(index);
-			editView = new EditPropertyView(sendData);
-		}
-		else {
-			Property sendData = null;
-			editView = new EditPropertyView(sendData);
-		}
+		Property sendData = propertyList.get(index);
+		editView = new EditPropertyView(sendData);
         editView.setVisible(true);
 	}
 

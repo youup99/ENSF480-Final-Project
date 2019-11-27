@@ -52,6 +52,7 @@ public class LandlordController implements ActionListener
 		//landlordView.addFeeListener(this);
 		landlordView.addEditListener(this);
 		landlordView.addCreateListener(this);
+		landlordView.addExitListener(this);
 	}
 
 	@Override

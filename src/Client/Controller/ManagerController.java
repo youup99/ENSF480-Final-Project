@@ -46,6 +46,7 @@ public class ManagerController implements ActionListener
 		managerView.addChangeFeeListener(this);
 		managerView.addChangeStatusListener(this);
 		managerView.addGetUserInfoListener(this);
+		managerView.addExitListener(this);
 	}
 	
 	private void showFeeWindow ()
@@ -101,6 +102,8 @@ public class ManagerController implements ActionListener
 		case "submitFee":
 			this.changeFee();
 			break;
+		case "exit":
+			System.exit(1);
 		}		
 	}
 	
