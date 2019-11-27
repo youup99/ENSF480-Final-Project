@@ -29,11 +29,13 @@ public class CreatePropertyView extends JFrame{
 	private JTextField cardNum = new JTextField();
 	private JTextField cvv = new JTextField();
 	private JTextArea currentFee = new JTextArea();
-	private JFormattedTextField expiryDate = new JFormattedTextField(new SimpleDateFormat("yyyy/MM"));
 	private JTextField address;
+	private String[] year = {"2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"};
+	private String[] month = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+	private final JComboBox yearEx = new JComboBox(year);
+	private final JComboBox monthEx = new JComboBox(month);
 	
 	public CreatePropertyView() {
-		expiryDate.setValue(new Date());
         setSize(450, 543);
 		cvv.setBounds(176, 404, 61, 26);
 		cvv.setColumns(10);
@@ -118,9 +120,6 @@ public class CreatePropertyView extends JFrame{
 		
 		getContentPane().add(cvv);
 		
-		expiryDate.setBounds(176, 369, 69, 26);
-		getContentPane().add(expiryDate);
-		
 		JLabel currentFeeLbl = new JLabel("Current Fee: $");
 		currentFeeLbl.setBounds(41, 246, 107, 20);
 		getContentPane().add(currentFeeLbl);
@@ -131,6 +130,12 @@ public class CreatePropertyView extends JFrame{
 		addressLbl.setBounds(41, 199, 69, 20);
 		
 		getContentPane().add(addressLbl);
+		yearEx.setBounds(176, 367, 61, 26);
+		
+		getContentPane().add(yearEx);
+		monthEx.setBounds(247, 367, 48, 26);
+		
+		getContentPane().add(monthEx);
 		
 	}
 	
@@ -167,8 +172,12 @@ public class CreatePropertyView extends JFrame{
 		return cardNum.getText();
 	}
 	
-	public String getExpiryDate()  {
-		return (String) expiryDate.getValue();
+	public String getExpiryYear()  {
+		return (String) yearEx.getSelectedItem();
+	}
+	
+	public String getExpiryMonth()  {
+		return (String) monthEx.getSelectedItem();
 	}
 	
 	public String getCvv()  {

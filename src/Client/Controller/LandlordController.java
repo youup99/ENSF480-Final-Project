@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import Client.Communication;
 import Client.View.CreatePropertyView;
 import Client.View.LandlordMenuView;
@@ -133,13 +136,18 @@ public class LandlordController implements ActionListener
 
 	private void addNewProperty() 
 	{
-		newProp.setVisible(false);
-		Property property = new Property (newProp.getAddress(), newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
-				newProp.getBath(), newProp.getFurnished(),
-				newProp.getCity(), landlord.getUserName(), landlord.getEmail());
+			
+		if (newProp.getCardNum().length() != 16) {
+			JFrame f = new JFrame();
+			JOptionPane.showMessageDialog(f, "Wrong card number! Try again.", "Alert", JOptionPane.WARNING_MESSAGE);		
+		} else {
+			newProp.setVisible(false);
+			Property property = new Property (newProp.getAddress(), newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
+			newProp.getBath(), newProp.getFurnished(),
+			newProp.getCity(), landlord.getUserName(), landlord.getEmail());
+			propertyC.addNewProperty(property);
+		}
 		
-		
-		propertyC.addNewProperty(property);
 	}
 
 }

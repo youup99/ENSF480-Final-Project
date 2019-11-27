@@ -29,7 +29,6 @@ public class GuestController implements GeneralRenterController, ActionListener
 	private void addListenersToClass ()
 	{
 		renterView.addSearchListener (this);
-		renterView.addExitListener(this);
 	}
 
 	@Override
@@ -59,11 +58,9 @@ public class GuestController implements GeneralRenterController, ActionListener
 	{
 		if (e.getActionCommand().equals("exit"))
 		{
-			System.out.println("guestExit");
 			System.exit(1);
-			
 		}
-		System.out.println("outside of exit");
+		
 		search = new SearchController (this);		
 	}
 	

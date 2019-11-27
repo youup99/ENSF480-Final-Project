@@ -128,8 +128,10 @@ public class ManagerController implements ActionListener
 		Communication c = Communication.getInstance();
 		try {
 			c.sendString("get report");
-			c.sendString(reportReq.getStartDate());
-			c.sendString (reportReq.getEndDate());
+			String start = reportReq.getStartYear() + "-" + reportReq.getStartMonth() + "-" + reportReq.getStartDate();
+			c.sendString(start);
+			String end = reportReq.getEndYear() + "-" + reportReq.getEndMonth() + "-" + reportReq.getEndDate();
+			c.sendString(end);
 			SummaryReport report = c.getReport();
 			summary = new SummaryReportView();
 			summary.setNumActiveList(report.getTotalActive());
