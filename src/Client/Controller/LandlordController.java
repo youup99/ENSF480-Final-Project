@@ -138,14 +138,15 @@ public class LandlordController implements ActionListener
 	private void addNewProperty() 
 	{
 			
-		if (newProp.getCardNum().length() != 16) {
+		if (newProp.getCardNum().length() != 16 || newProp.getCvv().length() != 3) {
 			JFrame f = new JFrame();
 			JOptionPane.showMessageDialog(f, "Wrong card number! Try again.", "Alert", JOptionPane.WARNING_MESSAGE);		
 		} else {
 			newProp.setVisible(false);
+			String name = landlord.getFirstName() + " " + landlord.getLastName();
 			Property property = new Property (newProp.getAddress(), newProp.getTypes(), newProp.getBed(), //TODO WHERE is address from
 			newProp.getBath(), newProp.getFurnished(),
-			newProp.getCity(), landlord.getUserName(), landlord.getEmail());
+			newProp.getCity(), name, landlord.getEmail());
 			propertyC.addNewProperty(property);
 		}
 		
