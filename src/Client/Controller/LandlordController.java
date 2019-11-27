@@ -138,9 +138,12 @@ public class LandlordController implements ActionListener
 	private void addNewProperty() 
 	{
 			
-		if (newProp.getCardNum().length() != 16 || newProp.getCvv().length() != 3) {
+		if (newProp.getCardNum().length() != 16) {
 			JFrame f = new JFrame();
 			JOptionPane.showMessageDialog(f, "Wrong card number! Try again.", "Alert", JOptionPane.WARNING_MESSAGE);		
+		} else if (newProp.getCvv().length() != 3) {
+			JFrame f = new JFrame();
+			JOptionPane.showMessageDialog(f, "Wrong CVV number! Try again.", "Alert", JOptionPane.WARNING_MESSAGE);
 		} else {
 			newProp.setVisible(false);
 			String name = landlord.getFirstName() + " " + landlord.getLastName();
