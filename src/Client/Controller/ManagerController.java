@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import Client.Communication;
 import Client.View.ChangeFeeView;
+import Client.View.EditPropertyView;
 import Client.View.ManagerMenuView;
 import Client.View.ManagerPropertyView;
 import Client.View.PropertyView;
@@ -28,6 +29,7 @@ public class ManagerController implements ActionListener
 	private ReportRequestView reportReq;
 	private UserListView userView;
 	private ChangeFeeView changeFeeView;
+	private EditPropertyView editView;
 	private ArrayList<Property> allProperties = new ArrayList<Property> ();
 	private String[][] data;
 	private ArrayList<User> u = new ArrayList<User>();
@@ -163,9 +165,8 @@ public class ManagerController implements ActionListener
 		
 		setPropertyData();
 		
-		propView = new ManagerPropertyView(data);
+		propView = new ManagerPropertyView(data, allProperties);
 		propView.setManagerController (this);
-		propView.setDisplay(allProperties);
 		propView.setVisible(true);
 	}
 	
@@ -198,13 +199,14 @@ public class ManagerController implements ActionListener
 		reportReq.addGenerateReportListener(this);
 	}
 	
-	public void updateStatus (Property p)
+	public void updateStatus (Property temp)
 	{
 		Communication c = Communication.getInstance();
+        
 		try {
 			c.sendString("change state");
-			c.sendString (p.getListingState());
-			c.sendString(Integer.toString(p.getID()));
+			c.sendString (temp.getListingState());
+			c.sendString(Integer.toString(temp.getID()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

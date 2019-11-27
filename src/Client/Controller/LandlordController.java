@@ -92,7 +92,7 @@ public class LandlordController implements ActionListener
 		}		
 		ownedProperties = landlordProperties;
 		setData();
-		propView = new LandlordPropertyView(data);
+		propView = new LandlordPropertyView(data, ownedProperties);
 		propView.setLandlordController(this);
 		propView.setDisplay(ownedProperties);
 	}

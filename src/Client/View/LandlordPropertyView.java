@@ -2,6 +2,7 @@ package Client.View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import Client.Controller.LandlordController;
 import Functionality.Property;
@@ -9,17 +10,20 @@ import Functionality.Property;
 public class LandlordPropertyView extends PropertyView {
 	private LandlordController landc;
 	
-	public LandlordPropertyView(String[][] data) {
+	public LandlordPropertyView(String[][] data, ArrayList<Property> properties) {
 		super(data);
-		editView.addSaveListener(this);
+		this.setDisplay(properties);
 	}
 	
 	@Override
 	public void mouseAction(MouseEvent e) {
-		int index = table.getSelectedRow();
+		int index = getTable().getSelectedRow();
 		if(propertyList.size() > 0) {
 			Property sendData = propertyList.get(index);
 			editView = new EditPropertyView(sendData);
+			editView.addSaveListener(this);
+			editView.setID();
+			editView.setStatus();
 		}
 		else {
 			Property sendData = null;

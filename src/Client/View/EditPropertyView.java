@@ -1,7 +1,6 @@
 package Client.View;
 
 import javax.swing.*;
-
 import Functionality.Property;
 
 import java.awt.*;
@@ -50,6 +49,11 @@ public class EditPropertyView extends JFrame{
 	
 	public void setID() {
 		id.setText(Integer.toString(property.getID()));
+	}
+	
+	public void setStatus()
+	{
+		comboBox.setSelectedItem(property.getListingState());
 	}
 	
 	public String getStatus() {

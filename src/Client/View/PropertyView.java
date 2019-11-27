@@ -33,23 +33,23 @@ public abstract class PropertyView implements ActionListener{
    protected EditPropertyView editView;
    
    protected PropertyInfoView propertyInfo;
-   protected JTable table;
+   private JTable table;
    
    public PropertyView(String[][] dataa) {
     	Dimension dim = new Dimension(1000,200);
     	frame = new JFrame("Property View");
         frame.setLocation(200,400);
         frame.setSize(dim);
-        table = new JTable(dataa, columnNames) {
+        setTable(new JTable(dataa, columnNames) {
         private static final long serialVersionUID = 1L;
 			
 		@Override
            public boolean isCellEditable(int row,int column) {
               return false;
            }
-        };
+        });
         
-        JScrollPane scrollpane = new JScrollPane(table);
+        JScrollPane scrollpane = new JScrollPane(getTable());
         
         scrollpane.setPreferredSize(dim);
         scrollpane.setVerticalScrollBarPolicy(scrollpane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -57,7 +57,7 @@ public abstract class PropertyView implements ActionListener{
         
         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
         dtcr.setHorizontalAlignment(SwingConstants.CENTER);
-        TableColumnModel tcm = table.getColumnModel();
+        TableColumnModel tcm = getTable().getColumnModel();
         
         for(int i = 0; i < tcm.getColumnCount(); i++) {
            tcm.getColumn(i).setCellRenderer(dtcr);
@@ -67,8 +67,8 @@ public abstract class PropertyView implements ActionListener{
         frame.pack();
         frame.setVisible(true);
 
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.addMouseListener(new MouseAdapter() {
+        getTable().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        getTable().addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		mouseAction(e);
@@ -78,6 +78,8 @@ public abstract class PropertyView implements ActionListener{
    
    public abstract void mouseAction(MouseEvent e);
    
+   public abstract void actionPerformed(ActionEvent e);
+   
    public void setDisplay(ArrayList<Property> p)  {
 	   propertyList = p;
 	}
@@ -86,5 +88,13 @@ public abstract class PropertyView implements ActionListener{
    {
 	   frame.setVisible(b);
    }
+
+public JTable getTable() {
+	return table;
+}
+
+public void setTable(JTable table) {
+	this.table = table;
+}
 }
 

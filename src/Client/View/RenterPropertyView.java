@@ -17,7 +17,7 @@ public class RenterPropertyView extends PropertyView {
 
 	@Override
 	public void mouseAction(MouseEvent e) {
-		int index = table.getSelectedRow();
+		int index = getTable().getSelectedRow();
 		if (propertyList.size() > 0) {
 			Property sendData = propertyList.get(index);
 			propertyInfo = new PropertyInfoView(sendData);
