@@ -56,6 +56,7 @@ public class ManagerMenuView extends JFrame{
     
     public void addExitListener(ActionListener al)  {
     	exit.addActionListener(al);
+    	exit.setActionCommand("exit");
 	}
     
     public void addCreateListener(ActionListener al) {
