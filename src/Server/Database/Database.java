@@ -365,16 +365,17 @@ public class Database{
     	return null;
     }
     
-    public User login(String username, String password) {
+    public User login(String username, String password, String userType) {
     	Connection conn = null;
     	PreparedStatement login = null;
-    	String loginString = "SELECT * from User WHERE userName = ? AND password = ?";
+    	String loginString = "SELECT * from User WHERE userName = ? AND password = ? AND type = ?";
     	try {
     		conn = getConn();
     		if(conn != null) {
     			login = conn.prepareStatement(loginString);
     			login.setString(1, username);
     			login.setString(2, password);
+    			login.setString(3, userType);
     			ResultSet rs = login.executeQuery();
     			User u = null;
     			if(rs.next()) {

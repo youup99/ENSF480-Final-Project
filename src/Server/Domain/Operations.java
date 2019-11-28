@@ -98,8 +98,8 @@ public class Operations{
     	return db.getReport(start, end);
     }
     
-    public User login(String username, String password) throws IOException{
-    	return db.login(username, password);
+    public User login(String username, String password, String userType) throws IOException{
+    	return db.login(username, password, userType);
     }
 
 }
