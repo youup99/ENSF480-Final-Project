@@ -24,7 +24,6 @@ public class LandlordController implements ActionListener
 	private CreatePropertyView newProp;
 	private LandlordPropertyView propView;
 	private PropertyController propertyC;
-	private ArrayList<Property> ownedProperties;
 	private ArrayList<Property> landlordProperties = new ArrayList<Property>();
 	String[][] data;
 
@@ -36,7 +35,6 @@ public class LandlordController implements ActionListener
 		landlord = l;
 		propertyC = new PropertyController ();
 		this.addActionListeners();
-		ownedProperties = new ArrayList<Property> ();
 	}
 	
 	private void addProperty ()
