@@ -90,11 +90,11 @@ public class LandlordController implements ActionListener
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}		
-		ownedProperties = landlordProperties;
+		//ownedProperties = landlordProperties;
 		setData();
-		propView = new LandlordPropertyView(data, ownedProperties);
+		propView = new LandlordPropertyView(data, landlordProperties);
 		propView.setLandlordController(this);
-		propView.setDisplay(ownedProperties);
+		//propView.setDisplay(landlordProperties); //This is no longer required either
 	}
 	
 	public void setData() {
@@ -130,7 +130,6 @@ public class LandlordController implements ActionListener
 			c.sendString (p.getListingState());
 			c.sendString(Integer.toString(p.getID()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
