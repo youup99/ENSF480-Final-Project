@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="C:/Users/Youup/Documents/GitHub/ENSF480-Final-Project/src/Server/sqlite-jdbc-3.27.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Youup/Documents/GitHub/ENSF480-Final-Project/src/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Youup/Documents/GitHub/ENSF480-Final-Project/src/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Youup/Documents/GitHub/ENSF480-Final-Project/src/smtp-1.4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

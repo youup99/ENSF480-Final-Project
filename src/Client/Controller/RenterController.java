@@ -4,6 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import Client.Communication;
 import Client.View.LandlordPropertyView;
@@ -42,9 +52,54 @@ public class RenterController implements ActionListener, GeneralRenterController
 		{
 			System.exit(1);
 		}
-		
-		search = new SearchController (this);
+		else if(e.getActionCommand().equals("search")) 
+		{
+			search = new SearchController (this);
+
+		}
+		else if (e.getActionCommand().equals("send email"))
+		{
+			Properties properties = new Properties();
+			properties.put("mail.smtp.auth", "true");
+			properties.put("mail.smtp.starttls.enable", "true");
+	        properties.put("mail.smtp.host", "smtp.gmail.com");
+	        properties.put("mail.smtp.port", "587");
+	        
+	        String myAccountEmail = "ensf480@gmail.com";
+	        String password = "fallensf480";
+
+	        
+	        Session session = Session.getInstance(properties, new Authenticator() {
+	            @Override
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(myAccountEmail, password);
+	            }
+	        });
+	        
+	        Message message = prepareMessage(session, propView.getEmailView().getFrom(), propView.getSelectedProperty().getLandlordEmail());
+			
+	        try {
+				Transport.send(message);
+			} catch (MessagingException me) {
+				me.printStackTrace();
+			}
+	        System.out.println("Message sent successfully!");
+		}
 	}
+	
+	public Message prepareMessage(Session session, String myAccountEmail, String recepient){
+        try{
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject(propView.getEmailView().getSubject());
+            message.setText(propView.getEmailView().getEmail());
+            return message;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 	
 	public void getSearchData (Property data)
 	{

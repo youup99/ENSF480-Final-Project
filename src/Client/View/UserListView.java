@@ -27,7 +27,7 @@ public class UserListView{
 //   };
    private ArrayList<User> userList = new ArrayList<User>();
    
-   public UserListView(String[][] data) {
+   public UserListView(String[][] data, ArrayList<User> userList) {
     	Dimension dim = new Dimension(800,200);
         frame.setLocation(200,400);
         frame.setSize(dim);

@@ -15,17 +15,14 @@ public class SummaryReportView{
 //	private String[][] data = {{"Minji Kim", "12345", "75 sage bluff view NW"},
 //			{"David", "57789", "3456 24th ave NW"}
 //			};
-	private String[][] data;
 	private JFrame frame = new JFrame("Summary Report");
 	private JTextArea houseList = new JTextArea();
 	private JTextArea houseRent = new JTextArea();
 	private JTextArea activeListing = new JTextArea();
 	private JButton btnClose = new JButton("Close");
-	private SummaryReport summaryReport;
 	
-	public SummaryReportView() {
-    	
-        frame.setSize(551, 483);
+	public SummaryReportView(String[][] data) {
+    	frame.setSize(551, 483);
 		frame.getContentPane().setBackground(new Color(230, 230, 250));
 		frame.getContentPane().setLayout(null);
 		
@@ -70,7 +67,6 @@ public class SummaryReportView{
 		btnClose.setBounds(208, 398, 115, 29);
 		frame.getContentPane().add(btnClose);
 		
-		setData();
 		JTable table = new JTable(data, col) {
 	           @Override
 	           public boolean isCellEditable(int row,int column) {
@@ -116,21 +112,7 @@ public class SummaryReportView{
 	public void setNumActiveList(int n) {
 		activeListing.setText(Integer.toString(n));
 	}
-	
-	public void setData() {
-		for(int i = 0; i < summaryReport.getHousesRented().size(); i++) {
-			for(int j = 0; j < 2; j++) {
-			    if (j == 0) {
-				   data[i][j] = summaryReport.getHousesRented().get(i).getLandlordName();
-       			} else if (j == 1) {
-       			   data[i][j] = Integer.toString(summaryReport.getHousesRented().get(i).getID());
-       		    } else if (j == 2) {
-       			   data[i][j] = summaryReport.getHousesRented().get(i).getAddress();
-       		    }
-       	   }
-	    }	
-	}
-	
+
 	public void setVisible(boolean v) {
 		if (v == false) {
 			frame.setVisible(false);

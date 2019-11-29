@@ -24,6 +24,7 @@ public class RenterMenuView extends JFrame{
 	
 	public void addSearchListener(ActionListener al)  {
     	searchBtn.addActionListener(al);
+    	searchBtn.setActionCommand("search");
 	}
     
     public void addExitListener(ActionListener al)  {

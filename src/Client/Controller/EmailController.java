@@ -24,7 +24,15 @@ public class EmailController {
 	        properties.put("mail.smtp.host", "smtp.gmail.com");
 	        properties.put("mail.smtp.port", "587");
 	        
-	        Session session = Session.getInstance(properties);
+	        String myAccountEmail = "ensf480@gmail.com";
+	        String password = "fallensf480";
+	        
+	        Session session = Session.getInstance(properties, new Authenticator() {
+	            @Override
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(myAccountEmail, password);
+	            }
+	        });
 	        
 	        Message message = prepareMessage(session, emailView.getFrom(), property.getLandlordEmail());
 			

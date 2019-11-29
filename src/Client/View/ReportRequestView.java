@@ -22,7 +22,7 @@ public class ReportRequestView extends JFrame {
 	public ReportRequestView() {
 		getContentPane().setBackground(new Color(230, 230, 250));
 		getContentPane().setLayout(null);
-		
+		setSize(375, 230);
 		JLabel lblStartDate = new JLabel("Start Date");
 		lblStartDate.setBounds(33, 16, 78, 20);
 		getContentPane().add(lblStartDate);

@@ -1,6 +1,11 @@
 package Client.View;
 
 import javax.swing.*;
+
+import Client.Controller.EmailController;
+import Client.Controller.GuestController;
+import Client.Controller.RenterController;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -11,8 +16,11 @@ public class EmailView extends JFrame{
 	private JTextField to;
 	private JTextArea email = new JTextArea();
 	private JButton btnSend = new JButton("send");
+	private RenterController rc;
+	private GuestController gc;
 	
-    public EmailView() {
+	
+    public EmailView(String to) {
     	setSize(452, 450);
     	getContentPane().setBackground(new Color(230, 230, 250));
     	setTitle("Send Email");
@@ -50,8 +58,17 @@ public class EmailView extends JFrame{
         setLocationRelativeTo ( null );
     }
     
+    public void setRenterController(RenterController rc) {
+    	this.rc = rc;
+    }
+    
+    public void setGuestController(GuestController gc) {
+    	this.gc = gc;
+    }
+    
     public void addSendListener(ActionListener al)  {
     	btnSend.addActionListener(al);
+    	btnSend.setActionCommand("send email");
 	}
 	
 	public String getFrom() {
