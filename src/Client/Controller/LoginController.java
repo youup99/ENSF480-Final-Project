@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import Client.Communication;
 import Client.View.LoginView;
 import Client.View.NewUserView;
@@ -45,15 +48,16 @@ public class LoginController implements ActionListener
 			{				
 				cToS.sendString("login");
 				cToS.sendString(username);
-				cToS.sendString(password);	
+				cToS.sendString(password);
+				cToS.sendString(userType);
 				
 				User returnedData = cToS.getUser(); //Use somewhere if possible
 				
 				if (returnedData == null) 
 				{
 					//deal with invalid login case.
-					System.out.println("Incorrect username or password");
-					return;
+					JFrame f = new JFrame();
+					JOptionPane.showMessageDialog(f, "Incorrect username or password", "Alert", JOptionPane.WARNING_MESSAGE);		
 				}
 				else
 				{
@@ -85,15 +89,15 @@ public class LoginController implements ActionListener
 	{
 		switch (userType)
 		{
-		case "renter":
+		case "Registered":
 			RenterController renter = new RenterController (new RegisteredRenter (data.getUserName(), data.getFirstName(),
 					data.getLastName(), data.getEmail(), data.getPassword()));
 			break;
-		case "landlord":
+		case "Landlord":
 			LandlordController landlord = new LandlordController (new Landlord (data.getUserName()
 					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword()));
 			break;
-		case "manager":
+		case "Manager":
 			ManagerController manager = new ManagerController (new Manager (data.getUserName()
 					, data.getFirstName(), data.getLastName(), data.getEmail(), data.getPassword()));
 			break;	

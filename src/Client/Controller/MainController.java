@@ -43,10 +43,20 @@ public class MainController implements ActionListener
 			mainView.setVisible(false);
 			GuestController guests = new GuestController (); //Unregistered can search...
 		}
-		else
+		else if(e.getActionCommand().contentEquals("Landlord"))
 		{
 			mainView.setVisible(false);
 			login = new LoginController (e.getActionCommand()); //Make mainview invisible and display login screen
+		}
+		else if(e.getActionCommand().contentEquals("Registered"))
+		{
+			mainView.setVisible(false);
+			login = new LoginController (e.getActionCommand());
+		}
+		else if(e.getActionCommand().contentEquals("Manager"))
+		{
+			mainView.setVisible(false);
+			login = new LoginController (e.getActionCommand());
 		}
 	}
 }

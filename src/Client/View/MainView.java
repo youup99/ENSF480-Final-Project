@@ -20,13 +20,13 @@ public class MainView extends JFrame{
 
 		landlord.setBounds(66, 57, 115, 56);
 		getContentPane().add(landlord);
-		landlord.setActionCommand("landlord");
+		landlord.setActionCommand("Landlord");
 		renter.setBounds(242, 57, 115, 56);
 		getContentPane().add(renter);
-		renter.setActionCommand("renter");
+		renter.setActionCommand("Registered");
 		manager.setBounds(66, 141, 115, 56);
 		getContentPane().add(manager);
-		manager.setActionCommand("manager");
+		manager.setActionCommand("Manager");
 		guest.setBounds(242, 141, 115, 56);
 		getContentPane().add(guest);
 		guest.setActionCommand("guest");

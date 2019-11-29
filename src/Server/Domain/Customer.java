@@ -263,7 +263,8 @@ public class Customer implements Runnable {
             		try {
             			String username = communicator.getString();
             			String password = communicator.getString();
-            			User u = operations.login(username, password);
+            			String userType = communicator.getString();
+            			User u = operations.login(username, password, userType);
             			if(u != null) {
             				communicator.sendUser(u);
             			}
