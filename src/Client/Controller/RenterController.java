@@ -50,7 +50,7 @@ public class RenterController implements ActionListener, GeneralRenterController
 	{
 		Communication cToS = Communication.getInstance();
 		try {
-			cToS.sendString("preferences"); //TODO: will change, only temporary
+			cToS.sendString("preferences"); 
 			cToS.sendUser(renter);
 			cToS.sendProperty(data); //preferences
 			

@@ -11,8 +11,6 @@ import Functionality.Property;
 
 public class PropertyController
 {
-    private PropertyView propertyView;
-    private EditPropertyView editView;
 	
 	public void addNewProperty (Property property) 
 	{

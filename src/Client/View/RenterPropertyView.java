@@ -3,6 +3,7 @@ package Client.View;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
+import Client.Controller.EmailController;
 import Client.Controller.GuestController;
 import Client.Controller.RenterController;
 import Functionality.Property;
@@ -10,6 +11,7 @@ import Functionality.Property;
 public class RenterPropertyView extends PropertyView {
 	private RenterController rc;
 	private GuestController gc;
+	private EmailController ec;
 	
 	public RenterPropertyView(String[][] data) {
 		super(data);
@@ -38,8 +40,10 @@ public class RenterPropertyView extends PropertyView {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) 
+	{
+		// Emailing
+		ec = new EmailController ();
 		
 	}
 }
